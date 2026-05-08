@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Online Presence — Studio Jas</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@400;500;600&display=swap');
+/* ─────────────────────────────────────────
+   TOKENS
+───────────────────────────────────────── */
+:root {
+  --cream:   #fdfaf5;
+  --sand:    #f5f0e8;
+  --clay:    #c8866a;
+  --clay-lt: #e8c3b0;
+  --bark:    #3d2f26;
+  --moss:    #6b7c5e;
+  --fog:     #8e8e88;
+  --ink:     #2a2320;
+
+  --serif: 'Lora', Georgia, serif;
+  --sans:  'DM Sans', 'Helvetica Neue', sans-serif;
+
+  --text-max: 64ch;
+  --page-max: 840px;
+  --pad-x: 2rem;
+
+  --space-xs: 0.75rem;
+  --space-sm: 1.25rem;
+  --space-md: 2.5rem;
+  --space-lg: 4.5rem;
+}
+
+/* ─────────────────────────────────────────
+   RESET & BASE
+───────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+img { display: block; max-width: 100%; }
+a { color: var(--clay); text-decoration: underline; text-underline-offset: 3px; }
+a:hover { color: var(--bark); }
+
+/* ─────────────────────────────────────────
+   LAYOUT
+───────────────────────────────────────── */
+.wrap {
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: var(--pad-x);
+}
+
+.section {
+  padding-block: var(--space-lg);
+}
+
+/* section background variants */
+.section--sand  { background: var(--sand); }
+.section--dark  { background: var(--bark); }
+
+/* only add divider between same-tone sections */
+.section + .section:not(.section--sand):not(.section--dark) {
+  border-top: 1px solid var(--clay-lt);
+}
+.section--sand + .section--sand {
+  border-top: 1px solid var(--clay-lt);
+}
+
+/* ─────────────────────────────────────────
+   TYPOGRAPHY
+───────────────────────────────────────── */
+h1, h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--bark);
+}
+
+h1 { font-size: clamp(2rem, 5.5vw, 3.1rem); }
+h2 { font-size: clamp(1.4rem, 3.5vw, 2rem); margin-bottom: var(--space-sm); }
+
+p { max-width: var(--text-max); }
+p + p { margin-top: 1rem; }
+
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fog);
+  margin-bottom: 0.5rem;
+}
+
+/* inverted type for dark sections */
+.section--dark h2,
+.section--dark p,
+.section--dark .eyebrow { color: var(--clay-lt); }
+.section--dark h2 { color: var(--sand); }
+.section--dark .contact-note { color: var(--fog); }
+
+/* ─────────────────────────────────────────
+   NAV
+───────────────────────────────────────── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(253, 250, 245, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--clay-lt);
+}
+
+.nav-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 1.1rem;
+}
+
+.nav-wordmark {
+  font-family: var(--serif);
+  font-size: 0.9375rem;
+  color: var(--bark);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+.nav-wordmark:hover { color: var(--clay); }
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--fog);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: color 0.15s;
+}
+.nav-links a:hover { color: var(--clay); }
+.nav-links a.active { color: var(--bark); }
+
+/* ─────────────────────────────────────────
+   HERO
+───────────────────────────────────────── */
+.hero {
+  padding-block: 5.5rem 4.5rem;
+  background: linear-gradient(175deg, var(--sand) 0%, var(--cream) 75%);
+}
+
+.hero h1 {
+  max-width: 20ch;
+  margin-bottom: 1.5rem;
+}
+
+.hero-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.125rem;
+  color: var(--moss);
+  max-width: 50ch;
+  margin-bottom: var(--space-md);
+  line-height: 1.7;
+}
+
+/* ─────────────────────────────────────────
+   BUTTONS
+───────────────────────────────────────── */
+.cta-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--clay);
+  color: #fff;
+  padding: 0.8rem 1.75rem;
+  border-radius: 3px;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: var(--bark); color: #fff; transform: translateY(-1px); }
+
+.btn-secondary {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--clay);
+  text-decoration: none;
+  border-bottom: 1.5px solid var(--clay-lt);
+  padding-bottom: 2px;
+  transition: color 0.15s, border-color 0.15s;
+}
+.btn-secondary:hover { color: var(--bark); border-color: var(--bark); }
+
+/* dark section button variant */
+.section--dark .btn-primary {
+  background: var(--clay-lt);
+  color: var(--bark);
+}
+.section--dark .btn-primary:hover {
+  background: var(--sand);
+  color: var(--bark);
+}
+
+/* ─────────────────────────────────────────
+   LISTS
+───────────────────────────────────────── */
+.dash-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dash-list li {
+  padding-left: 1.375rem;
+  position: relative;
+  font-size: 0.9625rem;
+  line-height: 1.65;
+}
+
+.dash-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--clay-lt);
+  font-family: var(--serif);
+}
+
+.dash-list.spaced { gap: 1.75rem; }
+.dash-list strong { font-weight: 600; color: var(--bark); }
+
+/* ─────────────────────────────────────────
+   TWO-COLUMN
+───────────────────────────────────────── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  margin-top: var(--space-md);
+}
+
+.col-label {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fog);
+  margin-bottom: 1rem;
+}
+
+/* ─────────────────────────────────────────
+   PROCESS STEPS
+───────────────────────────────────────── */
+.steps-wrap {
+  margin-top: var(--space-md);
+  max-width: var(--text-max);
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+
+/* vertical connector line */
+.steps::before {
+  content: '';
+  position: absolute;
+  left: 1.45rem;
+  top: 2rem;
+  bottom: 2rem;
+  width: 1px;
+  background: var(--clay-lt);
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 1.25rem;
+  align-items: start;
+  padding-block: 1.5rem;
+  position: relative;
+}
+
+.step + .step {
+  border-top: none;
+}
+
+.step-num {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--cream);
+  background: var(--clay-lt);
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  letter-spacing: 0;
+}
+
+.section--sand .step-num {
+  background: var(--clay-lt);
+  color: var(--bark);
+}
+
+.step-title {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--bark);
+  margin-bottom: 0.35rem;
+  padding-top: 0.25rem;
+}
+
+.step p {
+  font-size: 0.9375rem;
+  color: var(--ink);
+  line-height: 1.65;
+  max-width: var(--text-max);
+}
+
+/* ─────────────────────────────────────────
+   INVITE / CLOSING LINE
+───────────────────────────────────────── */
+.invite-line {
+  margin-top: var(--space-md);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--clay-lt);
+  font-size: 0.9375rem;
+  font-style: italic;
+  color: var(--moss);
+  max-width: var(--text-max);
+}
+
+/* ─────────────────────────────────────────
+   SERVICE CARDS (landing page)
+───────────────────────────────────────── */
+.service-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: var(--space-md);
+}
+
+.service-card {
+  background: var(--cream);
+  border: 1px solid var(--clay-lt);
+  border-top: 3px solid var(--clay-lt);
+  border-radius: 4px;
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-decoration: none;
+  transition: border-top-color 0.2s, transform 0.2s;
+}
+
+.service-card:hover {
+  border-top-color: var(--clay);
+  transform: translateY(-3px);
+}
+
+.service-card-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--fog);
+}
+
+.service-card h3 {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--bark);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.service-card p {
+  font-size: 0.9rem;
+  color: var(--ink);
+  line-height: 1.6;
+  flex-grow: 1;
+  max-width: none;
+}
+
+.service-card-link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--clay);
+  text-decoration: none;
+  border-bottom: 1.5px solid var(--clay-lt);
+  padding-bottom: 2px;
+  align-self: flex-start;
+  transition: color 0.15s, border-color 0.15s;
+}
+.service-card:hover .service-card-link {
+  color: var(--bark);
+  border-color: var(--bark);
+}
+
+/* ─────────────────────────────────────────
+   ABOUT
+───────────────────────────────────────── */
+.about-wrap { max-width: var(--text-max); }
+
+/* ─────────────────────────────────────────
+   CONTACT (dark section)
+───────────────────────────────────────── */
+.contact-wrap { max-width: 52ch; }
+.contact-wrap > p { margin-bottom: var(--space-md); }
+
+.prompts {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  padding: 1.75rem;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(232, 195, 176, 0.25);
+  border-radius: 4px;
+  margin-bottom: var(--space-md);
+}
+
+.prompts li {
+  padding-left: 1.375rem;
+  position: relative;
+  font-size: 0.9375rem;
+  color: var(--clay-lt);
+  line-height: 1.55;
+}
+
+.prompts li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--clay);
+  font-size: 0.8125rem;
+  top: 0.12em;
+}
+
+.email-link {
+  display: inline-block;
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  color: var(--clay-lt);
+  text-decoration: none;
+  border-bottom: 2px solid rgba(232, 195, 176, 0.4);
+  padding-bottom: 3px;
+  transition: color 0.15s, border-color 0.15s;
+}
+.email-link:hover { color: var(--sand); border-color: var(--sand); }
+
+.contact-note {
+  margin-top: 0.875rem;
+  font-size: 0.85rem;
+  color: var(--fog);
+  max-width: none;
+}
+
+/* ─────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────── */
+footer {
+  background: var(--bark);
+  padding-block: 2rem;
+  border-top: 1px solid rgba(232,195,176,0.15);
+}
+
+.footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-wordmark {
+  font-family: var(--serif);
+  font-size: 0.9375rem;
+  color: var(--sand);
+  text-decoration: none;
+}
+.footer-wordmark:hover { color: var(--clay-lt); }
+
+.footer-tagline {
+  font-size: 0.78rem;
+  color: var(--fog);
+  max-width: none;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: 0.78rem;
+  color: var(--fog);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.footer-links a:hover { color: var(--clay-lt); }
+
+/* ─────────────────────────────────────────
+   CREATIVE PAGE
+───────────────────────────────────────── */
+.creative-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  margin-top: var(--space-md);
+}
+
+.creative-area {
+  border-left: 3px solid var(--clay-lt);
+  padding-left: 1.5rem;
+}
+
+.creative-area-title {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--bark);
+  margin-bottom: 0.75rem;
+}
+
+.creative-area p {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  max-width: 36ch;
+}
+
+.status-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fog);
+  margin-bottom: 0.6rem;
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
+@media (max-width: 700px) {
+  .nav-links       { display: none; }
+  .two-col         { grid-template-columns: 1fr; gap: var(--space-md); }
+  .service-cards   { grid-template-columns: 1fr; }
+  .creative-grid   { grid-template-columns: 1fr; gap: var(--space-md); }
+  .hero            { padding-block: 3.5rem 3rem; }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="wrap nav-row">
+      <a class="nav-wordmark" href="index.html">Studio Jas</a>
+      <ul class="nav-links">
+        <li><a href="offsites.html">Off-sites</a></li>
+        <li><a href="workflow.html">Workflow &amp; tooling</a></li>
+        <li><a href="online-presence.html" class="active">Online presence</a></li>
+        <li><a href="#contact">Get in touch</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="section hero">
+    <div class="wrap">
+      <p class="eyebrow">Online presence</p>
+      <h1>A website for your business that you don't have to think about.</h1>
+      <p class="hero-sub">
+        I help local businesses get online simply and well — a clean site, the right profiles, and a presence that works without you having to manage it yourself.
+      </p>
+      <div class="cta-row">
+        <a class="btn-primary" href="#contact">Get in touch</a>
+        <a class="btn-secondary" href="#detail">See what's included</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAIL -->
+  <section class="section" id="detail">
+    <div class="wrap">
+      <p class="eyebrow">What this is</p>
+      <h2>An online presence that reflects<br>how good your business already is</h2>
+
+      <p style="max-width: var(--text-max); margin-bottom: var(--space-md);">
+        Most local businesses know they need a website. Few have the time or interest to build and maintain one themselves — and they shouldn't have to. I take care of the whole thing: figuring out what you need, building it, and setting it up so it just works. You stay focused on your customers; I make sure they can find you.
+      </p>
+
+      <div class="two-col">
+        <div>
+          <p class="col-label">This might be for you if…</p>
+          <ul class="dash-list">
+            <li>You're running a local business — a shop, studio, salon, restaurant, service, or practice — and your online presence doesn't match the quality of what you actually offer</li>
+            <li>You have no website, or one you're embarrassed to share</li>
+            <li>You've looked at website builders and felt overwhelmed or uninterested</li>
+            <li>You want something professional that you don't need to maintain or update constantly</li>
+            <li>You want to show up in local search without having to become a marketing expert</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="col-label">What I take care of</p>
+          <ul class="dash-list">
+            <li>A clean, simple website — designed to look good, load fast, and work on any device</li>
+            <li>Your domain and hosting, set up and handled so you don't have to think about it</li>
+            <li>Google Business profile setup so people can find you in local search and on maps</li>
+            <li>Basic SEO — the right words, structure, and metadata so search engines understand what you do and where you are</li>
+            <li>A system that's easy to hand off — so you can make small updates yourself if you ever want to</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section section--sand" id="process">
+    <div class="wrap">
+      <p class="eyebrow">How it works</p>
+      <h2>Low-lift for you,<br>start to finish</h2>
+      <p>I handle the complexity. You review, approve, and move on.</p>
+
+      <div class="steps-wrap">
+        <div class="steps">
+          <div class="step">
+            <span class="step-num">1</span>
+            <div>
+              <p class="step-title">A short conversation</p>
+              <p>We talk about your business, your customers, and what you'd want someone to know the moment they land on your site. I ask the right questions so you don't have to figure out what to include.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">2</span>
+            <div>
+              <p class="step-title">I write it and build it</p>
+              <p>I draft the copy, design the site, and build it out — all in one pass. You'll see a version to review before anything goes live. Revisions are part of the process.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">3</span>
+            <div>
+              <p class="step-title">Setup &amp; go live</p>
+              <p>Domain, hosting, Google Business, search basics — all configured and connected. When we're done, your business is findable, and everything is set up right.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">4</span>
+            <div>
+              <p class="step-title">You're handed the keys</p>
+              <p>A short walkthrough of what exists and how to make simple updates if you ever need to — like adding a new service or updating your hours. Nothing complicated required.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="invite-line">
+        This is a good fit for businesses that are ready to show up online properly — and want it done without it becoming a project on their plate.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section section--dark" id="contact">
+    <div class="wrap">
+      <p class="eyebrow">Get in touch</p>
+      <h2>Tell me about<br>your business.</h2>
+
+      <div class="contact-wrap">
+        <p>Tell me a bit about what you do and where things stand online — and I'll give you a clear sense of what I can do and what it would look like.</p>
+
+        <ul class="prompts">
+          <li>What's your business, and who are your customers?</li>
+          <li>Do you have an existing website, or are we starting from scratch?</li>
+          <li>What's the main thing you want people to do when they find you — call, book, visit, buy?</li>
+          <li>Is there anything specific about your current online presence that bothers you?</li>
+        </ul>
+
+        <a class="email-link" href="mailto:jasmine.operations@gmail.com">jasmine.operations@gmail.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap footer-row">
+      <a class="footer-wordmark" href="index.html">Studio Jas</a>
+      <ul class="footer-links">
+        <li><a href="offsites.html">Off-sites</a></li>
+        <li><a href="workflow.html">Workflow &amp; tooling</a></li>
+        <li><a href="online-presence.html">Online presence</a></li>
+        <li><a href="#contact">Get in touch</a></li>
+      </ul>
+      <p class="footer-tagline">gatherings, systems, &amp; things &nbsp;·&nbsp; © 2026</p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workflow & Tooling — Studio Jas</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@400;500;600&display=swap');
+/* ─────────────────────────────────────────
+   TOKENS
+───────────────────────────────────────── */
+:root {
+  --cream:   #fdfaf5;
+  --sand:    #f5f0e8;
+  --clay:    #c8866a;
+  --clay-lt: #e8c3b0;
+  --bark:    #3d2f26;
+  --moss:    #6b7c5e;
+  --fog:     #8e8e88;
+  --ink:     #2a2320;
+
+  --serif: 'Lora', Georgia, serif;
+  --sans:  'DM Sans', 'Helvetica Neue', sans-serif;
+
+  --text-max: 64ch;
+  --page-max: 840px;
+  --pad-x: 2rem;
+
+  --space-xs: 0.75rem;
+  --space-sm: 1.25rem;
+  --space-md: 2.5rem;
+  --space-lg: 4.5rem;
+}
+
+/* ─────────────────────────────────────────
+   RESET & BASE
+───────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+img { display: block; max-width: 100%; }
+a { color: var(--clay); text-decoration: underline; text-underline-offset: 3px; }
+a:hover { color: var(--bark); }
+
+/* ─────────────────────────────────────────
+   LAYOUT
+───────────────────────────────────────── */
+.wrap {
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: var(--pad-x);
+}
+
+.section {
+  padding-block: var(--space-lg);
+}
+
+/* section background variants */
+.section--sand  { background: var(--sand); }
+.section--dark  { background: var(--bark); }
+
+/* only add divider between same-tone sections */
+.section + .section:not(.section--sand):not(.section--dark) {
+  border-top: 1px solid var(--clay-lt);
+}
+.section--sand + .section--sand {
+  border-top: 1px solid var(--clay-lt);
+}
+
+/* ─────────────────────────────────────────
+   TYPOGRAPHY
+───────────────────────────────────────── */
+h1, h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--bark);
+}
+
+h1 { font-size: clamp(2rem, 5.5vw, 3.1rem); }
+h2 { font-size: clamp(1.4rem, 3.5vw, 2rem); margin-bottom: var(--space-sm); }
+
+p { max-width: var(--text-max); }
+p + p { margin-top: 1rem; }
+
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fog);
+  margin-bottom: 0.5rem;
+}
+
+/* inverted type for dark sections */
+.section--dark h2,
+.section--dark p,
+.section--dark .eyebrow { color: var(--clay-lt); }
+.section--dark h2 { color: var(--sand); }
+.section--dark .contact-note { color: var(--fog); }
+
+/* ─────────────────────────────────────────
+   NAV
+───────────────────────────────────────── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(253, 250, 245, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--clay-lt);
+}
+
+.nav-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 1.1rem;
+}
+
+.nav-wordmark {
+  font-family: var(--serif);
+  font-size: 0.9375rem;
+  color: var(--bark);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+.nav-wordmark:hover { color: var(--clay); }
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--fog);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: color 0.15s;
+}
+.nav-links a:hover { color: var(--clay); }
+.nav-links a.active { color: var(--bark); }
+
+/* ─────────────────────────────────────────
+   HERO
+───────────────────────────────────────── */
+.hero {
+  padding-block: 5.5rem 4.5rem;
+  background: linear-gradient(175deg, var(--sand) 0%, var(--cream) 75%);
+}
+
+.hero h1 {
+  max-width: 20ch;
+  margin-bottom: 1.5rem;
+}
+
+.hero-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.125rem;
+  color: var(--moss);
+  max-width: 50ch;
+  margin-bottom: var(--space-md);
+  line-height: 1.7;
+}
+
+/* ─────────────────────────────────────────
+   BUTTONS
+───────────────────────────────────────── */
+.cta-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--clay);
+  color: #fff;
+  padding: 0.8rem 1.75rem;
+  border-radius: 3px;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: var(--bark); color: #fff; transform: translateY(-1px); }
+
+.btn-secondary {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--clay);
+  text-decoration: none;
+  border-bottom: 1.5px solid var(--clay-lt);
+  padding-bottom: 2px;
+  transition: color 0.15s, border-color 0.15s;
+}
+.btn-secondary:hover { color: var(--bark); border-color: var(--bark); }
+
+/* dark section button variant */
+.section--dark .btn-primary {
+  background: var(--clay-lt);
+  color: var(--bark);
+}
+.section--dark .btn-primary:hover {
+  background: var(--sand);
+  color: var(--bark);
+}
+
+/* ─────────────────────────────────────────
+   LISTS
+───────────────────────────────────────── */
+.dash-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dash-list li {
+  padding-left: 1.375rem;
+  position: relative;
+  font-size: 0.9625rem;
+  line-height: 1.65;
+}
+
+.dash-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--clay-lt);
+  font-family: var(--serif);
+}
+
+.dash-list.spaced { gap: 1.75rem; }
+.dash-list strong { font-weight: 600; color: var(--bark); }
+
+/* ─────────────────────────────────────────
+   TWO-COLUMN
+───────────────────────────────────────── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  margin-top: var(--space-md);
+}
+
+.col-label {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fog);
+  margin-bottom: 1rem;
+}
+
+/* ─────────────────────────────────────────
+   PROCESS STEPS
+───────────────────────────────────────── */
+.steps-wrap {
+  margin-top: var(--space-md);
+  max-width: var(--text-max);
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+
+/* vertical connector line */
+.steps::before {
+  content: '';
+  position: absolute;
+  left: 1.45rem;
+  top: 2rem;
+  bottom: 2rem;
+  width: 1px;
+  background: var(--clay-lt);
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 1.25rem;
+  align-items: start;
+  padding-block: 1.5rem;
+  position: relative;
+}
+
+.step + .step {
+  border-top: none;
+}
+
+.step-num {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--cream);
+  background: var(--clay-lt);
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  letter-spacing: 0;
+}
+
+.section--sand .step-num {
+  background: var(--clay-lt);
+  color: var(--bark);
+}
+
+.step-title {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--bark);
+  margin-bottom: 0.35rem;
+  padding-top: 0.25rem;
+}
+
+.step p {
+  font-size: 0.9375rem;
+  color: var(--ink);
+  line-height: 1.65;
+  max-width: var(--text-max);
+}
+
+/* ─────────────────────────────────────────
+   INVITE / CLOSING LINE
+───────────────────────────────────────── */
+.invite-line {
+  margin-top: var(--space-md);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--clay-lt);
+  font-size: 0.9375rem;
+  font-style: italic;
+  color: var(--moss);
+  max-width: var(--text-max);
+}
+
+/* ─────────────────────────────────────────
+   SERVICE CARDS (landing page)
+───────────────────────────────────────── */
+.service-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: var(--space-md);
+}
+
+.service-card {
+  background: var(--cream);
+  border: 1px solid var(--clay-lt);
+  border-top: 3px solid var(--clay-lt);
+  border-radius: 4px;
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-decoration: none;
+  transition: border-top-color 0.2s, transform 0.2s;
+}
+
+.service-card:hover {
+  border-top-color: var(--clay);
+  transform: translateY(-3px);
+}
+
+.service-card-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--fog);
+}
+
+.service-card h3 {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--bark);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.service-card p {
+  font-size: 0.9rem;
+  color: var(--ink);
+  line-height: 1.6;
+  flex-grow: 1;
+  max-width: none;
+}
+
+.service-card-link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--clay);
+  text-decoration: none;
+  border-bottom: 1.5px solid var(--clay-lt);
+  padding-bottom: 2px;
+  align-self: flex-start;
+  transition: color 0.15s, border-color 0.15s;
+}
+.service-card:hover .service-card-link {
+  color: var(--bark);
+  border-color: var(--bark);
+}
+
+/* ─────────────────────────────────────────
+   ABOUT
+───────────────────────────────────────── */
+.about-wrap { max-width: var(--text-max); }
+
+/* ─────────────────────────────────────────
+   CONTACT (dark section)
+───────────────────────────────────────── */
+.contact-wrap { max-width: 52ch; }
+.contact-wrap > p { margin-bottom: var(--space-md); }
+
+.prompts {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  padding: 1.75rem;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(232, 195, 176, 0.25);
+  border-radius: 4px;
+  margin-bottom: var(--space-md);
+}
+
+.prompts li {
+  padding-left: 1.375rem;
+  position: relative;
+  font-size: 0.9375rem;
+  color: var(--clay-lt);
+  line-height: 1.55;
+}
+
+.prompts li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--clay);
+  font-size: 0.8125rem;
+  top: 0.12em;
+}
+
+.email-link {
+  display: inline-block;
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  color: var(--clay-lt);
+  text-decoration: none;
+  border-bottom: 2px solid rgba(232, 195, 176, 0.4);
+  padding-bottom: 3px;
+  transition: color 0.15s, border-color 0.15s;
+}
+.email-link:hover { color: var(--sand); border-color: var(--sand); }
+
+.contact-note {
+  margin-top: 0.875rem;
+  font-size: 0.85rem;
+  color: var(--fog);
+  max-width: none;
+}
+
+/* ─────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────── */
+footer {
+  background: var(--bark);
+  padding-block: 2rem;
+  border-top: 1px solid rgba(232,195,176,0.15);
+}
+
+.footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-wordmark {
+  font-family: var(--serif);
+  font-size: 0.9375rem;
+  color: var(--sand);
+  text-decoration: none;
+}
+.footer-wordmark:hover { color: var(--clay-lt); }
+
+.footer-tagline {
+  font-size: 0.78rem;
+  color: var(--fog);
+  max-width: none;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: 0.78rem;
+  color: var(--fog);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.footer-links a:hover { color: var(--clay-lt); }
+
+/* ─────────────────────────────────────────
+   CREATIVE PAGE
+───────────────────────────────────────── */
+.creative-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  margin-top: var(--space-md);
+}
+
+.creative-area {
+  border-left: 3px solid var(--clay-lt);
+  padding-left: 1.5rem;
+}
+
+.creative-area-title {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--bark);
+  margin-bottom: 0.75rem;
+}
+
+.creative-area p {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  max-width: 36ch;
+}
+
+.status-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fog);
+  margin-bottom: 0.6rem;
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
+@media (max-width: 700px) {
+  .nav-links       { display: none; }
+  .two-col         { grid-template-columns: 1fr; gap: var(--space-md); }
+  .service-cards   { grid-template-columns: 1fr; }
+  .creative-grid   { grid-template-columns: 1fr; gap: var(--space-md); }
+  .hero            { padding-block: 3.5rem 3rem; }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="wrap nav-row">
+      <a class="nav-wordmark" href="index.html">Studio Jas</a>
+      <ul class="nav-links">
+        <li><a href="offsites.html">Off-sites</a></li>
+        <li><a href="workflow.html" class="active">Workflow &amp; tooling</a></li>
+        <li><a href="online-presence.html">Online presence</a></li>
+        <li><a href="#contact">Get in touch</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="section hero">
+    <div class="wrap">
+      <p class="eyebrow">Workflow &amp; tooling</p>
+      <h1>Better tools, calmer days, for non-tech teams.</h1>
+      <p class="hero-sub">
+        You're great at your work — but the software that's supposed to help often just adds more noise. I help creative firms, wedding planners, event teams, and other small businesses get their tools working for them.
+      </p>
+      <div class="cta-row">
+        <a class="btn-primary" href="#contact">Get in touch</a>
+        <a class="btn-secondary" href="#detail">See what's possible</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAIL -->
+  <section class="section" id="detail">
+    <div class="wrap">
+      <p class="eyebrow">Who this is for</p>
+      <h2>For teams who are great<br>at their work — not at software</h2>
+
+      <p style="max-width: var(--text-max); margin-bottom: var(--space-md);">
+        Software teams have had years to develop their tooling habits. Most non-tech businesses haven't — and the tools keep getting more complex. If you're a creative firm, a wedding planning studio, an event business, or a small service team, you probably didn't sign up to become a project management expert. I help bridge that gap: figuring out which tools are actually worth using, setting them up in a way that makes sense for how you work, and making it all stick.
+      </p>
+
+      <div class="two-col">
+        <div>
+          <p class="col-label">This might be for you if…</p>
+          <ul class="dash-list">
+            <li>You're juggling client work across emails, spreadsheets, sticky notes, and DMs — and something always slips</li>
+            <li>You've tried Asana, Notion, or something similar and it never quite clicked</li>
+            <li>You have a team of 2–10 people and coordination feels harder than it should</li>
+            <li>You're curious about AI tools but don't know where to actually start</li>
+            <li>You want less friction in the back-of-house so you can focus on the actual work</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="col-label">What I help with</p>
+          <ul class="dash-list">
+            <li>Picking the right tools for how your team actually works — not the most popular or the most powerful</li>
+            <li>Setting up project and task management so nothing falls through the cracks between clients or events</li>
+            <li>Untangling communication — fewer channels, clearer norms, less ambient noise</li>
+            <li>Introducing AI tools in practical, low-overhead ways that actually save time</li>
+            <li>Building lightweight systems your whole team can use — no tech background required</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section section--sand" id="process">
+    <div class="wrap">
+      <p class="eyebrow">How it works</p>
+      <h2>Simple, focused,<br>and built around you</h2>
+      <p>I don't drop in with a prescribed system. We start with how you're actually working and build from there.</p>
+
+      <div class="steps-wrap">
+        <div class="steps">
+          <div class="step">
+            <span class="step-num">1</span>
+            <div>
+              <p class="step-title">Starting conversation</p>
+              <p>We talk through what your current setup looks like — what's working, what's annoying, what keeps falling apart. No jargon, just honest conversation about how your team operates day to day.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">2</span>
+            <div>
+              <p class="step-title">Audit &amp; recommendations</p>
+              <p>I look at your tools, workflows, and communication patterns and give you a clear-eyed take on what's worth keeping, what to change, and what to try. You leave with an actual plan — not a list of options.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">3</span>
+            <div>
+              <p class="step-title">Setup &amp; build</p>
+              <p>I do the actual configuration work — setting up the structure, templates, and automations — so your team doesn't have to figure it out mid-project. Built for how you work, not for how a template assumes you do.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">4</span>
+            <div>
+              <p class="step-title">Handoff &amp; support</p>
+              <p>A short walkthrough for your team so everyone's comfortable, plus a bit of follow-up support while it all settles in. The goal is a system you can actually maintain without me.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="invite-line">
+        This is a focused, standalone engagement — it doesn't need to be tied to anything else. If you've been meaning to get your tools sorted, this is a good place to start.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section section--dark" id="contact">
+    <div class="wrap">
+      <p class="eyebrow">Get in touch</p>
+      <h2>Tell me what's<br>feeling messy.</h2>
+
+      <div class="contact-wrap">
+        <p>No pitch, no proposal until it makes sense. Just tell me a bit about your team and what's getting in the way — and we'll figure out if I can help.</p>
+
+        <ul class="prompts">
+          <li>What kind of business do you run, and how big is your team?</li>
+          <li>What tools are you using right now, and what's not working about them?</li>
+          <li>Is there a specific pain point you keep running into — something that costs you time or causes stress?</li>
+          <li>Are you curious about AI tools, or is this more about getting the basics in order first?</li>
+        </ul>
+
+        <a class="email-link" href="mailto:jasmine.operations@gmail.com">jasmine.operations@gmail.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap footer-row">
+      <a class="footer-wordmark" href="index.html">Studio Jas</a>
+      <ul class="footer-links">
+        <li><a href="offsites.html">Off-sites</a></li>
+        <li><a href="workflow.html">Workflow &amp; tooling</a></li>
+        <li><a href="online-presence.html">Online presence</a></li>
+        <li><a href="#contact">Get in touch</a></li>
+      </ul>
+      <p class="footer-tagline">gatherings, systems, &amp; things &nbsp;·&nbsp; © 2026</p>
+    </div>
+  </footer>
+
+</body>
+</html>

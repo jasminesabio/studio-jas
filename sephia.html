@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studio Jas × Sephia</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@400;500;600&display=swap');
+
+/* ─────────────────────────────────────────
+   TOKENS
+───────────────────────────────────────── */
+:root {
+  --cream:   #fdfaf5;
+  --sand:    #f5f0e8;
+  --clay:    #c8866a;
+  --clay-lt: #e8c3b0;
+  --bark:    #3d2f26;
+  --moss:    #6b7c5e;
+  --fog:     #8e8e88;
+  --ink:     #2a2320;
+
+  --serif: 'Lora', Georgia, serif;
+  --sans:  'DM Sans', 'Helvetica Neue', sans-serif;
+
+  --text-max: 64ch;
+  --page-max: 840px;
+  --pad-x: 2rem;
+
+  --space-xs: 0.75rem;
+  --space-sm: 1.25rem;
+  --space-md: 2.5rem;
+  --space-lg: 4.5rem;
+}
+
+/* ─────────────────────────────────────────
+   RESET & BASE
+───────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+img { display: block; max-width: 100%; }
+a { color: var(--clay); text-decoration: underline; text-underline-offset: 3px; }
+a:hover { color: var(--bark); }
+
+/* ─────────────────────────────────────────
+   LAYOUT
+───────────────────────────────────────── */
+.wrap {
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: var(--pad-x);
+}
+
+.section {
+  padding-block: var(--space-lg);
+}
+
+.section--sand  { background: var(--sand); }
+.section--dark  { background: var(--bark); }
+
+.section + .section:not(.section--sand):not(.section--dark) {
+  border-top: 1px solid var(--clay-lt);
+}
+.section--sand + .section--sand {
+  border-top: 1px solid var(--clay-lt);
+}
+
+/* ─────────────────────────────────────────
+   TYPOGRAPHY
+───────────────────────────────────────── */
+h1, h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--bark);
+}
+
+h1 { font-size: clamp(2rem, 5.5vw, 3.1rem); }
+h2 { font-size: clamp(1.4rem, 3.5vw, 2rem); margin-bottom: var(--space-sm); }
+
+p { max-width: var(--text-max); }
+p + p { margin-top: 1rem; }
+
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fog);
+  margin-bottom: 0.5rem;
+}
+
+.section--dark h2,
+.section--dark p,
+.section--dark .eyebrow { color: var(--clay-lt); }
+.section--dark h2 { color: var(--sand); }
+.section--dark .contact-note { color: var(--fog); }
+
+/* ─────────────────────────────────────────
+   NAV
+───────────────────────────────────────── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(253, 250, 245, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--clay-lt);
+}
+
+.nav-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 1.1rem;
+}
+
+.nav-wordmark {
+  font-family: var(--serif);
+  font-size: 0.9375rem;
+  color: var(--bark);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.nav-for {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.875rem;
+  color: var(--fog);
+}
+
+/* ─────────────────────────────────────────
+   LANGUAGE TOGGLE
+───────────────────────────────────────── */
+.lang-toggle {
+  display: flex;
+  border: 1.5px solid var(--clay-lt);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  padding: 0.3rem 0.85rem;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  color: var(--fog);
+  transition: background 0.15s, color 0.15s;
+  line-height: 1;
+}
+
+.lang-btn.active {
+  background: var(--clay);
+  color: #fff;
+}
+
+.lang-btn:hover:not(.active) {
+  color: var(--bark);
+}
+
+/* ─────────────────────────────────────────
+   HERO
+───────────────────────────────────────── */
+.hero {
+  padding-block: 5.5rem 4.5rem;
+  background: linear-gradient(175deg, var(--sand) 0%, var(--cream) 75%);
+}
+
+.hero h1 {
+  max-width: 20ch;
+  margin-bottom: 1.5rem;
+}
+
+.hero-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.125rem;
+  color: var(--moss);
+  max-width: 50ch;
+  margin-bottom: var(--space-md);
+  line-height: 1.7;
+}
+
+.gift-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--sand);
+  border: 1px solid var(--clay-lt);
+  border-radius: 3px;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--moss);
+  margin-bottom: var(--space-md);
+}
+
+.gift-note::before {
+  content: '✦';
+  font-size: 0.65rem;
+  color: var(--clay);
+}
+
+/* ─────────────────────────────────────────
+   BUTTONS
+───────────────────────────────────────── */
+.cta-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--clay);
+  color: #fff;
+  padding: 0.8rem 1.75rem;
+  border-radius: 3px;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: var(--bark); color: #fff; transform: translateY(-1px); }
+
+.btn-secondary {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--clay);
+  text-decoration: none;
+  border-bottom: 1.5px solid var(--clay-lt);
+  padding-bottom: 2px;
+  transition: color 0.15s, border-color 0.15s;
+}
+.btn-secondary:hover { color: var(--bark); border-color: var(--bark); }
+
+.section--dark .btn-primary {
+  background: var(--clay-lt);
+  color: var(--bark);
+}
+.section--dark .btn-primary:hover {
+  background: var(--sand);
+  color: var(--bark);
+}
+
+/* ─────────────────────────────────────────
+   OFFERING NUMBER BADGE
+───────────────────────────────────────── */
+.offering-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.625rem;
+}
+
+.offering-num {
+  font-family: var(--serif);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--cream);
+  background: var(--clay);
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.offering-badge .eyebrow {
+  margin-bottom: 0;
+}
+
+/* ─────────────────────────────────────────
+   LISTS
+───────────────────────────────────────── */
+.dash-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dash-list li {
+  padding-left: 1.375rem;
+  position: relative;
+  font-size: 0.9625rem;
+  line-height: 1.65;
+}
+
+.dash-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--clay-lt);
+  font-family: var(--serif);
+}
+
+.dash-list.spaced { gap: 1.75rem; }
+.dash-list strong { font-weight: 600; color: var(--bark); }
+
+/* ─────────────────────────────────────────
+   TWO-COLUMN
+───────────────────────────────────────── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  margin-top: var(--space-md);
+}
+
+.col-label {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fog);
+  margin-bottom: 1rem;
+}
+
+/* ─────────────────────────────────────────
+   INVITE / CLOSING LINE
+───────────────────────────────────────── */
+.invite-line {
+  margin-top: var(--space-md);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--clay-lt);
+  font-size: 0.9375rem;
+  font-style: italic;
+  color: var(--moss);
+  max-width: var(--text-max);
+}
+
+/* ─────────────────────────────────────────
+   CONTACT (dark section)
+───────────────────────────────────────── */
+.contact-wrap { max-width: 52ch; }
+.contact-wrap > p { margin-bottom: var(--space-md); }
+
+.prompts {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  padding: 1.75rem;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(232, 195, 176, 0.25);
+  border-radius: 4px;
+  margin-bottom: var(--space-md);
+}
+
+.prompts li {
+  padding-left: 1.375rem;
+  position: relative;
+  font-size: 0.9375rem;
+  color: var(--clay-lt);
+  line-height: 1.55;
+}
+
+.prompts li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--clay);
+  font-size: 0.8125rem;
+  top: 0.12em;
+}
+
+.email-link {
+  display: inline-block;
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  color: var(--clay-lt);
+  text-decoration: none;
+  border-bottom: 2px solid rgba(232, 195, 176, 0.4);
+  padding-bottom: 3px;
+  transition: color 0.15s, border-color 0.15s;
+}
+.email-link:hover { color: var(--sand); border-color: var(--sand); }
+
+/* ─────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────── */
+footer {
+  background: var(--bark);
+  padding-block: 2rem;
+  border-top: 1px solid rgba(232,195,176,0.15);
+}
+
+.footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-wordmark {
+  font-family: var(--serif);
+  font-size: 0.9375rem;
+  color: var(--sand);
+  text-decoration: none;
+}
+
+.footer-tagline {
+  font-size: 0.78rem;
+  color: var(--fog);
+  max-width: none;
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
+@media (max-width: 700px) {
+  .nav-for        { display: none; }
+  .two-col        { grid-template-columns: 1fr; gap: var(--space-md); }
+  .hero           { padding-block: 3.5rem 3rem; }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="wrap nav-row">
+      <span class="nav-wordmark">Studio Jas</span>
+      <div class="nav-right">
+        <span class="nav-for" data-i18n="nav-for">para Sephia</span>
+        <div class="lang-toggle">
+          <button class="lang-btn active" data-lang="es" onclick="setLang('es')">ES</button>
+          <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="section hero">
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="hero-eyebrow">un espacio para sephia</p>
+      <h1 data-i18n="hero-h1">Hola, Sephia.</h1>
+      <p class="hero-sub" data-i18n="hero-sub">
+        Coordinaron uno de los momentos más hermosos que he vivido — mi propia boda. Esto es mi forma de decirles gracias. Studio Jas es un estudio unipersonal: ayudo a equipos a trabajar mejor, y me encantaría hacer eso para el suyo. Todo lo que hay aquí es para ustedes, sin costo.
+      </p>
+      <p class="gift-note" data-i18n="gift-note">Esto es un regalo — sin ningún costo para el equipo de Sephia</p>
+      <div class="cta-row">
+        <a class="btn-primary" href="#ai-workflow" data-i18n="hero-cta">Ver qué es posible</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO / OVERVIEW -->
+  <section class="section section--sand">
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="intro-eyebrow">lo que puedo hacer para ustedes</p>
+      <h2 data-i18n="intro-h2">Tres cosas, en orden de prioridad.</h2>
+      <p data-i18n="intro-body">No tienen que elegir todo de una vez. Empezamos por donde tenga más sentido para el equipo ahorita.</p>
+    </div>
+  </section>
+
+  <!-- OFFERING 1: AI & WORKFLOW -->
+  <section class="section" id="ai-workflow">
+    <div class="wrap">
+      <div class="offering-badge">
+        <span class="offering-num">1</span>
+        <p class="eyebrow" data-i18n="ai-eyebrow">Prioridad 1 · Lo más inmediato</p>
+      </div>
+      <h2 data-i18n="ai-h2">Coordinación más inteligente,<br>sin aprender nuevas herramientas</h2>
+
+      <p data-i18n="ai-body1">Ya tienen un sistema — WhatsApp, Google Sheets, Drive. Funciona. Pero probablemente hay partes que los frenan: timelines que reconstruyen desde cero cada evento, información regada en cinco chats distintos, mensajes que se pierden en el hilo.</p>
+
+      <p data-i18n="ai-body2">Puedo acercarme, aprender cómo su equipo realmente coordina eventos, y mostrarles cómo agregar inteligencia artificial a las partes que más tiempo les cuestan. Documentos de logística que se generan solos, briefings de proveedores que se redactan automáticamente, resúmenes de WhatsApp organizados sin tener que scrollear cien mensajes.</p>
+
+      <div class="two-col">
+        <div>
+          <p class="col-label" data-i18n="ai-col1-label">Cómo trabajan ahora</p>
+          <ul class="dash-list">
+            <li data-i18n="ai-col1-li1">WhatsApp para coordinar casi todo — rápido pero desordenado</li>
+            <li data-i18n="ai-col1-li2">Google Sheets para timelines y logística — funciona, pero toma tiempo construirlos</li>
+            <li data-i18n="ai-col1-li3">Google Drive para documentos — a veces difícil encontrar lo correcto en el momento</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="col-label" data-i18n="ai-col2-label">Cómo podría verse después</p>
+          <ul class="dash-list">
+            <li data-i18n="ai-col2-li1">Un asistente de IA que redacta timelines a partir de un resumen rápido</li>
+            <li data-i18n="ai-col2-li2">Plantillas de Sheets que calculan y organizan la logística automáticamente</li>
+            <li data-i18n="ai-col2-li3">Resúmenes organizados de sus conversaciones de WhatsApp — sin scrollear</li>
+            <li data-i18n="ai-col2-li4">Un punto de partida limpio y consistente para cada evento nuevo</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="invite-line" data-i18n="ai-invite">No necesitan volverse expertos en tecnología. Solo saber qué partes del trabajo pueden correr solas.</p>
+    </div>
+  </section>
+
+  <!-- OFFERING 2: WEBSITE -->
+  <section class="section section--sand" id="website">
+    <div class="wrap">
+      <div class="offering-badge">
+        <span class="offering-num">2</span>
+        <p class="eyebrow" data-i18n="web-eyebrow">Prioridad 2 · Cuando estén listos</p>
+      </div>
+      <h2 data-i18n="web-h2">Un hogar en internet,<br>hecho para Sephia</h2>
+
+      <p data-i18n="web-body1">Ahora mismo, si alguien quiere saber qué hace Sephia, tiene que conocer a alguien que los conoce a ustedes. Eso en realidad dice mucho — su reputación viaja sola. Pero un sitio web le da a esa reputación un lugar donde aterrizar.</p>
+
+      <p data-i18n="web-body2">Haría algo limpio y honesto: muestra su trabajo, explica lo que hacen, y hace fácil que nuevos clientes los encuentren y se contacten. Nada complicado, nada que tengan que mantener ustedes.</p>
+
+      <div style="margin-top: var(--space-md);">
+        <p class="col-label" data-i18n="web-includes-label">Incluiría</p>
+        <ul class="dash-list">
+          <li data-i18n="web-li1">Un sitio hermoso que funciona bien en teléfono y computadora</li>
+          <li data-i18n="web-li2">Galería o muestra de sus eventos</li>
+          <li data-i18n="web-li3">Información de contacto y una forma para que nuevos clientes escriban</li>
+          <li data-i18n="web-li4">Construido para funcionar solo, sin que ustedes tengan que tocarlo</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFERING 3: RETREAT -->
+  <section class="section" id="retreat">
+    <div class="wrap">
+      <div class="offering-badge">
+        <span class="offering-num">3</span>
+        <p class="eyebrow" data-i18n="retreat-eyebrow">Prioridad 3 · Para todo el equipo</p>
+      </div>
+      <h2 data-i18n="retreat-h2">Un día juntos, trabajando<br>en cómo trabajan</h2>
+
+      <p data-i18n="retreat-body1">Diseño retiros para equipos — no actividades de team building por cumplir, sino sesiones intencionales donde se dan el tiempo de ver qué está funcionando, qué no, y qué quieren cambiar.</p>
+
+      <p data-i18n="retreat-body2">Encontraríamos un buen lugar — algún destino en México que hayan tenido ganas de conocer, o donde tenga más sentido — con espacio para respirar y realmente conversar. Yo me encargo de toda la estructura y la facilitación. El equipo solo tiene que llegar.</p>
+
+      <div style="margin-top: var(--space-md);">
+        <p class="col-label" data-i18n="retreat-cover-label">De qué hablaríamos</p>
+        <ul class="dash-list">
+          <li data-i18n="retreat-li1">Cómo se comunican y coordinan — y dónde se rompe</li>
+          <li data-i18n="retreat-li2">Qué está funcionando bien y quieren proteger</li>
+          <li data-i18n="retreat-li3">Qué cambiarían si pudieran empezar de nuevo</li>
+          <li data-i18n="retreat-li4">Próximos pasos concretos que realmente se cumplen</li>
+        </ul>
+      </div>
+
+      <p class="invite-line" data-i18n="retreat-invite">Los mejores equipos que conozco son los que se dan el tiempo de ser intencionales sobre cómo trabajan juntos. Este sería ese tiempo.</p>
+    </div>
+  </section>
+
+  <!-- BEFORE WE START -->
+  <section class="section section--sand" id="contact">
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="contact-eyebrow">para empezar</p>
+      <h2 data-i18n="contact-h2">Tres preguntas<br>para tener en mente.</h2>
+
+      <p data-i18n="contact-body">Cuando estén listos para platicar, estas tres preguntas nos ayudan a empezar bien.</p>
+
+      <ul class="dash-list spaced" style="margin-top: var(--space-md); max-width: var(--text-max);">
+        <li data-i18n="contact-p1">¿Cuál de estas opciones les parece más urgente ahorita?</li>
+        <li data-i18n="contact-p2">¿Qué es lo que más tiempo les cuesta en cada evento?</li>
+        <li data-i18n="contact-p3">¿Hay algo sobre cómo coordinan que les ha estado molestando desde hace tiempo?</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background: var(--bark); padding-block: 2rem; border-top: 1px solid rgba(232,195,176,0.15);">
+    <div class="wrap footer-row">
+      <span class="footer-wordmark">Studio Jas</span>
+      <p class="footer-tagline" data-i18n="footer-tagline">gatherings, systems, &amp; things &nbsp;·&nbsp; © 2026</p>
+    </div>
+  </footer>
+
+  <script>
+    const translations = {
+      es: {
+        'nav-for':           'para Sephia',
+        'hero-eyebrow':      'un espacio para sephia',
+        'hero-h1':           'Hola, Sephia.',
+        'hero-sub':          'Coordinaron uno de los momentos más hermosos que he vivido — mi propia boda. Esto es mi forma de decirles gracias. Studio Jas es un estudio unipersonal: ayudo a equipos a trabajar mejor, y me encantaría hacer eso para el suyo. Todo lo que hay aquí es para ustedes, sin costo.',
+        'gift-note':         'Esto es un regalo — sin ningún costo para el equipo de Sephia',
+        'hero-cta':          'Ver qué es posible',
+        'intro-eyebrow':     'lo que puedo hacer para ustedes',
+        'intro-h2':          'Tres cosas, en orden de prioridad.',
+        'intro-body':        'No tienen que elegir todo de una vez. Empezamos por donde tenga más sentido para el equipo ahorita.',
+        'ai-eyebrow':        'Prioridad 1 · Lo más inmediato',
+        'ai-h2':             'Coordinación más inteligente,<br>sin aprender nuevas herramientas',
+        'ai-body1':          'Ya tienen un sistema — WhatsApp, Google Sheets, Drive. Funciona. Pero probablemente hay partes que los frenan: timelines que reconstruyen desde cero cada evento, información regada en cinco chats distintos, mensajes que se pierden en el hilo.',
+        'ai-body2':          'Puedo acercarme, aprender cómo su equipo realmente coordina eventos, y mostrarles cómo agregar inteligencia artificial a las partes que más tiempo les cuestan. Documentos de logística que se generan solos, briefings de proveedores que se redactan automáticamente, resúmenes de WhatsApp organizados sin tener que scrollear cien mensajes.',
+        'ai-col1-label':     'Cómo trabajan ahora',
+        'ai-col1-li1':       'WhatsApp para coordinar casi todo — rápido pero desordenado',
+        'ai-col1-li2':       'Google Sheets para timelines y logística — funciona, pero toma tiempo construirlos',
+        'ai-col1-li3':       'Google Drive para documentos — a veces difícil encontrar lo correcto en el momento',
+        'ai-col2-label':     'Cómo podría verse después',
+        'ai-col2-li1':       'Un asistente de IA que redacta timelines a partir de un resumen rápido',
+        'ai-col2-li2':       'Plantillas de Sheets que calculan y organizan la logística automáticamente',
+        'ai-col2-li3':       'Resúmenes organizados de sus conversaciones de WhatsApp — sin scrollear',
+        'ai-col2-li4':       'Un punto de partida limpio y consistente para cada evento nuevo',
+        'ai-invite':         'No necesitan volverse expertos en tecnología. Solo saber qué partes del trabajo pueden correr solas.',
+        'web-eyebrow':       'Prioridad 2 · Cuando estén listos',
+        'web-h2':            'Un hogar en internet,<br>hecho para Sephia',
+        'web-body1':         'Ahora mismo, si alguien quiere saber qué hace Sephia, tiene que conocer a alguien que los conoce a ustedes. Eso en realidad dice mucho — su reputación viaja sola. Pero un sitio web le da a esa reputación un lugar donde aterrizar.',
+        'web-body2':         'Haría algo limpio y honesto: muestra su trabajo, explica lo que hacen, y hace fácil que nuevos clientes los encuentren y se contacten. Nada complicado, nada que tengan que mantener ustedes.',
+        'web-includes-label':'Incluiría',
+        'web-li1':           'Un sitio hermoso que funciona bien en teléfono y computadora',
+        'web-li2':           'Galería o muestra de sus eventos',
+        'web-li3':           'Información de contacto y una forma para que nuevos clientes escriban',
+        'web-li4':           'Construido para funcionar solo, sin que ustedes tengan que tocarlo',
+        'retreat-eyebrow':   'Prioridad 3 · Para todo el equipo',
+        'retreat-h2':        'Un día juntos, trabajando<br>en cómo trabajan',
+        'retreat-body1':     'Diseño retiros para equipos — no actividades de team building por cumplir, sino sesiones intencionales donde se dan el tiempo de ver qué está funcionando, qué no, y qué quieren cambiar.',
+        'retreat-body2':     'Encontraríamos un buen lugar — algún destino en México que hayan tenido ganas de conocer, o donde tenga más sentido — con espacio para respirar y realmente conversar. Yo me encargo de toda la estructura y la facilitación. El equipo solo tiene que llegar.',
+        'retreat-cover-label':'De qué hablaríamos',
+        'retreat-li1':       'Cómo se comunican y coordinan — y dónde se rompe',
+        'retreat-li2':       'Qué está funcionando bien y quieren proteger',
+        'retreat-li3':       'Qué cambiarían si pudieran empezar de nuevo',
+        'retreat-li4':       'Próximos pasos concretos que realmente se cumplen',
+        'retreat-invite':    'Los mejores equipos que conozco son los que se dan el tiempo de ser intencionales sobre cómo trabajan juntos. Este sería ese tiempo.',
+        'contact-eyebrow':   'para empezar',
+        'contact-h2':        'Tres preguntas<br>para tener en mente.',
+        'contact-body':      'Cuando estén listos para platicar, estas tres preguntas nos ayudan a empezar bien.',
+        'contact-p1':        '¿Cuál de estas opciones les parece más urgente ahorita?',
+        'contact-p2':        '¿Qué es lo que más tiempo les cuesta en cada evento?',
+        'contact-p3':        '¿Hay algo sobre cómo coordinan que les ha estado molestando desde hace tiempo?',
+        'footer-tagline':    'gatherings, systems, & things &nbsp;·&nbsp; © 2026',
+      },
+      en: {
+        'nav-for':           'for Sephia',
+        'hero-eyebrow':      'a space for Sephia',
+        'hero-h1':           'Hola, Sephia.',
+        'hero-sub':          'You all pulled off one of the most beautiful events I\'ve ever been a part of — my own wedding. This is my thank you. Studio Jas is a one-person practice: I help teams work better, and I\'d love to do that for yours. Everything here is for your team, no cost.',
+        'gift-note':         'This is a gift — no cost to the Sephia team',
+        'hero-cta':          'See what\'s possible',
+        'intro-eyebrow':     'what I can do for you',
+        'intro-h2':          'Three things, in order of priority.',
+        'intro-body':        'You don\'t have to choose everything at once. We start wherever makes the most sense for your team right now.',
+        'ai-eyebrow':        'Priority 1 · Most immediate',
+        'ai-h2':             'Smarter coordination,<br>without learning new tools',
+        'ai-body1':          'You already have a system — WhatsApp, Google Sheets, Drive. It works. But there are probably parts that slow you down: timelines you rebuild from scratch for every event, information scattered across five different chats, messages that get lost in the thread.',
+        'ai-body2':          'I can come in, learn how your team actually runs events, and show you how to add AI to the parts that cost you the most time. Logistics documents that generate themselves, vendor briefings that write themselves, organized WhatsApp summaries without scrolling through a hundred messages.',
+        'ai-col1-label':     'How you work now',
+        'ai-col1-li1':       'WhatsApp to coordinate almost everything — fast but scattered',
+        'ai-col1-li2':       'Google Sheets for timelines and logistics — works, but takes time to build',
+        'ai-col1-li3':       'Google Drive for documents — sometimes hard to find the right thing in the moment',
+        'ai-col2-label':     'What it could look like after',
+        'ai-col2-li1':       'An AI assistant that drafts timelines from a quick overview',
+        'ai-col2-li2':       'Sheets templates that calculate and organize logistics automatically',
+        'ai-col2-li3':       'Organized summaries of your WhatsApp conversations — no scrolling required',
+        'ai-col2-li4':       'A clean, consistent starting point for every new event',
+        'ai-invite':         'You don\'t need to become tech people. You just need to know which parts of the work can run themselves.',
+        'web-eyebrow':       'Priority 2 · When you\'re ready',
+        'web-h2':            'A home on the internet,<br>made for Sephia',
+        'web-body1':         'Right now, if someone wants to know what Sephia does, they have to know someone who knows you. That\'s actually a sign you\'re good — your reputation travels. But a website gives that reputation somewhere to land.',
+        'web-body2':         'I\'d build something clean and honest: it shows your work, explains what you do, and makes it easy for new clients to find and reach out to you. Nothing complicated, nothing you have to maintain yourself.',
+        'web-includes-label':'What\'s included',
+        'web-li1':           'A beautiful site that works well on phones and computers',
+        'web-li2':           'A gallery or showcase of your events',
+        'web-li3':           'Contact info and a way for new clients to reach out',
+        'web-li4':           'Built to run on its own — you don\'t have to touch it',
+        'retreat-eyebrow':   'Priority 3 · For the whole team',
+        'retreat-h2':        'A day together, working<br>on how you work',
+        'retreat-body1':     'I design off-sites for teams — not team-building for the sake of it, but intentional sessions where you slow down long enough to figure out what\'s working, what isn\'t, and what you want to do differently.',
+        'retreat-body2':     'We\'d find a good setting — somewhere in Mexico you\'ve been wanting to go, or wherever makes sense — with space to breathe and really talk. I\'d handle all the structure and facilitation. Your team just has to show up.',
+        'retreat-cover-label':'What we\'d cover',
+        'retreat-li1':       'How your team communicates and coordinates — and where it breaks down',
+        'retreat-li2':       'What\'s working well that you want to protect',
+        'retreat-li3':       'What you\'d change if you could start fresh',
+        'retreat-li4':       'Clear next steps you actually follow through on',
+        'retreat-invite':    'The best teams I know are the ones who carve out time to be intentional about how they work together. This is that time.',
+        'contact-eyebrow':   'before we start',
+        'contact-h2':        'Three questions<br>to think about.',
+        'contact-body':      'When you\'re ready to talk, these three questions help us get started on the right foot.',
+        'contact-p1':        'Which of these feels most urgent right now?',
+        'contact-p2':        'What\'s the one thing that costs your team the most time each event?',
+        'contact-p3':        'Is there something about how you coordinate that\'s been bothering you for a while?',
+        'footer-tagline':    'gatherings, systems, & things &nbsp;·&nbsp; © 2026',
+      }
+    };
+
+    let currentLang = 'es';
+
+    function setLang(lang) {
+      currentLang = lang;
+      const t = translations[lang];
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) {
+          el.innerHTML = t[key];
+        }
+      });
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+
+      document.documentElement.lang = lang === 'es' ? 'es-MX' : 'en';
+    }
+
+    // initialize on load
+    setLang('es');
+  </script>
+
+</body>
+</html>
