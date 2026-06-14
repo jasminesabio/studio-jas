@@ -607,6 +607,21 @@ footer {
   margin-bottom: 0.6rem;
 }
 
+.back-link {
+  display: block;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--clay-lt);
+}
+.back-link a {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--fog);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.15s;
+}
+.back-link a:hover { color: var(--clay); }
+
 /* ─────────────────────────────────────────
    RESPONSIVE
 ───────────────────────────────────────── */
@@ -636,10 +651,15 @@ footer {
     </div>
   </nav>
 
+  <!-- BACK -->
+  <div class="back-link wrap">
+    <a href="index.html#services">← All services</a>
+  </div>
+
   <!-- HERO -->
   <section class="section hero">
     <div class="wrap">
-      <p class="eyebrow">The main thing</p>
+      <p class="eyebrow">Facilitation &amp; design</p>
       <h1>Thoughtful off-sites for remote product and engineering teams.</h1>
       <p class="hero-sub">
         I design and run small, intentional gatherings so your team can actually connect, name what's not working, and leave with clearer ways of working together.

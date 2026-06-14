@@ -311,6 +311,21 @@ footer {
 }
 .footer-links a:hover { color: var(--clay-lt); }
 
+.back-link {
+  display: block;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--clay-lt);
+}
+.back-link a {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--fog);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.15s;
+}
+.back-link a:hover { color: var(--clay); }
+
 @media (max-width: 700px) {
   .nav-links { display: none; }
   .hero      { padding-block: 3.5rem 3rem; }
@@ -332,6 +347,11 @@ footer {
       </ul>
     </div>
   </nav>
+
+  <!-- BACK -->
+  <div class="back-link wrap">
+    <a href="index.html#services">← All services</a>
+  </div>
 
   <!-- HERO -->
   <section class="section hero">
