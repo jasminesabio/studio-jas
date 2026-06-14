@@ -162,7 +162,7 @@ nav {
 }
 
 .hero {
-  padding-block: 5.5rem 4.5rem;
+  padding-block: 3.5rem 3.5rem;
   background: linear-gradient(175deg, var(--sand) 0%, var(--cream) 75%);
 }
 
@@ -174,7 +174,7 @@ nav {
   font-size: 1.125rem;
   color: var(--moss);
   max-width: 50ch;
-  margin-bottom: var(--space-md);
+  margin-bottom: 0;
   line-height: 1.7;
 }
 
@@ -312,12 +312,11 @@ footer {
 .footer-links a:hover { color: var(--clay); }
 
 .back-link {
-  display: block;
-  padding: 0.6rem 0;
-  border-bottom: 1px solid var(--clay-lt);
+  display: inline-block;
+  margin-bottom: 1.75rem;
 }
 .back-link a {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 500;
   color: var(--fog);
   text-decoration: none;
@@ -348,14 +347,12 @@ footer {
     </div>
   </nav>
 
-  <!-- BACK -->
-  <div class="back-link wrap">
-    <a href="index.html#services">← All services</a>
-  </div>
-
   <!-- HERO -->
   <section class="section hero">
     <div class="wrap">
+      <div class="back-link">
+        <a href="index.html#services">← All services</a>
+      </div>
       <p class="eyebrow">Team &amp; operations</p>
       <h1>A focused reset for small teams.</h1>
       <p class="hero-sub">
