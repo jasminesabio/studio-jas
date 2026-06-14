@@ -467,7 +467,28 @@ nav {
 /* ─────────────────────────────────────────
    ABOUT
 ───────────────────────────────────────── */
-.about-wrap { max-width: var(--text-max); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.about-photo {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 2px;
+}
+
+.about-text-col h2 { margin-bottom: 1.25rem; }
+.about-text-col p + p { margin-top: 1rem; }
+
+@media (max-width: 700px) {
+  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .about-photo { height: 320px; }
+}
 
 /* ─────────────────────────────────────────
    CONTACT (dark section)
@@ -791,12 +812,16 @@ footer {
   <!-- ABOUT -->
   <section class="section" id="about">
     <div class="wrap">
-      <p class="eyebrow">About</p>
-      <h2>I'm Jasmine, and I care<br>about how things land.</h2>
-
-      <div class="about-wrap">
-        <p>Across product work, team collaboration, events, and creative projects, I keep returning to the same question: <em>how does this feel for the people inside it?</em></p>
-        <p>My practice is rooted in experience design: shaping workflows, gatherings, and touchpoints so they feel more human, intentional, and alive. I work best with small teams where trust travels fast and the work can be specific to what's actually needed.</p>
+      <div class="about-grid">
+        <div class="about-photo-col">
+          <img class="about-photo" src="jasmine.jpg" alt="Jasmine Sabio" />
+        </div>
+        <div class="about-text-col">
+          <p class="eyebrow">About</p>
+          <h2>I'm Jasmine, and I care<br>about how things land.</h2>
+          <p>Across product work, team collaboration, events, and creative projects, I keep returning to the same question: <em>how does this feel for the people inside it?</em></p>
+          <p>My practice is rooted in experience design: shaping workflows, gatherings, and touchpoints so they feel more human, intentional, and alive. I work best with small teams where trust travels fast and the work can be specific to what's actually needed.</p>
+        </div>
       </div>
     </div>
   </section>
