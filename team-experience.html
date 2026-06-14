@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="refresh" content="0; url=index.html#contact" />
-  <title>Contact — Studio Jas</title>
+  <title>Team Experience Sprint — Studio Jas</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@400;500;600&display=swap');
 
@@ -56,12 +55,6 @@ a:hover { color: var(--bark); }
 .section--sand { background: var(--sand); }
 .section--dark { background: var(--bark); }
 
-.section--dark h2,
-.section--dark p,
-.section--dark .eyebrow { color: var(--clay-lt); }
-.section--dark h2 { color: var(--sand); }
-.section--dark .contact-note { color: var(--fog); }
-
 h1, h2 {
   font-family: var(--serif);
   font-weight: 400;
@@ -69,7 +62,7 @@ h1, h2 {
   color: var(--bark);
 }
 
-h1 { font-size: clamp(2.4rem, 6.5vw, 4rem); }
+h1 { font-size: clamp(2rem, 5.5vw, 3.1rem); }
 h2 { font-size: clamp(1.4rem, 3.5vw, 2rem); margin-bottom: var(--space-sm); }
 
 p { max-width: var(--text-max); }
@@ -84,6 +77,12 @@ p + p { margin-top: 1rem; }
   color: var(--fog);
   margin-bottom: 0.5rem;
 }
+
+.section--dark h2,
+.section--dark p,
+.section--dark .eyebrow { color: var(--clay-lt); }
+.section--dark h2 { color: var(--sand); }
+.section--dark .contact-note { color: var(--fog); }
 
 nav {
   position: sticky;
@@ -114,7 +113,6 @@ nav {
   display: flex;
   gap: 2rem;
   list-style: none;
-  align-items: center;
 }
 
 .nav-links a {
@@ -163,21 +161,65 @@ nav {
   margin-left: 1px;
 }
 
-/* Contact layout */
-.contact-page {
-  min-height: 70vh;
-  padding-block: var(--space-lg);
-  background: var(--bark);
+.hero {
+  padding-block: 5.5rem 4.5rem;
+  background: linear-gradient(175deg, var(--sand) 0%, var(--cream) 75%);
 }
 
-.contact-page .eyebrow { color: var(--clay-lt); }
-.contact-page h1 { color: var(--sand); margin-bottom: 1.5rem; }
-.contact-page p { color: var(--clay-lt); }
+.hero h1 { max-width: 22ch; margin-bottom: 1.5rem; }
 
-.contact-body {
-  max-width: 54ch;
+.hero-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.125rem;
+  color: var(--moss);
+  max-width: 50ch;
+  margin-bottom: var(--space-md);
+  line-height: 1.7;
+}
+
+.coming-soon-block {
+  margin-top: var(--space-md);
+  padding: 2rem 2.25rem;
+  background: var(--sand);
+  border-left: 3px solid var(--clay-lt);
+  max-width: 52ch;
+}
+
+.coming-soon-block p {
+  font-size: 0.9625rem;
+  line-height: 1.7;
+  color: var(--ink);
+  max-width: none;
+}
+
+.coming-soon-block p + p { margin-top: 0.875rem; }
+
+.dash-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   margin-top: var(--space-md);
 }
+
+.dash-list li {
+  padding-left: 1.375rem;
+  position: relative;
+  font-size: 0.9625rem;
+  line-height: 1.65;
+}
+
+.dash-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--clay-lt);
+  font-family: var(--serif);
+}
+
+.contact-wrap { max-width: 52ch; }
+.contact-wrap > p { margin-bottom: var(--space-md); }
 
 .prompts {
   list-style: none;
@@ -186,7 +228,7 @@ nav {
   gap: 0.875rem;
   padding: 1.75rem;
   background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(141,181,173,0.25);
+  border: 1px solid rgba(232, 195, 176, 0.25);
   border-radius: 4px;
   margin-bottom: var(--space-md);
 }
@@ -203,7 +245,7 @@ nav {
   content: '→';
   position: absolute;
   left: 0;
-  color: var(--clay-lt);
+  color: var(--clay);
   font-size: 0.8125rem;
   top: 0.12em;
 }
@@ -211,17 +253,17 @@ nav {
 .email-link {
   display: inline-block;
   font-family: var(--serif);
-  font-size: 1.5rem;
-  color: var(--sand);
+  font-size: 1.3rem;
+  color: var(--clay-lt);
   text-decoration: none;
-  border-bottom: 2px solid rgba(141,181,173,0.4);
+  border-bottom: 2px solid rgba(232, 195, 176, 0.4);
   padding-bottom: 3px;
   transition: color 0.15s, border-color 0.15s;
 }
-.email-link:hover { color: var(--clay-lt); border-color: var(--clay-lt); }
+.email-link:hover { color: var(--sand); border-color: var(--sand); }
 
 .contact-note {
-  margin-top: 1rem;
+  margin-top: 0.875rem;
   font-size: 0.85rem;
   color: var(--fog);
   max-width: none;
@@ -230,7 +272,7 @@ nav {
 footer {
   background: var(--bark);
   padding-block: 2rem;
-  border-top: 1px solid rgba(141,181,173,0.15);
+  border-top: 1px solid rgba(232,195,176,0.15);
 }
 
 .footer-row {
@@ -249,50 +291,91 @@ footer {
 }
 .footer-wordmark:hover { color: var(--clay-lt); }
 
-.footer-tagline { font-size: 0.78rem; color: var(--fog); max-width: none; }
-.footer-links { display: flex; gap: 1.5rem; list-style: none; }
-.footer-links a { font-size: 0.78rem; color: var(--fog); text-decoration: none; transition: color 0.15s; }
+.footer-tagline {
+  font-size: 0.78rem;
+  color: var(--fog);
+  max-width: none;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: 0.78rem;
+  color: var(--fog);
+  text-decoration: none;
+  transition: color 0.15s;
+}
 .footer-links a:hover { color: var(--clay-lt); }
 
 @media (max-width: 700px) {
   .nav-links { display: none; }
-  .contact-page { padding-block: 3.5rem; }
+  .hero      { padding-block: 3.5rem 3rem; }
 }
   </style>
 </head>
 <body>
 
+  <!-- NAV -->
   <nav>
     <div class="wrap nav-row">
       <a class="nav-wordmark" href="index.html">Studio Jas</a>
       <ul class="nav-links">
-        <li class="has-dropdown">
-          <a href="offsites.html" class="dropdown-toggle">Services</a>
-          <ul class="dropdown">
-            <li><a href="offsites.html">Offsite Design</a></li>
-            <li><a href="workflow.html">Workflow Design</a></li>
-            <li><a href="team-experience.html">Client Experience</a></li>
-          </ul>
-        </li>
-        <li><a href="work.html">Work</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#services" class="active">Services</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="work.html">Selected Work</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
       </ul>
     </div>
   </nav>
 
-  <section class="contact-page">
+  <!-- HERO -->
+  <section class="section hero">
+    <div class="wrap">
+      <p class="eyebrow">Team &amp; operations</p>
+      <h1>A focused reset for small teams.</h1>
+      <p class="hero-sub">
+        For teams that feel scattered, overloaded, or overdue for a reset. We map the current experience, redesign one key workflow or gathering, and build something the team can actually keep using.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- WHAT THIS IS -->
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">What this is</p>
+      <h2>One sprint. One real change<br>the team can actually keep.</h2>
+
+      <p>Most small teams have a moment or a workflow that's been quietly dragging them down: a recurring meeting that doesn't work, a handoff that keeps breaking, a gathering that costs more energy than it returns. This sprint surfaces that, redesigns it, and builds a lightweight system around it.</p>
+
+      <ul class="dash-list">
+        <li>A discovery conversation to understand the team, the moment, and what's getting in the way</li>
+        <li>Mapping the current experience to find where things break down or feel off</li>
+        <li>Redesigning one key workflow, gathering, or ritual with the team's actual constraints in mind</li>
+        <li>Building lightweight templates and structures the team can use and adapt on their own</li>
+        <li>A short handoff document so the work doesn't disappear when the sprint ends</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section section--dark" id="contact">
     <div class="wrap">
       <p class="eyebrow">Work together</p>
-      <h1>Let's figure out<br>if this is a fit.</h1>
+      <h2>Tell me what's<br>not working.</h2>
 
-      <div class="contact-body">
-        <p>The first conversation is just a conversation. No pitch, no proposal until it makes sense. Tell me a little about what you're working on.</p>
+      <div class="contact-wrap">
+        <p>The first conversation is just a conversation. Tell me a bit about what's going on with your team and we'll figure out if this is a fit.</p>
 
-        <ul class="prompts" style="margin-top: var(--space-md);">
-          <li>What's the situation — team, moment, what's getting in the way?</li>
-          <li>What kind of help are you looking for?</li>
-          <li>What would make this feel like time well spent?</li>
+        <ul class="prompts">
+          <li>What's the situation with your team right now?</li>
+          <li>What's the moment or workflow that's been dragging?</li>
+          <li>What would feel different if it worked better?</li>
         </ul>
 
         <a class="email-link" href="mailto:jasmine.operations@gmail.com">jasmine.operations@gmail.com</a>
@@ -301,15 +384,16 @@ footer {
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
     <div class="wrap footer-row">
       <a class="footer-wordmark" href="index.html">Studio Jas</a>
       <ul class="footer-links">
         <li><a href="offsites.html">Offsite Design</a></li>
         <li><a href="workflow.html">Workflow Design</a></li>
-        <li><a href="work.html">Work</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="work.html">Selected Work</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
       </ul>
       <p class="footer-tagline">Experience design practice &nbsp;·&nbsp; © 2026</p>
     </div>
