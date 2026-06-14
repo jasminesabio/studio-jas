@@ -120,6 +120,7 @@ nav {
   display: flex;
   gap: 2rem;
   list-style: none;
+  align-items: center;
 }
 
 .nav-links a {
@@ -132,6 +133,41 @@ nav {
 }
 .nav-links a:hover { color: var(--clay); }
 .nav-links a.active { color: var(--bark); }
+
+.has-dropdown { position: relative; }
+.dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  left: -1rem;
+  background: var(--cream);
+  border: 1px solid var(--clay-lt);
+  border-radius: 4px;
+  padding: 0.5rem 0;
+  min-width: 192px;
+  list-style: none;
+  box-shadow: 0 6px 20px rgba(42,35,32,0.1);
+  z-index: 200;
+}
+.has-dropdown:hover .dropdown { display: block; }
+.dropdown li a {
+  display: block;
+  padding: 0.55rem 1.25rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.15s;
+}
+.dropdown li a:hover { color: var(--clay); }
+.dropdown-toggle::after {
+  content: ' ↓';
+  font-size: 0.65rem;
+  letter-spacing: 0;
+  opacity: 0.5;
+  margin-left: 1px;
+}
 
 /* PAGE HERO (smaller than homepage) */
 .page-hero {
@@ -344,10 +380,17 @@ footer {
     <div class="wrap nav-row">
       <a class="nav-wordmark" href="index.html">Studio Jas</a>
       <ul class="nav-links">
-        <li><a href="index.html#services">Services</a></li>
+        <li class="has-dropdown">
+          <a href="offsites.html" class="dropdown-toggle">Services</a>
+          <ul class="dropdown">
+            <li><a href="offsites.html">Offsite Design</a></li>
+            <li><a href="workflow.html">Workflow Design</a></li>
+            <li><a href="client-experience.html">Client Experience</a></li>
+          </ul>
+        </li>
         <li><a href="work.html" class="active">Work</a></li>
-        <li><a href="index.html#about">About</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -449,10 +492,11 @@ footer {
     <div class="wrap footer-row">
       <a class="footer-wordmark" href="index.html">Studio Jas</a>
       <ul class="footer-links">
-        <li><a href="index.html#services">Services</a></li>
+        <li><a href="offsites.html">Offsite Design</a></li>
+        <li><a href="workflow.html">Workflow Design</a></li>
         <li><a href="work.html">Work</a></li>
-        <li><a href="index.html#about">About</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
       <p class="footer-tagline">Experience design practice &nbsp;·&nbsp; © 2026</p>
     </div>

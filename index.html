@@ -140,6 +140,7 @@ nav {
   display: flex;
   gap: 2rem;
   list-style: none;
+  align-items: center;
 }
 
 .nav-links a {
@@ -152,6 +153,41 @@ nav {
 }
 .nav-links a:hover { color: var(--clay); }
 .nav-links a.active { color: var(--bark); }
+
+.has-dropdown { position: relative; }
+.dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  left: -1rem;
+  background: var(--cream);
+  border: 1px solid var(--clay-lt);
+  border-radius: 4px;
+  padding: 0.5rem 0;
+  min-width: 192px;
+  list-style: none;
+  box-shadow: 0 6px 20px rgba(42,35,32,0.1);
+  z-index: 200;
+}
+.has-dropdown:hover .dropdown { display: block; }
+.dropdown li a {
+  display: block;
+  padding: 0.55rem 1.25rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.15s;
+}
+.dropdown li a:hover { color: var(--clay); }
+.dropdown-toggle::after {
+  content: ' ↓';
+  font-size: 0.65rem;
+  letter-spacing: 0;
+  opacity: 0.5;
+  margin-left: 1px;
+}
 
 /* ─────────────────────────────────────────
    HERO
@@ -591,10 +627,17 @@ footer {
     <div class="wrap nav-row">
       <a class="nav-wordmark" href="index.html">Studio Jas</a>
       <ul class="nav-links">
-        <li><a href="#services">Services</a></li>
+        <li class="has-dropdown">
+          <a href="offsites.html" class="dropdown-toggle">Services</a>
+          <ul class="dropdown">
+            <li><a href="offsites.html">Offsite Design</a></li>
+            <li><a href="workflow.html">Workflow Design</a></li>
+            <li><a href="client-experience.html">Client Experience</a></li>
+          </ul>
+        </li>
         <li><a href="work.html">Work</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -608,31 +651,8 @@ footer {
         I help small teams and founders create more intentional offsites, calmer workflows, and client experiences worth remembering — through facilitation, hospitality, and the right lightweight tools.
       </p>
       <div class="cta-row">
-        <a class="btn-primary" href="#contact">Start a conversation</a>
+        <a class="btn-primary" href="contact.html">Start a conversation</a>
         <a class="btn-secondary" href="work.html">See selected work</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CREDIBILITY -->
-  <section class="section" id="what-i-bring">
-    <div class="wrap">
-      <p class="eyebrow">What I bring</p>
-      <h2>A background in product, operations,<br>and how things actually feel.</h2>
-
-      <div class="two-col">
-        <div>
-          <p>My work sits at the intersection of structure and human experience. I've spent years in product and operations — which means I think carefully about timing, sequencing, and what happens after the meeting ends.</p>
-          <p>But I care equally about how something feels to the people in it. Good design isn't just functional. It's felt.</p>
-        </div>
-        <div>
-          <ul class="dash-list">
-            <li>Product management and operations background</li>
-            <li>Experience designing and facilitating offsites for remote and hybrid teams</li>
-            <li>Comfort with lightweight tools and how to introduce them without friction</li>
-            <li>A hospitality instinct: the detail that makes someone feel considered</li>
-          </ul>
-        </div>
       </div>
     </div>
   </section>
@@ -668,77 +688,6 @@ footer {
     </div>
   </section>
 
-  <!-- HOW I WORK -->
-  <section class="section" id="process">
-    <div class="wrap">
-      <p class="eyebrow">How I work</p>
-      <h2>Listen first. Design from there.</h2>
-      <p>Every engagement starts from the actual state of your team — not a template. I don't arrive with a framework to fit you into.</p>
-
-      <div class="steps-wrap">
-        <div class="steps">
-          <div class="step">
-            <span class="step-num">1</span>
-            <div>
-              <p class="step-title">Discovery</p>
-              <p>We talk about what's actually going on — the team, the moment, the gap. I ask a lot of questions. This conversation shapes everything that follows.</p>
-            </div>
-          </div>
-          <div class="step">
-            <span class="step-num">2</span>
-            <div>
-              <p class="step-title">Shape</p>
-              <p>I draft a proposed structure with rationale — arc, sessions, pacing, or system design. We refine it together until it feels right for your specific situation.</p>
-            </div>
-          </div>
-          <div class="step">
-            <span class="step-num">3</span>
-            <div>
-              <p class="step-title">Build</p>
-              <p>I handle the details — materials, logistics, setup, configuration — so you can show up present. The preparation work happens behind the scenes.</p>
-            </div>
-          </div>
-          <div class="step">
-            <span class="step-num">4</span>
-            <div>
-              <p class="step-title">Deliver</p>
-              <p>I'm there for the actual thing, reading the room and adjusting in real time. No script is more important than what the moment actually needs.</p>
-            </div>
-          </div>
-          <div class="step">
-            <span class="step-num">5</span>
-            <div>
-              <p class="step-title">Follow through</p>
-              <p>A synthesis, a handoff, a lightweight ritual to carry the work forward. Whatever shape it takes — the engagement should have a tail.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHO IT'S FOR -->
-  <section class="section section--sand" id="who">
-    <div class="wrap">
-      <p class="eyebrow">Who I work with</p>
-      <h2>Small teams doing<br>meaningful work.</h2>
-
-      <div class="two-col">
-        <div>
-          <p>My clients tend to be founders, team leads, and small studios who care about quality — in their work and in how it gets done. They're not looking for a consultant with a playbook. They want a thoughtful partner who can hold the details alongside them.</p>
-        </div>
-        <div>
-          <ul class="dash-list spaced">
-            <li><strong>Remote or hybrid teams of 5–25</strong> in a moment of transition — new leadership, recent reorg, moving fast, or feeling disconnected</li>
-            <li><strong>Founders</strong> who want their client experience to feel intentional, not improvised</li>
-            <li><strong>Small creative firms</strong> ready to invest in how they work, not just what they produce</li>
-            <li><strong>Leaders</strong> who've tried to handle this themselves and want someone else to own it</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- SELECTED WORK PREVIEW -->
   <section class="section" id="work-preview">
     <div class="wrap">
@@ -769,22 +718,6 @@ footer {
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section class="section section--sand" id="about">
-    <div class="wrap">
-      <p class="eyebrow">About</p>
-      <h2>I'm Jasmine — and I care<br>about how things land.</h2>
-
-      <div class="about-wrap">
-        <p>Studio Jas is a one-person practice. I work at the intersection of experience design, facilitation, and operations — a slightly unusual combination, and that's the point.</p>
-
-        <p>My background is in product and ops, but I've always been equally interested in what's happening in the room: who's disengaged, what's unsaid, where the energy goes. That's the thing I bring that doesn't come from a playbook.</p>
-
-        <p>I work best with small teams where trust travels fast and the work can be specific to what's actually needed — not a generic solution retrofitted to your situation.</p>
-      </div>
-    </div>
-  </section>
-
   <!-- ELSEWHERE -->
   <section class="section" id="elsewhere">
     <div class="wrap">
@@ -799,36 +732,16 @@ footer {
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section class="section section--dark" id="contact">
-    <div class="wrap">
-      <p class="eyebrow">Work together</p>
-      <h2>Let's figure out<br>if this is a fit.</h2>
-
-      <div class="contact-wrap">
-        <p>The first conversation is just a conversation. No pitch, no proposal until it makes sense. Tell me a little about what you're working on.</p>
-
-        <ul class="prompts">
-          <li>What's the situation — team, moment, what's getting in the way?</li>
-          <li>What kind of help are you looking for?</li>
-          <li>What would make this feel like time well spent?</li>
-        </ul>
-
-        <a class="email-link" href="mailto:jasmine.sabio@gmail.com">jasmine.sabio@gmail.com</a>
-        <p class="contact-note">I typically respond within two business days.</p>
-      </div>
-    </div>
-  </section>
-
   <!-- FOOTER -->
   <footer>
     <div class="wrap footer-row">
       <a class="footer-wordmark" href="index.html">Studio Jas</a>
       <ul class="footer-links">
-        <li><a href="#services">Services</a></li>
+        <li><a href="offsites.html">Offsite Design</a></li>
+        <li><a href="workflow.html">Workflow Design</a></li>
         <li><a href="work.html">Work</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
       <p class="footer-tagline">Experience design practice &nbsp;·&nbsp; © 2026</p>
     </div>

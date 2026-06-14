@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Client Experience Design — Studio Jas</title>
+  <title>Contact — Studio Jas</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@400;500;600&display=swap');
 
@@ -55,6 +55,12 @@ a:hover { color: var(--bark); }
 .section--sand { background: var(--sand); }
 .section--dark { background: var(--bark); }
 
+.section--dark h2,
+.section--dark p,
+.section--dark .eyebrow { color: var(--clay-lt); }
+.section--dark h2 { color: var(--sand); }
+.section--dark .contact-note { color: var(--fog); }
+
 h1, h2 {
   font-family: var(--serif);
   font-weight: 400;
@@ -62,7 +68,7 @@ h1, h2 {
   color: var(--bark);
 }
 
-h1 { font-size: clamp(2rem, 5.5vw, 3.1rem); }
+h1 { font-size: clamp(2.4rem, 6.5vw, 4rem); }
 h2 { font-size: clamp(1.4rem, 3.5vw, 2rem); margin-bottom: var(--space-sm); }
 
 p { max-width: var(--text-max); }
@@ -77,12 +83,6 @@ p + p { margin-top: 1rem; }
   color: var(--fog);
   margin-bottom: 0.5rem;
 }
-
-.section--dark h2,
-.section--dark p,
-.section--dark .eyebrow { color: var(--clay-lt); }
-.section--dark h2 { color: var(--sand); }
-.section--dark .contact-note { color: var(--fog); }
 
 nav {
   position: sticky;
@@ -113,6 +113,7 @@ nav {
   display: flex;
   gap: 2rem;
   list-style: none;
+  align-items: center;
 }
 
 .nav-links a {
@@ -161,65 +162,21 @@ nav {
   margin-left: 1px;
 }
 
-.hero {
-  padding-block: 5.5rem 4.5rem;
-  background: linear-gradient(175deg, var(--sand) 0%, var(--cream) 75%);
+/* Contact layout */
+.contact-page {
+  min-height: 70vh;
+  padding-block: var(--space-lg);
+  background: var(--bark);
 }
 
-.hero h1 { max-width: 22ch; margin-bottom: 1.5rem; }
+.contact-page .eyebrow { color: var(--clay-lt); }
+.contact-page h1 { color: var(--sand); margin-bottom: 1.5rem; }
+.contact-page p { color: var(--clay-lt); }
 
-.hero-sub {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1.125rem;
-  color: var(--moss);
-  max-width: 50ch;
-  margin-bottom: var(--space-md);
-  line-height: 1.7;
-}
-
-.coming-soon-block {
-  margin-top: var(--space-md);
-  padding: 2rem 2.25rem;
-  background: var(--sand);
-  border-left: 3px solid var(--clay-lt);
-  max-width: 52ch;
-}
-
-.coming-soon-block p {
-  font-size: 0.9625rem;
-  line-height: 1.7;
-  color: var(--ink);
-  max-width: none;
-}
-
-.coming-soon-block p + p { margin-top: 0.875rem; }
-
-.dash-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+.contact-body {
+  max-width: 54ch;
   margin-top: var(--space-md);
 }
-
-.dash-list li {
-  padding-left: 1.375rem;
-  position: relative;
-  font-size: 0.9625rem;
-  line-height: 1.65;
-}
-
-.dash-list li::before {
-  content: '—';
-  position: absolute;
-  left: 0;
-  color: var(--clay-lt);
-  font-family: var(--serif);
-}
-
-.contact-wrap { max-width: 52ch; }
-.contact-wrap > p { margin-bottom: var(--space-md); }
 
 .prompts {
   list-style: none;
@@ -228,7 +185,7 @@ nav {
   gap: 0.875rem;
   padding: 1.75rem;
   background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(232, 195, 176, 0.25);
+  border: 1px solid rgba(141,181,173,0.25);
   border-radius: 4px;
   margin-bottom: var(--space-md);
 }
@@ -245,7 +202,7 @@ nav {
   content: '→';
   position: absolute;
   left: 0;
-  color: var(--clay);
+  color: var(--clay-lt);
   font-size: 0.8125rem;
   top: 0.12em;
 }
@@ -253,17 +210,17 @@ nav {
 .email-link {
   display: inline-block;
   font-family: var(--serif);
-  font-size: 1.3rem;
-  color: var(--clay-lt);
+  font-size: 1.5rem;
+  color: var(--sand);
   text-decoration: none;
-  border-bottom: 2px solid rgba(232, 195, 176, 0.4);
+  border-bottom: 2px solid rgba(141,181,173,0.4);
   padding-bottom: 3px;
   transition: color 0.15s, border-color 0.15s;
 }
-.email-link:hover { color: var(--sand); border-color: var(--sand); }
+.email-link:hover { color: var(--clay-lt); border-color: var(--clay-lt); }
 
 .contact-note {
-  margin-top: 0.875rem;
+  margin-top: 1rem;
   font-size: 0.85rem;
   color: var(--fog);
   max-width: none;
@@ -272,7 +229,7 @@ nav {
 footer {
   background: var(--bark);
   padding-block: 2rem;
-  border-top: 1px solid rgba(232,195,176,0.15);
+  border-top: 1px solid rgba(141,181,173,0.15);
 }
 
 .footer-row {
@@ -291,41 +248,25 @@ footer {
 }
 .footer-wordmark:hover { color: var(--clay-lt); }
 
-.footer-tagline {
-  font-size: 0.78rem;
-  color: var(--fog);
-  max-width: none;
-}
-
-.footer-links {
-  display: flex;
-  gap: 1.5rem;
-  list-style: none;
-}
-
-.footer-links a {
-  font-size: 0.78rem;
-  color: var(--fog);
-  text-decoration: none;
-  transition: color 0.15s;
-}
+.footer-tagline { font-size: 0.78rem; color: var(--fog); max-width: none; }
+.footer-links { display: flex; gap: 1.5rem; list-style: none; }
+.footer-links a { font-size: 0.78rem; color: var(--fog); text-decoration: none; transition: color 0.15s; }
 .footer-links a:hover { color: var(--clay-lt); }
 
 @media (max-width: 700px) {
   .nav-links { display: none; }
-  .hero      { padding-block: 3.5rem 3rem; }
+  .contact-page { padding-block: 3.5rem; }
 }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <div class="wrap nav-row">
       <a class="nav-wordmark" href="index.html">Studio Jas</a>
       <ul class="nav-links">
         <li class="has-dropdown">
-          <a href="client-experience.html" class="dropdown-toggle active">Services</a>
+          <a href="offsites.html" class="dropdown-toggle">Services</a>
           <ul class="dropdown">
             <li><a href="offsites.html">Offsite Design</a></li>
             <li><a href="workflow.html">Workflow Design</a></li>
@@ -334,58 +275,23 @@ footer {
         </li>
         <li><a href="work.html">Work</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <section class="section hero">
+  <section class="contact-page">
     <div class="wrap">
-      <p class="eyebrow">Client relationships</p>
-      <h1>The experience is part of the work.</h1>
-      <p class="hero-sub">
-        For founders and small studios who want their client process to feel as considered as what they deliver — from first inquiry to final handoff.
-      </p>
+      <p class="eyebrow">Work together</p>
+      <h1>Let's figure out<br>if this is a fit.</h1>
 
-      <div class="coming-soon-block">
-        <p>This service is coming soon. I'm currently developing the offering and taking early inquiries from founders and small studios interested in working on their client experience.</p>
-        <p>If this sounds like something you need, reach out and tell me a bit about where things feel rough — I'd love to hear about it.</p>
-      </div>
-    </div>
-  </section>
+      <div class="contact-body">
+        <p>The first conversation is just a conversation. No pitch, no proposal until it makes sense. Tell me a little about what you're working on.</p>
 
-  <!-- WHAT THIS IS -->
-  <section class="section">
-    <div class="wrap">
-      <p class="eyebrow">What this is about</p>
-      <h2>How the experience feels<br>is part of what you're selling.</h2>
-
-      <p>Most founders put enormous care into the quality of their work — and much less into the container around it. The intake form, the kickoff call, the check-ins, the way the project ends. These aren't administrative details. They're the client's experience of working with you. And they shape whether clients refer you, return, and trust you with the hard things.</p>
-
-      <ul class="dash-list">
-        <li>Mapping your current client journey end-to-end — from first touchpoint to final delivery</li>
-        <li>Identifying where trust leaks: unclear expectations, awkward transitions, abrupt endings</li>
-        <li>Redesigning the key moments: intake, onboarding, check-ins, offboarding</li>
-        <li>Building lightweight templates and rituals that make the experience consistent without feeling scripted</li>
-        <li>Making it feel like you — not like a generic agency process</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="section section--dark" id="contact">
-    <div class="wrap">
-      <p class="eyebrow">Early inquiries</p>
-      <h2>Tell me where<br>it feels rough.</h2>
-
-      <div class="contact-wrap">
-        <p>This service isn't fully launched yet, but I'm talking to founders and small studios now. If you're interested, get in touch and I'll let you know when it's ready — or we can talk about whether something custom makes sense sooner.</p>
-
-        <ul class="prompts">
-          <li>What kind of work do you do, and who are your clients?</li>
-          <li>Where in the client relationship does something feel off or improvised?</li>
-          <li>What would it mean for your clients to feel more confident working with you?</li>
+        <ul class="prompts" style="margin-top: var(--space-md);">
+          <li>What's the situation — team, moment, what's getting in the way?</li>
+          <li>What kind of help are you looking for?</li>
+          <li>What would make this feel like time well spent?</li>
         </ul>
 
         <a class="email-link" href="mailto:jasmine.sabio@gmail.com">jasmine.sabio@gmail.com</a>
@@ -394,7 +300,6 @@ footer {
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="wrap footer-row">
       <a class="footer-wordmark" href="index.html">Studio Jas</a>
