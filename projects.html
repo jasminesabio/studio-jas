@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Studio Jas</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@400;500;600&display=swap');
+
+:root {
+  --cream:   #fdfaf5;
+  --sand:    #f5f0e8;
+  --clay:    #3b5249;
+  --clay-lt: #8db5ad;
+  --bark:    #3d2f26;
+  --moss:    #6b7c5e;
+  --fog:     #8e8e88;
+  --ink:     #2a2320;
+
+  --serif: 'Lora', Georgia, serif;
+  --sans:  'DM Sans', 'Helvetica Neue', sans-serif;
+
+  --text-max: 64ch;
+  --page-max: 840px;
+  --pad-x: 2rem;
+
+  --space-xs: 0.75rem;
+  --space-sm: 1.25rem;
+  --space-md: 2.5rem;
+  --space-lg: 4.5rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+img { display: block; max-width: 100%; }
+a { color: var(--clay); text-decoration: underline; text-underline-offset: 3px; }
+a:hover { color: var(--bark); }
+
+.wrap {
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: var(--pad-x);
+}
+
+.section { padding-block: var(--space-lg); }
+.section--sand { background: var(--sand); }
+
+.section + .section:not(.section--sand) {
+  border-top: 1px solid var(--clay-lt);
+}
+
+h1, h2, h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--bark);
+}
+
+h1 { font-size: clamp(2rem, 5.5vw, 3.1rem); }
+h2 { font-size: clamp(1.4rem, 3.5vw, 2rem); margin-bottom: var(--space-sm); }
+h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+
+p { max-width: var(--text-max); }
+p + p { margin-top: 1rem; }
+
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fog);
+  margin-bottom: 0.5rem;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(253, 250, 245, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--clay-lt);
+}
+
+.nav-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 1.1rem;
+}
+
+.nav-wordmark {
+  font-family: var(--serif);
+  font-size: 0.9375rem;
+  color: var(--bark);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+.nav-wordmark:hover { color: var(--clay); }
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--fog);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: color 0.15s;
+}
+.nav-links a:hover { color: var(--clay); }
+.nav-links a.active { color: var(--bark); }
+
+.page-hero { padding-block: 4rem 3rem; }
+.page-hero h1 { max-width: 24ch; margin-bottom: 1rem; }
+.page-hero-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--moss);
+  max-width: 52ch;
+  line-height: 1.7;
+}
+
+/* PROJECT CARDS */
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.project-card {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.project-meta {
+  position: sticky;
+  top: 5rem;
+}
+
+.project-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 0.75rem;
+}
+
+.project-title {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--bark);
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+
+.project-link {
+  display: inline-block;
+  margin-top: 1.25rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--clay);
+  text-decoration: none;
+  border-bottom: 1.5px solid var(--clay-lt);
+  padding-bottom: 2px;
+  transition: color 0.15s, border-color 0.15s;
+}
+.project-link:hover { color: var(--bark); border-color: var(--bark); }
+
+.project-body p {
+  font-size: 0.9625rem;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+.project-body p + p { margin-top: 0.875rem; }
+
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  list-style: none;
+}
+
+.skill-list li {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--moss);
+  background: var(--sand);
+  border: 1px solid var(--clay-lt);
+  border-radius: 2px;
+  padding: 0.25rem 0.65rem;
+}
+
+/* EXPERIENCE STRIP */
+.xp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: var(--space-md);
+}
+
+.xp-item {}
+
+.xp-title {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--bark);
+  margin-bottom: 0.4rem;
+}
+
+.xp-body {
+  font-size: 0.9rem;
+  color: var(--fog);
+  line-height: 1.6;
+  max-width: 36ch;
+}
+
+footer {
+  background: var(--cream);
+  padding-block: 2rem;
+  border-top: 1px solid rgba(141,181,173,0.25);
+}
+
+.footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-wordmark {
+  font-family: var(--serif);
+  font-size: 0.9375rem;
+  color: var(--bark);
+  text-decoration: none;
+}
+.footer-wordmark:hover { color: var(--clay); }
+
+.footer-tagline { font-size: 0.78rem; color: var(--fog); max-width: none; }
+
+.footer-links { display: flex; gap: 1.5rem; list-style: none; }
+.footer-links a { font-size: 0.78rem; color: var(--fog); text-decoration: none; transition: color 0.15s; }
+.footer-links a:hover { color: var(--clay); }
+
+@media (max-width: 700px) {
+  .nav-links { display: none; }
+  .project-card { grid-template-columns: 1fr; gap: 1.5rem; }
+  .project-meta { position: static; }
+  .xp-grid { grid-template-columns: 1fr; }
+}
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="wrap nav-row">
+      <a class="nav-wordmark" href="index.html">Studio Jas</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="section page-hero">
+    <div class="wrap">
+      <p class="eyebrow">Projects</p>
+      <h1>Things I built to solve real problems.</h1>
+      <p class="page-hero-sub">
+        Side projects, vibe-coded tools, and experience systems built for myself and people I care about. Each one started from a real coordination or experience problem.
+      </p>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section">
+    <div class="wrap">
+      <div class="project-list">
+
+        <div class="project-card">
+          <div class="project-meta">
+            <span class="project-tag">Music &amp; workflow</span>
+            <p class="project-title">Afterglow</p>
+            <a class="project-link" href="#" aria-label="Coming soon">View project →</a>
+          </div>
+          <div class="project-body">
+            <p>DJ sets live or die by preparation — knowing what you have, how it feels, and what comes next. But most artists organize their music in folders, which only tells you one thing: genre. Nothing about energy, arc, or where a track belongs in a night.</p>
+            <p>Afterglow is a track indexing tool that adds the dimensions folders can't: energy level, time of day, part of set (warm up, build, decompress, closing), and mood tags. The goal was to make it faster to find the right track under pressure, and easier to build sets with real intention.</p>
+            <ul class="skill-list">
+              <li>Information architecture</li>
+              <li>Tagging systems</li>
+              <li>Workflow design</li>
+              <li>Creative process tooling</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-meta">
+            <span class="project-tag">Event &amp; logistics</span>
+            <p class="project-title">Wedding Website</p>
+            <a class="project-link" href="#" aria-label="Coming soon">View project →</a>
+          </div>
+          <div class="project-body">
+            <p>My husband and I built two separate sites for our wedding — one for guests, one for our planners — because the information each audience needed was completely different.</p>
+            <p>The guest site surfaced everything people needed for the full weekend: schedule, venue details, hotel blocks, local recommendations, and real-time updates as plans shifted. The planner site was an ops layer: guest info, transportation logistics, seating assignments, and a minute-by-minute run of show that everyone could actually find and trust.</p>
+            <ul class="skill-list">
+              <li>Multi-audience design</li>
+              <li>Event operations</li>
+              <li>Information hierarchy</li>
+              <li>Logistics UX</li>
+              <li>Real-time coordination</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-meta">
+            <span class="project-tag">Health &amp; systems</span>
+            <p class="project-title">Pregnancy Tracker</p>
+            <a class="project-link" href="#" aria-label="Coming soon">View project →</a>
+          </div>
+          <div class="project-body">
+            <p>The fertility and pregnancy journey generates an enormous amount of information across a long timeline — doctor names, appointment notes, research on diet and lifestyle, workout adjustments, test results. And it's happening to two people at once, not just one.</p>
+            <p>This tracker centralizes everything in one place, covering the full arc from trying to conceive through postpartum. It also has a layer specifically for my husband: a window into what I'm physically and emotionally experiencing week by week, so he knows how to show up without me having to explain it every time.</p>
+            <ul class="skill-list">
+              <li>Journey mapping</li>
+              <li>Emotional experience design</li>
+              <li>Multi-user systems</li>
+              <li>Health information design</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-meta">
+            <span class="project-tag">Travel &amp; community</span>
+            <p class="project-title">Constellaciones</p>
+            <a class="project-link" href="constellaciones/" >View project →</a>
+          </div>
+          <div class="project-body">
+            <p>A group of friends was traveling across Europe the same summer — different cities, different dates — and there was no good way to see who was where and when. Constellaciones is a simple tool that maps everyone's travel schedules so you can instantly see where you overlap.</p>
+            <p>It also has a marketplace layer for sharing event tickets: if someone can't make it to Movement or Garbicz, they can list their ticket and other friends in the network can claim it. The whole thing is built around the idea that the best moments happen when you realize you're already in the same city.</p>
+            <ul class="skill-list">
+              <li>Coordination tools</li>
+              <li>Community experience design</li>
+              <li>Marketplace UX</li>
+              <li>Event logistics</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section section--sand">
+    <div class="wrap">
+      <p class="eyebrow">Experience</p>
+      <h2>The work that doesn't fit<br>in a case study.</h2>
+      <p>A few experiences worth naming — not as credentials, but as context for how I think about design, operations, and what makes something feel good to be inside of.</p>
+
+      <div class="xp-grid">
+        <div class="xp-item">
+          <p class="xp-title">Tally</p>
+          <p class="xp-body">Product and stakeholder operations at a fast-moving startup. Learned how small teams make big decisions, and how much the internal experience shapes what gets built.</p>
+        </div>
+        <div class="xp-item">
+          <p class="xp-title">Burning Man</p>
+          <p class="xp-body">Participated and contributed to one of the most intentionally designed temporary communities in the world. An education in radical experience design, logistics at scale, and what happens when the container is taken seriously.</p>
+        </div>
+        <div class="xp-item">
+          <p class="xp-title">Bachelorette Planning</p>
+          <p class="xp-body">Designed and ran a full multi-day experience for a group with different energy levels, preferences, and relationships to each other. Equal parts logistics, hospitality, and reading the room.</p>
+        </div>
+        <div class="xp-item">
+          <p class="xp-title">Ongoing</p>
+          <p class="xp-body">Events, gatherings, and coordination projects that don't have a formal name. The throughline: caring about how something feels to the people inside it, and doing the work to make it better.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-row">
+      <a class="footer-wordmark" href="index.html">Studio Jas</a>
+      <ul class="footer-links">
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <p class="footer-tagline">Experience design practice &nbsp;·&nbsp; © 2026</p>
+    </div>
+  </footer>
+
+</body>
+</html>
