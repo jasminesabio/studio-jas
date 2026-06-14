@@ -324,6 +324,20 @@ nav {
   max-width: none;
 }
 
+.case-label {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-top: 1.75rem;
+  margin-bottom: 0.4rem;
+  max-width: none;
+}
+
+.work-body > p:first-child.case-label { margin-top: 0; }
+
 footer {
   background: var(--bark);
   padding-block: 2rem;
@@ -381,16 +395,16 @@ footer {
       <a class="nav-wordmark" href="index.html">Studio Jas</a>
       <ul class="nav-links">
         <li class="has-dropdown">
-          <a href="offsites.html" class="dropdown-toggle">Services</a>
+          <a href="index.html#services" class="dropdown-toggle">Services</a>
           <ul class="dropdown">
+            <li><a href="client-experience.html">Team Experience Sprint</a></li>
             <li><a href="offsites.html">Offsite Design</a></li>
-            <li><a href="workflow.html">Workflow Design</a></li>
-            <li><a href="client-experience.html">Client Experience</a></li>
+            <li><a href="workflow.html">Workflow Reset</a></li>
           </ul>
         </li>
         <li><a href="work.html" class="active">Work</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -399,9 +413,9 @@ footer {
   <section class="section page-hero">
     <div class="wrap">
       <p class="eyebrow">Selected work</p>
-      <h1>A few things worth showing.</h1>
+      <h1>Evidence, not description.</h1>
       <p class="page-hero-sub">
-        Projects across offsite design, workflow systems, and client experience — each one specific to what the team actually needed.
+        Selected work across team experiences, operations, and creative systems. Each project is framed by the challenge, the approach, and what changed.
       </p>
     </div>
   </section>
@@ -413,51 +427,90 @@ footer {
 
         <div class="work-entry">
           <div class="work-meta">
-            <span class="work-tag">Offsite design</span>
+            <span class="work-tag">Offsite design &amp; facilitation</span>
             <p class="work-title">Two-day reset for a distributed product team</p>
             <p class="work-context">18-person team · Post-reorg · 2 days on-site</p>
           </div>
           <div class="work-body">
+            <p class="case-label">Challenge</p>
             <p>A product team had just been reorganized and was struggling to find its footing. Roles were unclear, the roadmap felt fragile, and morale had quietly dipped. The offsite needed to do real work — not just boost energy for a week.</p>
-            <p>I designed a two-day structure that moved from honest conversation about what wasn't working, through roadmap alignment, to concrete commitments about how the team wanted to operate going forward. The pacing mattered as much as the content: enough breathing room to let the real conversations happen.</p>
+
+            <p class="case-label">Approach</p>
+            <p>I designed a two-day arc that moved from honest conversation about what wasn't working, through roadmap alignment, to concrete commitments about how the team wanted to operate going forward. Pacing mattered as much as content — enough breathing room for the real conversations to surface.</p>
+
+            <p class="case-label">What I designed</p>
             <ul class="work-outcomes">
-              <li>Left with a clearer roadmap and three standing team rituals</li>
-              <li>Surfaced two persistent communication patterns that had been invisible but costly</li>
-              <li>Facilitated a session that produced concrete role clarity across four cross-functional squads</li>
+              <li>Full two-day agenda with facilitated and open-space sessions</li>
+              <li>Workshop structure for surfacing cross-team communication breakdowns</li>
+              <li>Role clarity exercise across four cross-functional squads</li>
+              <li>Closing ritual that converted the day's commitments into standing team practices</li>
+            </ul>
+
+            <p class="case-label">Outcome</p>
+            <ul class="work-outcomes">
+              <li>Team left with a clearer roadmap and three new standing rituals</li>
+              <li>Two persistent communication patterns — previously invisible — named and addressed</li>
+              <li>Leader described it as "the first offsite that actually changed something"</li>
             </ul>
           </div>
         </div>
 
         <div class="work-entry">
           <div class="work-meta">
-            <span class="work-tag">Workflow design</span>
+            <span class="work-tag">Workflow &amp; tool reset</span>
             <p class="work-title">Operations overhaul for a boutique event studio</p>
             <p class="work-context">6-person team · Event planning · 6-week engagement</p>
           </div>
           <div class="work-body">
-            <p>A boutique event studio was running on a patchwork of spreadsheets, email threads, and group chats. Things were falling through the cracks — not because the team wasn't capable, but because the tools weren't working for how they actually operated.</p>
-            <p>I audited their workflow, identified the three biggest friction points, and rebuilt their client intake, project tracking, and internal communication systems from the ground up. The goal wasn't the most powerful tool — it was the right one, set up in a way the whole team would actually use.</p>
+            <p class="case-label">Challenge</p>
+            <p>A boutique event studio was running on a patchwork of spreadsheets, email threads, and group chats. Things kept falling through the cracks — not because the team wasn't capable, but because the tools weren't working for how they actually operated.</p>
+
+            <p class="case-label">Approach</p>
+            <p>I audited their existing workflow, identified the three highest-friction points, and rebuilt the systems that touched those areas. The goal wasn't the most powerful tool — it was the right one, configured for how this team actually works.</p>
+
+            <p class="case-label">What I designed</p>
             <ul class="work-outcomes">
-              <li>Reduced coordination time by roughly half in the first month</li>
-              <li>Gave every team member a single place to track active events</li>
-              <li>Built a client onboarding flow that cut back-and-forth emails by two-thirds</li>
+              <li>Unified client intake flow replacing four fragmented touchpoints</li>
+              <li>Project tracking system with clear ownership and milestone visibility</li>
+              <li>Internal communication norms to reduce channel noise</li>
+              <li>Team walkthrough and handoff documentation</li>
+            </ul>
+
+            <p class="case-label">Outcome</p>
+            <ul class="work-outcomes">
+              <li>Coordination time reduced by roughly half in the first month</li>
+              <li>Every team member has one place to track active events</li>
+              <li>Client onboarding back-and-forth cut by two-thirds</li>
             </ul>
           </div>
         </div>
 
         <div class="work-entry">
           <div class="work-meta">
-            <span class="work-tag">Client experience</span>
+            <span class="work-tag">Client experience design</span>
             <p class="work-title">Onboarding redesign for an independent consultant</p>
             <p class="work-context">Solo practitioner · Strategy consulting · 3-week engagement</p>
           </div>
           <div class="work-body">
-            <p>An independent consultant was doing excellent work — but the client experience before and after the engagement felt like an afterthought. New clients were arriving unclear on scope, and project endings felt abrupt. The work was good. The container around it wasn't.</p>
-            <p>I mapped the full client journey from first inquiry to final delivery and identified where the experience was leaking trust. Then rebuilt the key touchpoints: the intake process, the kickoff structure, and the offboarding ritual.</p>
+            <p class="case-label">Challenge</p>
+            <p>An independent consultant was doing excellent work — but the client experience surrounding it felt like an afterthought. New clients arrived unclear on scope. Project endings felt abrupt. The work was good. The container around it wasn't.</p>
+
+            <p class="case-label">Approach</p>
+            <p>I mapped the full client journey from first inquiry to final delivery, identifying where trust was leaking at each stage. Then rebuilt the key touchpoints to reflect the quality of the work itself.</p>
+
+            <p class="case-label">What I designed</p>
             <ul class="work-outcomes">
-              <li>Clients arrived at kickoff with clearer expectations and higher confidence</li>
-              <li>Project endings became a deliberate moment of closure and referral opportunity</li>
-              <li>The consultant stopped dreading the intake process — it now does the trust-building for her</li>
+              <li>Intake and discovery process that sets expectations before the first call</li>
+              <li>Kickoff structure that establishes scope, rhythm, and working norms</li>
+              <li>Offboarding ritual that creates closure and opens the door for referrals</li>
+              <li>Lightweight templates the consultant can use and adapt independently</li>
+            </ul>
+
+            <p class="case-label">Outcome</p>
+            <ul class="work-outcomes">
+              <li>Clients arrive at kickoff with clearer expectations and higher confidence</li>
+              <li>Project endings became a deliberate moment of closure — not a fade-out</li>
+              <li>The consultant stopped dreading intake; the process now does the trust-building for her</li>
             </ul>
           </div>
         </div>
@@ -473,12 +526,12 @@ footer {
       <h2>Let's figure out<br>if this is a fit.</h2>
 
       <div class="contact-wrap">
-        <p>The first conversation is just a conversation. No pitch, no proposal until it makes sense. Tell me a little about what you're working on.</p>
+        <p>The first conversation is just a conversation. No pitch, no proposal until it makes sense.</p>
 
         <ul class="prompts">
-          <li>What's the situation — team, moment, what's getting in the way?</li>
-          <li>What kind of help are you looking for?</li>
-          <li>What would make this feel like time well spent?</li>
+          <li>What's going on with your team or business right now?</li>
+          <li>What would feel different if the experience were working well?</li>
+          <li>What kind of support are you looking for?</li>
         </ul>
 
         <a class="email-link" href="mailto:jasmine.sabio@gmail.com">jasmine.sabio@gmail.com</a>
@@ -492,11 +545,12 @@ footer {
     <div class="wrap footer-row">
       <a class="footer-wordmark" href="index.html">Studio Jas</a>
       <ul class="footer-links">
+        <li><a href="client-experience.html">Team Experience Sprint</a></li>
         <li><a href="offsites.html">Offsite Design</a></li>
-        <li><a href="workflow.html">Workflow Design</a></li>
+        <li><a href="workflow.html">Workflow Reset</a></li>
         <li><a href="work.html">Work</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
       </ul>
       <p class="footer-tagline">Experience design practice &nbsp;·&nbsp; © 2026</p>
     </div>

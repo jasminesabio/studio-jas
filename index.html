@@ -618,6 +618,32 @@ footer {
   .hero            { padding-block: 3.5rem 3rem; }
 }
 
+/* CREDIBILITY STRIP */
+.cred-strip {
+  list-style: none;
+  display: flex;
+  gap: 3rem;
+  align-items: start;
+}
+.cred-strip li {
+  flex: 1;
+  font-size: 0.925rem;
+  color: var(--ink);
+  padding-left: 1.25rem;
+  position: relative;
+  line-height: 1.55;
+}
+.cred-strip li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--clay);
+  font-family: var(--serif);
+}
+@media (max-width: 700px) {
+  .cred-strip { flex-direction: column; gap: 1rem; }
+}
+
   </style>
 </head>
 <body>
@@ -628,16 +654,16 @@ footer {
       <a class="nav-wordmark" href="index.html">Studio Jas</a>
       <ul class="nav-links">
         <li class="has-dropdown">
-          <a href="offsites.html" class="dropdown-toggle">Services</a>
+          <a href="#services" class="dropdown-toggle">Services</a>
           <ul class="dropdown">
+            <li><a href="client-experience.html">Team Experience Sprint</a></li>
             <li><a href="offsites.html">Offsite Design</a></li>
-            <li><a href="workflow.html">Workflow Design</a></li>
-            <li><a href="client-experience.html">Client Experience</a></li>
+            <li><a href="workflow.html">Workflow Reset</a></li>
           </ul>
         </li>
         <li><a href="work.html">Work</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -646,62 +672,138 @@ footer {
   <section class="section hero">
     <div class="wrap">
       <p class="eyebrow">Experience design practice</p>
-      <h1>Design the moments that move your work forward.</h1>
+      <h1>Experience design for small teams and founders.</h1>
       <p class="hero-sub">
-        I help small teams and founders create more intentional offsites, calmer workflows, and client experiences worth remembering — through facilitation, hospitality, and the right lightweight tools.
+        I help teams create more intentional offsites, smoother workflows, and confidence-building client experiences through facilitation, hospitality, and lightweight tech.
       </p>
       <div class="cta-row">
-        <a class="btn-primary" href="contact.html">Start a conversation</a>
-        <a class="btn-secondary" href="work.html">See selected work</a>
+        <a class="btn-primary" href="mailto:jasmine.sabio@gmail.com">Book an intro call</a>
+        <a class="btn-secondary" href="work.html">View selected work</a>
       </div>
     </div>
   </section>
 
+  <!-- CREDIBILITY STRIP -->
+  <section class="section section--sand">
+    <div class="wrap">
+      <ul class="cred-strip">
+        <li>Product and stakeholder operations background</li>
+        <li>Offsite and team experience design</li>
+        <li>Lightweight AI/tool integration for smoother collaboration</li>
+      </ul>
+    </div>
+  </section>
+
   <!-- SERVICES -->
-  <section class="section section--sand" id="services">
+  <section class="section" id="services">
     <div class="wrap">
       <p class="eyebrow">Services</p>
       <h2>Three ways to work together.</h2>
+      <p style="margin-bottom: var(--space-md);">I design experiences that help people work, gather, and create with more clarity. My work sits at the intersection of team rituals, operational ease, and thoughtful atmosphere.</p>
 
       <div class="service-cards">
+        <a class="service-card" href="client-experience.html">
+          <span class="service-card-label">Team &amp; operations</span>
+          <h3>Intentional Team Experience Sprint</h3>
+          <p>A focused engagement for small teams that feel scattered, overloaded, or overdue for a reset. Together, we map the current experience, redesign one key workflow or gathering, and create a simple system the team can actually keep using.</p>
+          <span class="service-card-link">Learn more →</span>
+        </a>
+
         <a class="service-card" href="offsites.html">
           <span class="service-card-label">Facilitation &amp; design</span>
-          <h3>Offsite Experience Design</h3>
-          <p>For remote and hybrid teams that want a gathering that actually changes something. I design the arc, handle logistics, and facilitate the day — so you can show up as a participant.</p>
+          <h3>Offsite Design and Facilitation</h3>
+          <p>I help design team offsites, retreats, and gatherings that feel intentional from arrival to closing. That includes flow, energy, pacing, facilitation, and the small details that make the experience feel cohesive.</p>
           <span class="service-card-link">Learn more →</span>
         </a>
 
         <a class="service-card" href="workflow.html">
-          <span class="service-card-label">Systems &amp; tooling</span>
-          <h3>Workflow Design</h3>
-          <p>For small teams where coordination is getting complicated. I help you figure out which tools to use, set them up right, and build lightweight systems your whole team can actually maintain.</p>
+          <span class="service-card-label">Tools &amp; collaboration</span>
+          <h3>Workflow and Tool Experience Reset</h3>
+          <p>For teams that know tech or AI could help but don't want a heavy systems overhaul. I help simplify collaboration with low-lift tools and practical rituals so the day-to-day feels lighter and more effective.</p>
           <span class="service-card-link">Learn more →</span>
         </a>
+      </div>
+    </div>
+  </section>
 
-        <a class="service-card" href="client-experience.html">
-          <span class="service-card-label">Client relationships</span>
-          <h3>Client Experience Design</h3>
-          <p>For founders and small studios who want their client process to feel as considered as their work. From onboarding to offboarding, the experience is the product.</p>
-          <span class="service-card-link">Learn more →</span>
-        </a>
+  <!-- HOW I WORK -->
+  <section class="section section--sand" id="process">
+    <div class="wrap">
+      <p class="eyebrow">How I work</p>
+      <h2>A consistent process,<br>shaped to fit the moment.</h2>
+
+      <div class="steps-wrap">
+        <div class="steps">
+          <div class="step">
+            <span class="step-num">1</span>
+            <div>
+              <p class="step-title">Discover</p>
+              <p>We talk about what's actually going on — the team, the moment, the tension. I ask a lot of questions. This conversation shapes everything that follows.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">2</span>
+            <div>
+              <p class="step-title">Design</p>
+              <p>I draft a proposed structure — agenda, workflow, system, or arc — with rationale. We refine it together until it fits your specific situation, not a template.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">3</span>
+            <div>
+              <p class="step-title">Facilitate</p>
+              <p>I'm present for the actual experience — reading the room, adjusting in real time, holding the container so participants can focus on the work.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">4</span>
+            <div>
+              <p class="step-title">Hand off</p>
+              <p>A synthesis, a lightweight system, or a ritual to carry the work forward. Every engagement should have a tail — something that keeps working after I'm gone.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO IT'S FOR -->
+  <section class="section" id="who">
+    <div class="wrap">
+      <p class="eyebrow">Who I work with</p>
+      <h2>If the work involves people,<br>process, or experience — we might be a fit.</h2>
+
+      <div class="two-col" style="margin-top: var(--space-md);">
+        <div>
+          <ul class="dash-list">
+            <li>Small non-tech teams navigating coordination or culture challenges</li>
+            <li>Wedding planners and event-based businesses that need smoother operations</li>
+          </ul>
+        </div>
+        <div>
+          <ul class="dash-list">
+            <li>Small business owners ready to bring more intention to how they work and serve clients</li>
+            <li>Early-stage teams building their working culture from the ground up</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- SELECTED WORK PREVIEW -->
-  <section class="section" id="work-preview">
+  <section class="section section--sand" id="work-preview">
     <div class="wrap">
       <p class="eyebrow">Selected work</p>
       <h2>A few things worth showing.</h2>
 
       <div class="service-cards" style="margin-top: var(--space-md);">
         <div class="service-card">
-          <span class="service-card-label">Offsite design</span>
+          <span class="service-card-label">Team experience</span>
           <h3>Two-day reset for a distributed product team</h3>
           <p>Designed and facilitated an offsite for a team of 18 navigating a post-reorg identity crisis. Left with a clearer roadmap and three standing rituals.</p>
         </div>
         <div class="service-card">
-          <span class="service-card-label">Workflow design</span>
+          <span class="service-card-label">Workflow reset</span>
           <h3>Operations overhaul for a boutique event studio</h3>
           <p>Rebuilt the client intake, project tracking, and communication systems for a 6-person event firm. Reduced coordination time by half in the first month.</p>
         </div>
@@ -718,17 +820,37 @@ footer {
     </div>
   </section>
 
-  <!-- ELSEWHERE -->
-  <section class="section" id="elsewhere">
+  <!-- ABOUT -->
+  <section class="section" id="about">
     <div class="wrap">
-      <p class="eyebrow">Elsewhere</p>
-      <h2>Other things I make<br>and think about.</h2>
-      <p>Studio Jas is the practice. These are the side threads — slower, more personal, not for sale (yet).</p>
+      <p class="eyebrow">About</p>
+      <h2>I'm Jasmine — and I care<br>about how things land.</h2>
 
-      <ul class="dash-list" style="margin-top: var(--space-md);">
-        <li><strong>Jewelry &amp; wearable work</strong> — handmade pieces and experiments with wearable LED. Currently available on request. <a href="creative.html">See the work →</a></li>
-        <li><strong>Hospitality research</strong> — notes on what makes gatherings feel good, drawn from the events I attend and design. No newsletter yet.</li>
-      </ul>
+      <div class="about-wrap">
+        <p>Across product work, team collaboration, events, and creative projects, I keep returning to the same question: <em>how does this feel for the people inside it?</em></p>
+        <p>My practice is rooted in experience design — shaping workflows, gatherings, and touchpoints so they feel more human, intentional, and alive. I work best with small teams where trust travels fast and the work can be specific to what's actually needed.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section section--dark" id="contact">
+    <div class="wrap">
+      <p class="eyebrow">Work together</p>
+      <h2>Let's figure out<br>if this is a fit.</h2>
+
+      <div class="contact-wrap">
+        <p>The first conversation is just a conversation. No pitch, no proposal until it makes sense.</p>
+
+        <ul class="prompts">
+          <li>What's going on with your team or business right now?</li>
+          <li>What would feel different if the experience were working well?</li>
+          <li>What kind of support are you looking for?</li>
+        </ul>
+
+        <a class="email-link" href="mailto:jasmine.sabio@gmail.com">jasmine.sabio@gmail.com</a>
+        <p class="contact-note">I typically respond within two business days.</p>
+      </div>
     </div>
   </section>
 
@@ -737,11 +859,12 @@ footer {
     <div class="wrap footer-row">
       <a class="footer-wordmark" href="index.html">Studio Jas</a>
       <ul class="footer-links">
+        <li><a href="client-experience.html">Team Experience Sprint</a></li>
         <li><a href="offsites.html">Offsite Design</a></li>
-        <li><a href="workflow.html">Workflow Design</a></li>
+        <li><a href="workflow.html">Workflow Reset</a></li>
         <li><a href="work.html">Work</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
       <p class="footer-tagline">Experience design practice &nbsp;·&nbsp; © 2026</p>
     </div>
