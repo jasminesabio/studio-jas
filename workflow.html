@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Workflow & Tooling — Studio Jas</title>
+  <title>Workflow Design — Studio Jas</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@400;500;600&display=swap');
 /* ─────────────────────────────────────────
@@ -12,8 +12,8 @@
 :root {
   --cream:   #fdfaf5;
   --sand:    #f5f0e8;
-  --clay:    #c8866a;
-  --clay-lt: #e8c3b0;
+  --clay:    #3b5249;
+  --clay-lt: #8db5ad;
   --bark:    #3d2f26;
   --moss:    #6b7c5e;
   --fog:     #8e8e88;
@@ -199,7 +199,7 @@ nav {
   letter-spacing: 0.03em;
   transition: background 0.2s, transform 0.15s;
 }
-.btn-primary:hover { background: var(--bark); color: #fff; transform: translateY(-1px); }
+.btn-primary:hover { background: var(--bark); color: #fff; }
 
 .btn-secondary {
   font-size: 0.9rem;
@@ -386,7 +386,6 @@ nav {
 
 .service-card:hover {
   border-top-color: var(--clay);
-  transform: translateY(-3px);
 }
 
 .service-card-label {
@@ -592,10 +591,10 @@ footer {
     <div class="wrap nav-row">
       <a class="nav-wordmark" href="index.html">Studio Jas</a>
       <ul class="nav-links">
-        <li><a href="offsites.html">Off-sites</a></li>
-        <li><a href="workflow.html" class="active">Workflow &amp; tooling</a></li>
-        <li><a href="online-presence.html">Online presence</a></li>
-        <li><a href="#contact">Get in touch</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -603,10 +602,10 @@ footer {
   <!-- HERO -->
   <section class="section hero">
     <div class="wrap">
-      <p class="eyebrow">Workflow &amp; tooling</p>
-      <h1>Better tools, calmer days, for non-tech teams.</h1>
+      <p class="eyebrow">Workflow design</p>
+      <h1>Calmer coordination for small teams.</h1>
       <p class="hero-sub">
-        You're great at your work — but the software that's supposed to help often just adds more noise. I help creative firms, wedding planners, event teams, and other small businesses get their tools working for them.
+        You're great at your work — but the systems around it are creating friction. I help small teams figure out which tools to use, set them up right, and build ways of working that the whole team can actually maintain.
       </p>
       <div class="cta-row">
         <a class="btn-primary" href="#contact">Get in touch</a>
@@ -619,20 +618,19 @@ footer {
   <section class="section" id="detail">
     <div class="wrap">
       <p class="eyebrow">Who this is for</p>
-      <h2>For teams who are great<br>at their work — not at software</h2>
+      <h2>For small teams where coordination<br>is getting in the way</h2>
 
       <p style="max-width: var(--text-max); margin-bottom: var(--space-md);">
-        Software teams have had years to develop their tooling habits. Most non-tech businesses haven't — and the tools keep getting more complex. If you're a creative firm, a wedding planning studio, an event business, or a small service team, you probably didn't sign up to become a project management expert. I help bridge that gap: figuring out which tools are actually worth using, setting them up in a way that makes sense for how you work, and making it all stick.
+        Most small teams aren't struggling because the work is bad — they're struggling because the systems around the work are improvised. Things live in too many places. Handoffs are unclear. Tools were adopted out of convenience, not design. I help untangle that: figuring out what's worth keeping, what to let go, and how to build something your whole team will actually use.
       </p>
 
       <div class="two-col">
         <div>
           <p class="col-label">This might be for you if…</p>
           <ul class="dash-list">
-            <li>You're juggling client work across emails, spreadsheets, sticky notes, and DMs — and something always slips</li>
-            <li>You've tried Asana, Notion, or something similar and it never quite clicked</li>
-            <li>You have a team of 2–10 people and coordination feels harder than it should</li>
-            <li>You're curious about AI tools but don't know where to actually start</li>
+            <li>Client work is tracked across emails, spreadsheets, and DMs — and things keep slipping</li>
+            <li>You've tried Notion, Asana, or something similar and it never quite stuck</li>
+            <li>Your team is 2–15 people and coordination takes more effort than it should</li>
             <li>You want less friction in the back-of-house so you can focus on the actual work</li>
           </ul>
         </div>
@@ -640,11 +638,11 @@ footer {
         <div>
           <p class="col-label">What I help with</p>
           <ul class="dash-list">
-            <li>Picking the right tools for how your team actually works — not the most popular or the most powerful</li>
-            <li>Setting up project and task management so nothing falls through the cracks between clients or events</li>
+            <li>Choosing the right tools for how you actually work — not the most powerful, the most fitting</li>
+            <li>Setting up project and client tracking so nothing falls between the cracks</li>
             <li>Untangling communication — fewer channels, clearer norms, less ambient noise</li>
-            <li>Introducing AI tools in practical, low-overhead ways that actually save time</li>
-            <li>Building lightweight systems your whole team can use — no tech background required</li>
+            <li>Introducing lightweight automation and AI tools that save time without adding complexity</li>
+            <li>Building systems your whole team can maintain without a technical background</li>
           </ul>
         </div>
       </div>
@@ -700,20 +698,20 @@ footer {
   <!-- CONTACT -->
   <section class="section section--dark" id="contact">
     <div class="wrap">
-      <p class="eyebrow">Get in touch</p>
+      <p class="eyebrow">Work together</p>
       <h2>Tell me what's<br>feeling messy.</h2>
 
       <div class="contact-wrap">
-        <p>No pitch, no proposal until it makes sense. Just tell me a bit about your team and what's getting in the way — and we'll figure out if I can help.</p>
+        <p>The first conversation is just a conversation. Tell me a bit about your team and what's getting in the way — and we'll figure out if I can help.</p>
 
         <ul class="prompts">
-          <li>What kind of business do you run, and how big is your team?</li>
-          <li>What tools are you using right now, and what's not working about them?</li>
-          <li>Is there a specific pain point you keep running into — something that costs you time or causes stress?</li>
-          <li>Are you curious about AI tools, or is this more about getting the basics in order first?</li>
+          <li>What's the situation — team size, how you work, what keeps breaking down?</li>
+          <li>What tools are you using now, and what's not clicking about them?</li>
+          <li>What would feel different if the systems were working well?</li>
         </ul>
 
-        <a class="email-link" href="mailto:jasmine.operations@gmail.com">jasmine.operations@gmail.com</a>
+        <a class="email-link" href="mailto:jasmine.sabio@gmail.com">jasmine.sabio@gmail.com</a>
+        <p class="contact-note">I typically respond within two business days.</p>
       </div>
     </div>
   </section>
@@ -723,12 +721,12 @@ footer {
     <div class="wrap footer-row">
       <a class="footer-wordmark" href="index.html">Studio Jas</a>
       <ul class="footer-links">
-        <li><a href="offsites.html">Off-sites</a></li>
-        <li><a href="workflow.html">Workflow &amp; tooling</a></li>
-        <li><a href="online-presence.html">Online presence</a></li>
-        <li><a href="#contact">Get in touch</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
       </ul>
-      <p class="footer-tagline">gatherings, systems, &amp; things &nbsp;·&nbsp; © 2026</p>
+      <p class="footer-tagline">Experience design practice &nbsp;·&nbsp; © 2026</p>
     </div>
   </footer>
 

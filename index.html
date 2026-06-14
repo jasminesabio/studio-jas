@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Studio Jas — gatherings, systems, & things</title>
+  <title>Studio Jas — Experience Design Practice</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@400;500;600&display=swap');
 /* ─────────────────────────────────────────
@@ -12,8 +12,8 @@
 :root {
   --cream:   #fdfaf5;
   --sand:    #f5f0e8;
-  --clay:    #c8866a;
-  --clay-lt: #e8c3b0;
+  --clay:    #3b5249;
+  --clay-lt: #8db5ad;
   --bark:    #3d2f26;
   --moss:    #6b7c5e;
   --fog:     #8e8e88;
@@ -85,7 +85,7 @@ h1, h2 {
   color: var(--bark);
 }
 
-h1 { font-size: clamp(2rem, 5.5vw, 3.1rem); }
+h1 { font-size: clamp(2.4rem, 6.5vw, 4rem); }
 h2 { font-size: clamp(1.4rem, 3.5vw, 2rem); margin-bottom: var(--space-sm); }
 
 p { max-width: var(--text-max); }
@@ -199,7 +199,7 @@ nav {
   letter-spacing: 0.03em;
   transition: background 0.2s, transform 0.15s;
 }
-.btn-primary:hover { background: var(--bark); color: #fff; transform: translateY(-1px); }
+.btn-primary:hover { background: var(--bark); color: #fff; }
 
 .btn-secondary {
   font-size: 0.9rem;
@@ -386,7 +386,6 @@ nav {
 
 .service-card:hover {
   border-top-color: var(--clay);
-  transform: translateY(-3px);
 }
 
 .service-card-label {
@@ -592,10 +591,10 @@ footer {
     <div class="wrap nav-row">
       <a class="nav-wordmark" href="index.html">Studio Jas</a>
       <ul class="nav-links">
-        <li><a href="offsites.html">Off-sites</a></li>
-        <li><a href="workflow.html">Workflow &amp; tools</a></li>
-        <li><a href="online-presence.html">Online presence</a></li>
-        <li><a href="#contact">Get in touch</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -603,80 +602,220 @@ footer {
   <!-- HERO -->
   <section class="section hero">
     <div class="wrap">
-      <h1>gatherings, systems,<br>&amp; things.</h1>
+      <p class="eyebrow">Experience design practice</p>
+      <h1>Design the moments that move your work forward.</h1>
       <p class="hero-sub">
-        Studio Jas is a one-person practice. I help teams work better — designing off-sites for remote tech teams, building systems for small non-tech businesses, and getting local businesses online.
+        I help small teams and founders create more intentional offsites, calmer workflows, and client experiences worth remembering — through facilitation, hospitality, and the right lightweight tools.
       </p>
       <div class="cta-row">
-        <a class="btn-primary" href="#contact">Get in touch</a>
+        <a class="btn-primary" href="#contact">Start a conversation</a>
+        <a class="btn-secondary" href="work.html">See selected work</a>
       </div>
     </div>
   </section>
 
-  <!-- THREE SERVICES -->
-  <section class="section" id="work">
+  <!-- CREDIBILITY -->
+  <section class="section" id="what-i-bring">
     <div class="wrap">
-      <p class="eyebrow">What I do</p>
-      <h2>Three offerings, one studio.</h2>
-      <p>Each offering has its own page and its own audience — so whoever lands here finds exactly what they need.</p>
+      <p class="eyebrow">What I bring</p>
+      <h2>A background in product, operations,<br>and how things actually feel.</h2>
 
-      <div class="service-cards">
-        <div class="service-card">
-          <span class="service-card-label">For remote tech teams</span>
-          <h3>Off-site experience design</h3>
-          <p>Designing and running intentional gatherings for remote product and engineering teams — social time, alignment, workshops, and real follow-through.</p>
-          <a class="service-card-link" href="offsites.html">Learn more →</a>
+      <div class="two-col">
+        <div>
+          <p>My work sits at the intersection of structure and human experience. I've spent years in product and operations — which means I think carefully about timing, sequencing, and what happens after the meeting ends.</p>
+          <p>But I care equally about how something feels to the people in it. Good design isn't just functional. It's felt.</p>
         </div>
-
-        <div class="service-card">
-          <span class="service-card-label">For small non-tech teams</span>
-          <h3>Workflow &amp; tooling</h3>
-          <p>Helping creative firms, event businesses, and small studios adopt the tools that software teams use — without needing to become tech people.</p>
-          <a class="service-card-link" href="workflow.html">Learn more →</a>
-        </div>
-
-        <div class="service-card">
-          <span class="service-card-label">For local businesses</span>
-          <h3>Online presence</h3>
-          <p>A clean website and the basic online infrastructure that lets people find you, trust you, and reach out — without you needing to manage it yourself.</p>
-          <a class="service-card-link" href="online-presence.html">Learn more →</a>
+        <div>
+          <ul class="dash-list">
+            <li>Product management and operations background</li>
+            <li>Experience designing and facilitating offsites for remote and hybrid teams</li>
+            <li>Comfort with lightweight tools and how to introduce them without friction</li>
+            <li>A hospitality instinct: the detail that makes someone feel considered</li>
+          </ul>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section section--sand" id="services">
+    <div class="wrap">
+      <p class="eyebrow">Services</p>
+      <h2>Three ways to work together.</h2>
+
+      <div class="service-cards">
+        <a class="service-card" href="offsites.html">
+          <span class="service-card-label">Facilitation &amp; design</span>
+          <h3>Offsite Experience Design</h3>
+          <p>For remote and hybrid teams that want a gathering that actually changes something. I design the arc, handle logistics, and facilitate the day — so you can show up as a participant.</p>
+          <span class="service-card-link">Learn more →</span>
+        </a>
+
+        <a class="service-card" href="workflow.html">
+          <span class="service-card-label">Systems &amp; tooling</span>
+          <h3>Workflow Design</h3>
+          <p>For small teams where coordination is getting complicated. I help you figure out which tools to use, set them up right, and build lightweight systems your whole team can actually maintain.</p>
+          <span class="service-card-link">Learn more →</span>
+        </a>
+
+        <a class="service-card" href="client-experience.html">
+          <span class="service-card-label">Client relationships</span>
+          <h3>Client Experience Design</h3>
+          <p>For founders and small studios who want their client process to feel as considered as their work. From onboarding to offboarding, the experience is the product.</p>
+          <span class="service-card-link">Learn more →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW I WORK -->
+  <section class="section" id="process">
+    <div class="wrap">
+      <p class="eyebrow">How I work</p>
+      <h2>Listen first. Design from there.</h2>
+      <p>Every engagement starts from the actual state of your team — not a template. I don't arrive with a framework to fit you into.</p>
+
+      <div class="steps-wrap">
+        <div class="steps">
+          <div class="step">
+            <span class="step-num">1</span>
+            <div>
+              <p class="step-title">Discovery</p>
+              <p>We talk about what's actually going on — the team, the moment, the gap. I ask a lot of questions. This conversation shapes everything that follows.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">2</span>
+            <div>
+              <p class="step-title">Shape</p>
+              <p>I draft a proposed structure with rationale — arc, sessions, pacing, or system design. We refine it together until it feels right for your specific situation.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">3</span>
+            <div>
+              <p class="step-title">Build</p>
+              <p>I handle the details — materials, logistics, setup, configuration — so you can show up present. The preparation work happens behind the scenes.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">4</span>
+            <div>
+              <p class="step-title">Deliver</p>
+              <p>I'm there for the actual thing, reading the room and adjusting in real time. No script is more important than what the moment actually needs.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">5</span>
+            <div>
+              <p class="step-title">Follow through</p>
+              <p>A synthesis, a handoff, a lightweight ritual to carry the work forward. Whatever shape it takes — the engagement should have a tail.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO IT'S FOR -->
+  <section class="section section--sand" id="who">
+    <div class="wrap">
+      <p class="eyebrow">Who I work with</p>
+      <h2>Small teams doing<br>meaningful work.</h2>
+
+      <div class="two-col">
+        <div>
+          <p>My clients tend to be founders, team leads, and small studios who care about quality — in their work and in how it gets done. They're not looking for a consultant with a playbook. They want a thoughtful partner who can hold the details alongside them.</p>
+        </div>
+        <div>
+          <ul class="dash-list spaced">
+            <li><strong>Remote or hybrid teams of 5–25</strong> in a moment of transition — new leadership, recent reorg, moving fast, or feeling disconnected</li>
+            <li><strong>Founders</strong> who want their client experience to feel intentional, not improvised</li>
+            <li><strong>Small creative firms</strong> ready to invest in how they work, not just what they produce</li>
+            <li><strong>Leaders</strong> who've tried to handle this themselves and want someone else to own it</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SELECTED WORK PREVIEW -->
+  <section class="section" id="work-preview">
+    <div class="wrap">
+      <p class="eyebrow">Selected work</p>
+      <h2>A few things worth showing.</h2>
+
+      <div class="service-cards" style="margin-top: var(--space-md);">
+        <div class="service-card">
+          <span class="service-card-label">Offsite design</span>
+          <h3>Two-day reset for a distributed product team</h3>
+          <p>Designed and facilitated an offsite for a team of 18 navigating a post-reorg identity crisis. Left with a clearer roadmap and three standing rituals.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-card-label">Workflow design</span>
+          <h3>Operations overhaul for a boutique event studio</h3>
+          <p>Rebuilt the client intake, project tracking, and communication systems for a 6-person event firm. Reduced coordination time by half in the first month.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-card-label">Client experience</span>
+          <h3>Onboarding redesign for an independent consultant</h3>
+          <p>Mapped and rebuilt the end-to-end client journey — from first inquiry to final delivery — so the process felt as considered as the work itself.</p>
+        </div>
+      </div>
+
+      <p class="invite-line">
+        <a href="work.html">See all selected work →</a>
+      </p>
     </div>
   </section>
 
   <!-- ABOUT -->
   <section class="section section--sand" id="about">
     <div class="wrap">
-      <p class="eyebrow">About Studio Jas — and me</p>
-      <h2>Structure, feeling,<br>and what comes after</h2>
+      <p class="eyebrow">About</p>
+      <h2>I'm Jasmine — and I care<br>about how things land.</h2>
 
       <div class="about-wrap">
-        <p>My background is in product and operations, which means I think a lot about structure, timing, and what happens after the meeting ends. I care about follow-through — not just what gets said in the room, but whether it actually goes anywhere. That part of my brain never really turns off.</p>
+        <p>Studio Jas is a one-person practice. I work at the intersection of experience design, facilitation, and operations — a slightly unusual combination, and that's the point.</p>
 
-        <p>But I also care deeply about how things feel. How a gathering lands. Whether a system actually fits the people using it. Whether a website feels honest about who you are. The three offerings here are different in form, but they come from the same place: caring about how things work and how they feel to the people in them.</p>
+        <p>My background is in product and ops, but I've always been equally interested in what's happening in the room: who's disengaged, what's unsaid, where the energy goes. That's the thing I bring that doesn't come from a playbook.</p>
 
-        <p>AI can generate an agenda, suggest a tool stack, or produce a website in seconds. What it can't do is understand your team, your business, or your situation — and make judgment calls based on that. That's what I do.</p>
+        <p>I work best with small teams where trust travels fast and the work can be specific to what's actually needed — not a generic solution retrofitted to your situation.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- ELSEWHERE -->
+  <section class="section" id="elsewhere">
+    <div class="wrap">
+      <p class="eyebrow">Elsewhere</p>
+      <h2>Other things I make<br>and think about.</h2>
+      <p>Studio Jas is the practice. These are the side threads — slower, more personal, not for sale (yet).</p>
+
+      <ul class="dash-list" style="margin-top: var(--space-md);">
+        <li><strong>Jewelry &amp; wearable work</strong> — handmade pieces and experiments with wearable LED. Currently available on request. <a href="creative.html">See the work →</a></li>
+        <li><strong>Hospitality research</strong> — notes on what makes gatherings feel good, drawn from the events I attend and design. No newsletter yet.</li>
+      </ul>
     </div>
   </section>
 
   <!-- CONTACT -->
   <section class="section section--dark" id="contact">
     <div class="wrap">
-      <p class="eyebrow">Work with Studio Jas</p>
-      <h2>Let's talk.</h2>
+      <p class="eyebrow">Work together</p>
+      <h2>Let's figure out<br>if this is a fit.</h2>
 
       <div class="contact-wrap">
-        <p>Not sure which offering fits? Tell me a bit about what you're working on — I'll help figure it out.</p>
+        <p>The first conversation is just a conversation. No pitch, no proposal until it makes sense. Tell me a little about what you're working on.</p>
 
         <ul class="prompts">
-          <li>Tell me about your team or business — what you do, how big you are, what's going on right now.</li>
-          <li>Are you thinking about an off-site, workflow help, or getting online? Or something else entirely?</li>
-          <li>What's one thing you'd love to feel different after we work together?</li>
+          <li>What's the situation — team, moment, what's getting in the way?</li>
+          <li>What kind of help are you looking for?</li>
+          <li>What would make this feel like time well spent?</li>
         </ul>
 
-        <a class="email-link" href="mailto:jasmine.operations@gmail.com">jasmine.operations@gmail.com</a>
+        <a class="email-link" href="mailto:jasmine.sabio@gmail.com">jasmine.sabio@gmail.com</a>
+        <p class="contact-note">I typically respond within two business days.</p>
       </div>
     </div>
   </section>
@@ -686,12 +825,12 @@ footer {
     <div class="wrap footer-row">
       <a class="footer-wordmark" href="index.html">Studio Jas</a>
       <ul class="footer-links">
-        <li><a href="offsites.html">Off-sites</a></li>
-        <li><a href="workflow.html">Workflow &amp; tools</a></li>
-        <li><a href="online-presence.html">Online presence</a></li>
-        <li><a href="#contact">Get in touch</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
-      <p class="footer-tagline">gatherings, systems, &amp; things &nbsp;·&nbsp; © 2026</p>
+      <p class="footer-tagline">Experience design practice &nbsp;·&nbsp; © 2026</p>
     </div>
   </footer>
 
