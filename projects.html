@@ -174,9 +174,15 @@ nav {
   margin-bottom: 0.5rem;
 }
 
+.project-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+}
+
 .project-link {
   display: inline-block;
-  margin-top: 1.25rem;
   font-size: 0.8rem;
   font-weight: 500;
   color: var(--clay);
@@ -184,6 +190,7 @@ nav {
   border-bottom: 1.5px solid var(--clay-lt);
   padding-bottom: 2px;
   transition: color 0.15s, border-color 0.15s;
+  width: fit-content;
 }
 .project-link:hover { color: var(--bark); border-color: var(--bark); }
 
@@ -273,6 +280,128 @@ footer {
   .project-meta { position: static; }
   .xp-grid { grid-template-columns: 1fr; }
 }
+
+/* ── LIGHTBOX ── */
+.lightbox-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 22, 18, 0.92);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.lightbox-overlay.open {
+  display: flex;
+}
+
+.lightbox {
+  position: relative;
+  max-width: 860px;
+  width: 100%;
+  background: var(--cream);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.lightbox-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--clay-lt);
+}
+
+.lightbox-title {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  color: var(--bark);
+}
+
+.lightbox-counter {
+  font-size: 0.78rem;
+  color: var(--fog);
+}
+
+.lightbox-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.25rem;
+  color: var(--fog);
+  line-height: 1;
+  padding: 0.25rem;
+  transition: color 0.15s;
+}
+.lightbox-close:hover { color: var(--bark); }
+
+.lightbox-stage {
+  position: relative;
+  background: var(--sand);
+  aspect-ratio: 16 / 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.lightbox-stage img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: none;
+}
+
+.lightbox-stage img.active {
+  display: block;
+}
+
+.lightbox-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(253, 250, 245, 0.9);
+  border: 1px solid var(--clay-lt);
+  border-radius: 2px;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--bark);
+  transition: background 0.15s;
+}
+.lightbox-btn:hover { background: var(--cream); }
+.lightbox-btn--prev { left: 1rem; }
+.lightbox-btn--next { right: 1rem; }
+
+.lightbox-thumbs {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  overflow-x: auto;
+}
+
+.lightbox-thumb {
+  flex-shrink: 0;
+  width: 72px;
+  height: 52px;
+  object-fit: cover;
+  border-radius: 2px;
+  cursor: pointer;
+  opacity: 0.5;
+  border: 2px solid transparent;
+  transition: opacity 0.15s, border-color 0.15s;
+}
+
+.lightbox-thumb.active {
+  opacity: 1;
+  border-color: var(--clay);
+}
   </style>
 </head>
 <body>
@@ -310,7 +439,12 @@ footer {
           <div class="project-meta">
             <span class="project-tag">Music &amp; workflow</span>
             <p class="project-title">Afterglow</p>
-            <a class="project-link" href="#" aria-label="Coming soon">View project →</a>
+            <div class="project-links">
+              <a class="project-link" href="#" onclick="openLightbox(event)">View photos →</a>
+              <a class="project-link" href="https://afterglow-wine.vercel.app/" target="_blank" rel="noopener">Live demo →</a>
+              <a class="project-link" href="https://github.com/jasminesabio/afterglow" target="_blank" rel="noopener">GitHub →</a>
+              <a class="project-link" href="https://musichackspace.org/events/hackathon-lisbon-spring-2026/projects/6" target="_blank" rel="noopener">Hackathon page →</a>
+            </div>
           </div>
           <div class="project-body">
             <p>DJ sets live or die by preparation — knowing what you have, how it feels, and what comes next. But most artists organize their music in folders, which only tells you one thing: genre. Nothing about energy, arc, or where a track belongs in a night.</p>
@@ -424,6 +558,74 @@ footer {
       <p class="footer-tagline">Experience design practice &nbsp;·&nbsp; © 2026</p>
     </div>
   </footer>
+
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true">
+    <div class="lightbox">
+      <div class="lightbox-header">
+        <span class="lightbox-title">Afterglow</span>
+        <span class="lightbox-counter" id="lb-counter">1 / 4</span>
+        <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">✕</button>
+      </div>
+      <div class="lightbox-stage">
+        <img src="images/afterglow/tagging UI.png" alt="Afterglow tagging interface" class="active" />
+        <img src="images/afterglow/talk.jpg" alt="Afterglow talk presentation" />
+        <img src="images/afterglow/graph.JPG" alt="Afterglow affinity graph" />
+        <img src="images/afterglow/graph UI.png" alt="Afterglow graph UI screenshot" />
+        <button class="lightbox-btn lightbox-btn--prev" onclick="changeSlide(-1)" aria-label="Previous">‹</button>
+        <button class="lightbox-btn lightbox-btn--next" onclick="changeSlide(1)" aria-label="Next">›</button>
+      </div>
+      <div class="lightbox-thumbs">
+        <img class="lightbox-thumb active" src="images/afterglow/tagging UI.png" alt="Tagging UI" onclick="goToSlide(0)" />
+        <img class="lightbox-thumb" src="images/afterglow/talk.jpg" alt="Talk" onclick="goToSlide(1)" />
+        <img class="lightbox-thumb" src="images/afterglow/graph.JPG" alt="Graph" onclick="goToSlide(2)" />
+        <img class="lightbox-thumb" src="images/afterglow/graph UI.png" alt="Graph UI" onclick="goToSlide(3)" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let current = 0;
+    const images = document.querySelectorAll('.lightbox-stage img');
+    const thumbs = document.querySelectorAll('.lightbox-thumb');
+    const counter = document.getElementById('lb-counter');
+
+    function openLightbox(e) {
+      e.preventDefault();
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function goToSlide(n) {
+      images[current].classList.remove('active');
+      thumbs[current].classList.remove('active');
+      current = n;
+      images[current].classList.add('active');
+      thumbs[current].classList.add('active');
+      counter.textContent = (current + 1) + ' / ' + images.length;
+    }
+
+    function changeSlide(dir) {
+      goToSlide((current + dir + images.length) % images.length);
+    }
+
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+      if (e.target === this) closeLightbox();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (!document.getElementById('lightbox').classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') changeSlide(-1);
+      if (e.key === 'ArrowRight') changeSlide(1);
+    });
+  </script>
 
 </body>
 </html>
