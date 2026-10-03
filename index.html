@@ -5,10 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Studio Jas — Experience Design Practice</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@400;500;600&display=swap');
-/* ─────────────────────────────────────────
-   TOKENS
-───────────────────────────────────────── */
+    @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
+
 :root {
   --cream:   #fdfaf5;
   --sand:    #f5f0e8;
@@ -22,19 +20,16 @@
   --serif: 'Lora', Georgia, serif;
   --sans:  'DM Sans', 'Helvetica Neue', sans-serif;
 
-  --text-max: 64ch;
-  --page-max: 840px;
-  --pad-x: 2rem;
+  --page-max: 1040px;
+  --pad-x: 2.5rem;
+  --text-max: 60ch;
 
   --space-xs: 0.75rem;
   --space-sm: 1.25rem;
-  --space-md: 2.5rem;
-  --space-lg: 4.5rem;
+  --space-md: 3rem;
+  --space-lg: 6rem;
 }
 
-/* ─────────────────────────────────────────
-   RESET & BASE
-───────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
@@ -44,49 +39,46 @@ body {
   font-family: var(--sans);
   font-size: 1.0625rem;
   line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
 }
 
 img { display: block; max-width: 100%; }
 a { color: var(--clay); text-decoration: underline; text-underline-offset: 3px; }
 a:hover { color: var(--bark); }
 
-/* ─────────────────────────────────────────
-   LAYOUT
-───────────────────────────────────────── */
 .wrap {
   max-width: var(--page-max);
   margin-inline: auto;
   padding-inline: var(--pad-x);
 }
 
-.section {
-  padding-block: var(--space-lg);
-}
+.section { padding-block: var(--space-lg); }
+.section--sand { background: var(--sand); }
 
-/* section background variants */
-.section--sand  { background: var(--sand); }
-.section--dark  { background: var(--bark); }
-
-/* only add divider between same-tone sections */
-.section + .section:not(.section--sand):not(.section--dark) {
+.section + .section:not(.section--sand) {
   border-top: 1px solid var(--clay-lt);
 }
 .section--sand + .section--sand {
   border-top: 1px solid var(--clay-lt);
 }
 
-/* ─────────────────────────────────────────
-   TYPOGRAPHY
-───────────────────────────────────────── */
-h1, h2 {
+/* ── TYPOGRAPHY ── */
+h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--bark);
+  font-size: clamp(3rem, 8vw, 6rem);
+  letter-spacing: -0.01em;
+}
+
+h2 {
   font-family: var(--serif);
   font-weight: 400;
   line-height: 1.2;
   color: var(--bark);
+  font-size: clamp(1.5rem, 3.5vw, 2.1rem);
 }
-
-h1 { font-size: clamp(2.4rem, 6.5vw, 4rem); }
-h2 { font-size: clamp(1.4rem, 3.5vw, 2rem); margin-bottom: var(--space-sm); }
 
 p { max-width: var(--text-max); }
 p + p { margin-top: 1rem; }
@@ -101,16 +93,7 @@ p + p { margin-top: 1rem; }
   margin-bottom: 0.5rem;
 }
 
-/* contact section — light, clean */
-.section--contact { background: var(--sand); }
-.section--contact h2 { color: var(--bark); }
-.section--contact .eyebrow { color: var(--clay); }
-.section--contact p { color: var(--ink); }
-.section--contact .contact-note { color: var(--fog); }
-
-/* ─────────────────────────────────────────
-   NAV
-───────────────────────────────────────── */
+/* ── NAV ── */
 nav {
   position: sticky;
   top: 0;
@@ -154,67 +137,46 @@ nav {
 .nav-links a:hover { color: var(--clay); }
 .nav-links a.active { color: var(--bark); }
 
-.has-dropdown { position: relative; }
-.dropdown {
-  display: none;
-  position: absolute;
-  top: calc(100% + 0.75rem);
-  left: -1rem;
-  background: var(--cream);
-  border: 1px solid var(--clay-lt);
-
-  padding: 0.5rem 0;
-  min-width: 192px;
-  list-style: none;
-  box-shadow: 0 6px 20px rgba(42,35,32,0.1);
-  z-index: 200;
-}
-.has-dropdown:hover .dropdown { display: block; }
-.dropdown li a {
-  display: block;
-  padding: 0.55rem 1.25rem;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--ink);
-  text-decoration: none;
-  letter-spacing: 0.02em;
-  transition: color 0.15s;
-}
-.dropdown li a:hover { color: var(--clay); }
-.dropdown-toggle::after {
-  content: ' ↓';
-  font-size: 0.65rem;
-  letter-spacing: 0;
-  opacity: 0.5;
-  margin-left: 1px;
-}
-
-/* ─────────────────────────────────────────
-   HERO
-───────────────────────────────────────── */
+/* ── HERO ── */
 .hero {
-  padding-block: 5.5rem 4.5rem;
-  background: linear-gradient(175deg, var(--sand) 0%, var(--cream) 75%);
+  padding-block: 6rem 5rem;
+  background: var(--cream);
+  border-bottom: 1px solid var(--clay-lt);
 }
 
-.hero h1 {
-  max-width: 20ch;
+.hero-grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 5rem;
+  align-items: end;
+}
+
+.hero-left .eyebrow {
   margin-bottom: 1.5rem;
 }
 
-.hero-sub {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1.125rem;
-  color: var(--moss);
-  max-width: 50ch;
-  margin-bottom: var(--space-md);
-  line-height: 1.7;
+.hero-right {
+  padding-bottom: 0.5rem;
 }
 
-/* ─────────────────────────────────────────
-   BUTTONS
-───────────────────────────────────────── */
+.hero-sub {
+  font-size: 1.05rem;
+  color: var(--moss);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  max-width: 42ch;
+}
+
+.cred-strip {
+  margin-top: 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: var(--fog);
+  max-width: none;
+}
+
+/* ── BUTTONS ── */
 .cta-row {
   display: flex;
   align-items: center;
@@ -233,7 +195,7 @@ nav {
   font-weight: 500;
   text-decoration: none;
   letter-spacing: 0.03em;
-  transition: background 0.2s, transform 0.15s;
+  transition: background 0.2s;
 }
 .btn-primary:hover { background: var(--bark); color: #fff; }
 
@@ -248,229 +210,181 @@ nav {
 }
 .btn-secondary:hover { color: var(--bark); border-color: var(--bark); }
 
-/* dark section button variant */
-.section--dark .btn-primary {
-  background: var(--clay-lt);
-  color: var(--bark);
-}
-.section--dark .btn-primary:hover {
-  background: var(--sand);
-  color: var(--bark);
-}
-
-/* ─────────────────────────────────────────
-   LISTS
-───────────────────────────────────────── */
-.dash-list {
-  list-style: none;
+/* ── SERVICES: editorial list ── */
+.services-header {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
 }
 
-.dash-list li {
-  padding-left: 1.375rem;
-  position: relative;
-  font-size: 0.9625rem;
-  line-height: 1.65;
+.services-header h2 { margin-bottom: 0; }
+
+.service-list {
+  border-top: 1px solid var(--clay-lt);
 }
 
-.dash-list li::before {
-  content: '—';
-  position: absolute;
-  left: 0;
-  color: var(--clay-lt);
-  font-family: var(--serif);
-}
-
-.dash-list.spaced { gap: 1.75rem; }
-.dash-list strong { font-weight: 600; color: var(--bark); }
-
-/* ─────────────────────────────────────────
-   TWO-COLUMN
-───────────────────────────────────────── */
-.two-col {
+.service-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3.5rem;
-  margin-top: var(--space-md);
+  grid-template-columns: 1fr 2fr 2rem;
+  gap: 3rem;
+  padding-block: 2.25rem;
+  border-bottom: 1px solid var(--clay-lt);
+  text-decoration: none;
+  transition: background 0.15s;
+  align-items: start;
 }
 
-.col-label {
-  font-family: var(--sans);
-  font-size: 0.7rem;
+.service-row:hover { background: var(--sand); }
+
+.service-row-meta {
+  padding-top: 0.1rem;
+}
+
+.service-row-label {
+  font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--fog);
-  margin-bottom: 1rem;
+  display: block;
+  margin-bottom: 0.6rem;
 }
 
-/* ─────────────────────────────────────────
-   PROCESS STEPS
-───────────────────────────────────────── */
-.steps-wrap {
-  margin-top: var(--space-md);
-  max-width: var(--text-max);
-}
-
-.steps {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  position: relative;
-}
-
-/* vertical connector line */
-.steps::before {
-  content: '';
-  position: absolute;
-  left: 1.45rem;
-  top: 2rem;
-  bottom: 2rem;
-  width: 1px;
-  background: var(--clay-lt);
-}
-
-.step {
-  display: grid;
-  grid-template-columns: 3rem 1fr;
-  gap: 1.25rem;
-  align-items: start;
-  padding-block: 1.5rem;
-  position: relative;
-}
-
-.step + .step {
-  border-top: none;
-}
-
-.step-num {
+.service-row-title {
   font-family: var(--serif);
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--cream);
-  background: var(--clay-lt);
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
-  flex-shrink: 0;
-  letter-spacing: 0;
-}
-
-.section--sand .step-num {
-  background: var(--clay-lt);
+  font-weight: 400;
+  font-size: 1.2rem;
   color: var(--bark);
+  line-height: 1.3;
 }
 
-.step-title {
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: 0.9375rem;
-  color: var(--bark);
-  margin-bottom: 0.35rem;
-  padding-top: 0.25rem;
-}
-
-.step p {
+.service-row-body p {
   font-size: 0.9375rem;
   color: var(--ink);
   line-height: 1.65;
-  max-width: var(--text-max);
+  max-width: 52ch;
 }
 
-/* ─────────────────────────────────────────
-   INVITE / CLOSING LINE
-───────────────────────────────────────── */
-.invite-line {
-  margin-top: var(--space-md);
-  padding-top: var(--space-sm);
-  border-top: 1px solid var(--clay-lt);
-  font-size: 0.9375rem;
-  font-style: italic;
-  color: var(--moss);
-  max-width: var(--text-max);
-}
-
-/* ─────────────────────────────────────────
-   SERVICE CARDS (landing page)
-───────────────────────────────────────── */
-.service-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
-  margin-top: var(--space-md);
-}
-
-.service-card {
-  background: var(--cream);
-  border: 1px solid var(--clay-lt);
-  border-top: 3px solid var(--clay-lt);
-
-  padding: 1.75rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+.service-row-arrow {
+  font-size: 1.1rem;
+  color: var(--clay-lt);
+  transition: color 0.15s, transform 0.15s;
+  align-self: center;
+  justify-self: end;
   text-decoration: none;
-  transition: border-top-color 0.2s, transform 0.2s;
+}
+.service-row:hover .service-row-arrow {
+  color: var(--clay);
+  transform: translateX(4px);
 }
 
-.service-card:hover {
-  border-top-color: var(--clay);
+/* ── HOW I WORK: two-column editorial ── */
+.process-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 5rem;
+  align-items: start;
 }
 
-.service-card-label {
-  font-size: 0.7rem;
+.process-label h2 {
+  font-size: clamp(1.3rem, 3vw, 1.7rem);
+  margin-top: 0.75rem;
+  max-width: 18ch;
+}
+
+.process-text p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--ink);
+  max-width: 56ch;
+}
+
+.process-text p + p { margin-top: 1.25rem; }
+
+/* ── SELECTED WORK ── */
+.work-preview-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+}
+
+.featured-work {
+  border-top: 1px solid var(--clay-lt);
+  padding-top: var(--space-md);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.featured-label {
+  font-size: 0.68rem;
   font-weight: 600;
-  letter-spacing: 0.13em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--fog);
+  display: block;
+  margin-bottom: 1rem;
 }
 
-.service-card h3 {
+.featured-title {
   font-family: var(--serif);
-  font-size: 1.1rem;
+  font-weight: 400;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  color: var(--bark);
+  line-height: 1.25;
+  margin-bottom: 1.25rem;
+}
+
+.featured-body p {
+  font-size: 0.9625rem;
+  color: var(--ink);
+  line-height: 1.7;
+}
+
+.featured-body p + p { margin-top: 0.875rem; }
+
+.featured-aside {
+  border-left: 1px solid var(--clay-lt);
+  padding-left: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.aside-item-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fog);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.aside-item-title {
+  font-family: var(--serif);
+  font-size: 1rem;
   font-weight: 400;
   color: var(--bark);
   line-height: 1.3;
-  margin: 0;
+  margin-bottom: 0.35rem;
 }
 
-.service-card p {
-  font-size: 0.9rem;
-  color: var(--ink);
-  line-height: 1.6;
-  flex-grow: 1;
-  max-width: none;
-}
-
-.service-card-link {
+.aside-item-body {
   font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--clay);
-  text-decoration: none;
-  border-bottom: 1.5px solid var(--clay-lt);
-  padding-bottom: 2px;
-  align-self: flex-start;
-  transition: color 0.15s, border-color 0.15s;
-}
-.service-card:hover .service-card-link {
-  color: var(--bark);
-  border-color: var(--bark);
+  color: var(--fog);
+  line-height: 1.6;
+  max-width: 36ch;
 }
 
-/* ─────────────────────────────────────────
-   ABOUT
-───────────────────────────────────────── */
+/* ── ABOUT ── */
 .about-grid {
   display: grid;
   grid-template-columns: 340px 1fr;
-  gap: 4rem;
+  gap: 5rem;
   align-items: start;
 }
 
@@ -485,26 +399,23 @@ nav {
 .about-text-col h2 { margin-bottom: 1.25rem; }
 .about-text-col p + p { margin-top: 1rem; }
 
-@media (max-width: 700px) {
-  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-  .about-photo { height: 320px; }
+/* ── CONTACT ── */
+.section--contact { background: var(--sand); }
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
 }
 
-/* ─────────────────────────────────────────
-   CONTACT (dark section)
-───────────────────────────────────────── */
-.contact-wrap { max-width: 52ch; }
-.contact-wrap > p { margin-bottom: var(--space-md); }
+.contact-left h2 { margin-bottom: 1.25rem; }
 
 .prompts {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 0.875rem;
-
-
-
-
   margin-bottom: var(--space-md);
 }
 
@@ -525,15 +436,20 @@ nav {
   top: 0.12em;
 }
 
+.contact-right {
+  padding-top: 0.5rem;
+}
+
 .email-link {
   display: inline-block;
   font-family: var(--serif);
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   color: var(--bark);
   text-decoration: none;
   border-bottom: 2px solid var(--clay-lt);
   padding-bottom: 3px;
   transition: color 0.15s, border-color 0.15s;
+  line-height: 1.3;
 }
 .email-link:hover { color: var(--clay); border-color: var(--clay); }
 
@@ -544,9 +460,18 @@ nav {
   max-width: none;
 }
 
-/* ─────────────────────────────────────────
-   FOOTER
-───────────────────────────────────────── */
+/* scroll fade-in */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── FOOTER ── */
 footer {
   background: var(--cream);
   padding-block: 2rem;
@@ -569,86 +494,66 @@ footer {
 }
 .footer-wordmark:hover { color: var(--clay); }
 
-.footer-tagline {
-  font-size: 0.78rem;
-  color: var(--fog);
+.footer-tagline { font-size: 0.78rem; color: var(--fog); max-width: none; }
+
+.footer-signoff {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--bark);
+  opacity: 0.45;
+  padding-block: 2rem 1.5rem;
   max-width: none;
+  border-top: 1px solid var(--clay-lt);
 }
 
-.footer-links {
-  display: flex;
-  gap: 1.5rem;
-  list-style: none;
-}
-
-.footer-links a {
-  font-size: 0.78rem;
-  color: var(--fog);
-  text-decoration: none;
-  transition: color 0.15s;
-}
+.footer-links { display: flex; gap: 1.5rem; list-style: none; }
+.footer-links a { font-size: 0.78rem; color: var(--fog); text-decoration: none; transition: color 0.15s; }
 .footer-links a:hover { color: var(--clay); }
 
-/* ─────────────────────────────────────────
-   CREATIVE PAGE
-───────────────────────────────────────── */
-.creative-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3.5rem;
-  margin-top: var(--space-md);
+/* ── RESPONSIVE ── */
+@media (max-width: 780px) {
+  .nav-links { display: none; }
+  .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .hero { padding-block: 3.5rem 3rem; }
+  .service-row { grid-template-columns: 1fr; gap: 0.75rem; }
+  .service-row-arrow { display: none; }
+  .process-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .featured-work { grid-template-columns: 1fr; gap: 3rem; }
+  .featured-aside { border-left: none; padding-left: 0; border-top: 1px solid var(--clay-lt); padding-top: 2rem; }
+  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .about-photo { height: 320px; }
+  .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; }
 }
 
-.creative-area {
-  border-left: 3px solid var(--clay-lt);
-  padding-left: 1.5rem;
+/* ── DESIGN TOGGLE ── */
+.nav-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  background: var(--sand);
+  border: 1px solid var(--clay-lt);
+  border-radius: 999px;
+  padding: 0.2rem 0.25rem;
+  margin-left: 1.5rem;
 }
-
-.creative-area-title {
-  font-family: var(--serif);
-  font-size: 1.15rem;
-  font-weight: 400;
-  color: var(--bark);
-  margin-bottom: 0.75rem;
-}
-
-.creative-area p {
-  font-size: 0.9375rem;
-  line-height: 1.7;
-  max-width: 36ch;
-}
-
-.status-tag {
+.nav-toggle a {
   display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--fog);
-  margin-bottom: 0.6rem;
-}
-
-/* ─────────────────────────────────────────
-   RESPONSIVE
-───────────────────────────────────────── */
-@media (max-width: 700px) {
-  .nav-links       { display: none; }
-  .two-col         { grid-template-columns: 1fr; gap: var(--space-md); }
-  .service-cards   { grid-template-columns: 1fr; }
-  .creative-grid   { grid-template-columns: 1fr; gap: var(--space-md); }
-  .hero            { padding-block: 3.5rem 3rem; }
-}
-
-/* CREDIBILITY STRIP */
-.cred-strip {
-  margin-top: 2rem;
-  font-size: 0.78rem;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.03em;
+  text-decoration: none;
   color: var(--fog);
-  max-width: none;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
 }
-
+.nav-toggle a:hover { color: var(--bark); }
+.nav-toggle a.active {
+  background: var(--bark);
+  color: var(--cream);
+}
   </style>
 </head>
 <body>
@@ -664,163 +569,136 @@ footer {
         <li><a href="projects.html">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+      <div class="nav-toggle"><a href="../before/index.html">Design v1</a><a href="index.html" class="active">Design v2</a></div>
     </div>
   </nav>
 
   <!-- HERO -->
-  <section class="section hero">
+  <section class="hero">
     <div class="wrap">
-      <p class="eyebrow">Experience design practice</p>
-      <h1>Experience design for small teams and founders.</h1>
-      <p class="hero-sub">
-        I help small teams run better offsites, untangle their workflows, and build client experiences that feel considered — through facilitation, hospitality, and tools that actually fit.
-      </p>
-      <div class="cta-row">
-        <a class="btn-primary" href="mailto:jasmine.operations@gmail.com">Book an intro call</a>
-        <a class="btn-secondary" href="projects.html">View projects</a>
+      <div class="hero-grid">
+        <div class="hero-left">
+          <p class="eyebrow">Experience design practice</p>
+          <h1>Gatherings, systems, &amp; things that work.</h1>
+        </div>
+        <div class="hero-right">
+          <p class="hero-sub">I help small teams run better offsites, untangle their workflows, and build client experiences that feel considered — through facilitation, hospitality, and tools that actually fit.</p>
+          <div class="cta-row">
+            <a class="btn-primary" href="mailto:jasmine.operations@gmail.com">Book an intro call</a>
+            <a class="btn-secondary" href="projects.html">View projects</a>
+          </div>
+          <p class="cred-strip">Offsite &amp; retreat design &nbsp;·&nbsp; Workflow and operations &nbsp;·&nbsp; Client experience</p>
+        </div>
       </div>
-      <p class="cred-strip">Offsite &amp; retreat design &nbsp;·&nbsp; Workflow and operations &nbsp;·&nbsp; Client experience</p>
     </div>
   </section>
 
   <!-- SERVICES -->
-  <section class="section" id="services">
+  <section class="section fade-up" id="services">
     <div class="wrap">
-      <p class="eyebrow">Services</p>
-      <h2>Three ways to work together.</h2>
-      <p style="margin-bottom: var(--space-md);">I design experiences that help people work and gather well. The work lives somewhere between team rituals, operational ease, and hospitality — the parts that don't usually get a designer.</p>
+      <div class="services-header">
+        <div>
+          <p class="eyebrow">Services</p>
+          <h2>Three ways to work together.</h2>
+        </div>
+      </div>
 
-      <div class="service-cards">
-        <a class="service-card" href="team-experience.html">
-          <span class="service-card-label">Team &amp; operations</span>
-          <h3>Team Experience Sprint</h3>
-          <p>A focused engagement for small teams that feel scattered, overloaded, or overdue for a reset. Together, we map the current experience, redesign one key workflow or gathering, and create a simple system the team can actually keep using.</p>
-          <span class="service-card-link">Learn more →</span>
+      <div class="service-list">
+        <a class="service-row" href="team-experience.html">
+          <div class="service-row-meta">
+            <span class="service-row-label">Team &amp; operations</span>
+            <p class="service-row-title">Team Experience Sprint</p>
+          </div>
+          <div class="service-row-body">
+            <p>For teams that feel scattered, overloaded, or overdue for a reset. We map the current experience, redesign one key workflow or gathering, and create something the team can keep using.</p>
+          </div>
+          <span class="service-row-arrow">→</span>
         </a>
 
-        <a class="service-card" href="offsites.html">
-          <span class="service-card-label">Facilitation &amp; design</span>
-          <h3>Offsite Design and Facilitation</h3>
-          <p>I help design offsites, retreats, and gatherings that feel considered from arrival to closing. That includes flow, energy, pacing, facilitation, and the small details that make the whole thing feel like it was meant to happen.</p>
-          <span class="service-card-link">Learn more →</span>
+        <a class="service-row" href="offsites.html">
+          <div class="service-row-meta">
+            <span class="service-row-label">Facilitation &amp; design</span>
+            <p class="service-row-title">Offsite Design &amp; Facilitation</p>
+          </div>
+          <div class="service-row-body">
+            <p>Offsites, retreats, and gatherings designed to feel considered from arrival to closing. Flow, energy, pacing, and the small details that make the whole thing feel like it was meant to happen.</p>
+          </div>
+          <span class="service-row-arrow">→</span>
         </a>
 
-        <a class="service-card" href="workflow.html">
-          <span class="service-card-label">Tools &amp; collaboration</span>
-          <h3>Workflow and Tool Experience Reset</h3>
-          <p>For teams that know tech or AI could help but don't want a heavy systems overhaul. I help simplify collaboration with low-lift tools and practical rituals so the day-to-day feels lighter and more effective.</p>
-          <span class="service-card-link">Learn more →</span>
+        <a class="service-row" href="workflow.html">
+          <div class="service-row-meta">
+            <span class="service-row-label">Tools &amp; collaboration</span>
+            <p class="service-row-title">Workflow &amp; Tool Reset</p>
+          </div>
+          <div class="service-row-body">
+            <p>For teams that know tech could help but don't want a heavy overhaul. Low-lift tools and practical rituals that make the day-to-day feel lighter and more effective.</p>
+          </div>
+          <span class="service-row-arrow">→</span>
         </a>
       </div>
     </div>
   </section>
 
   <!-- HOW I WORK -->
-  <section class="section section--sand" id="process">
+  <section class="section section--sand fade-up" id="process">
     <div class="wrap">
-      <p class="eyebrow">How I work</p>
-      <h2>A consistent process,<br>shaped to fit the moment.</h2>
-
-      <div class="steps-wrap">
-        <div class="steps">
-          <div class="step">
-            <span class="step-num">1</span>
-            <div>
-              <p class="step-title">Discover</p>
-              <p>We talk about what's actually going on: the team, the moment, the tension. I ask a lot of questions. This conversation shapes everything that follows.</p>
-            </div>
-          </div>
-          <div class="step">
-            <span class="step-num">2</span>
-            <div>
-              <p class="step-title">Design</p>
-              <p>I draft a proposed structure (agenda, workflow, system, or arc) with rationale. We refine it together until it fits your specific situation, not a template.</p>
-            </div>
-          </div>
-          <div class="step">
-            <span class="step-num">3</span>
-            <div>
-              <p class="step-title">Facilitate</p>
-              <p>I'm present for the actual experience: reading the room, adjusting in real time, keeping things grounded so participants can focus on the work.</p>
-            </div>
-          </div>
-          <div class="step">
-            <span class="step-num">4</span>
-            <div>
-              <p class="step-title">Hand off</p>
-              <p>A synthesis, a lightweight system, or a ritual to carry the work forward. Every engagement ends with something that keeps working after I leave.</p>
-            </div>
-          </div>
+      <div class="process-layout">
+        <div class="process-label">
+          <p class="eyebrow">How I work</p>
+          <h2>A specific process for a specific situation.</h2>
+        </div>
+        <div class="process-text">
+          <p>Every engagement starts with a real conversation about what's actually going on: the team, the moment, the tension. I ask a lot of questions. From there I draft something shaped to that specific situation — not a template — then I'm present for the actual experience, reading the room and adjusting in real time.</p>
+          <p>Every engagement ends with something that keeps working after I leave. A synthesis, a lightweight system, or a ritual that carries the work forward.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- WHO IT'S FOR -->
-  <section class="section" id="who">
+  <!-- SELECTED WORK -->
+  <section class="section fade-up" id="work-preview">
     <div class="wrap">
-      <p class="eyebrow">Who I work with</p>
-      <h2>If the work involves people,<br>process, or experience, we might be a fit.</h2>
-
-      <div class="two-col" style="margin-top: var(--space-md);">
-        <div>
-          <ul class="dash-list">
-            <li>Small teams navigating coordination or culture challenges</li>
-            <li>Wedding planners and event-based businesses that need smoother operations</li>
-          </ul>
-        </div>
-        <div>
-          <ul class="dash-list">
-            <li>Small business owners ready to improve how they work and serve clients</li>
-            <li>Early-stage teams building their working culture from the ground up</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SELECTED WORK PREVIEW -->
-  <section class="section section--sand" id="work-preview">
-    <div class="wrap">
-      <p class="eyebrow">Selected work</p>
-      <h2>A few things worth showing.</h2>
-
-      <div class="service-cards" style="margin-top: var(--space-md);">
-        <div class="service-card">
-          <span class="service-card-label">Team experience</span>
-          <h3>Two-day offsite for a small creative team</h3>
-          <p>Designed and facilitated a gathering for a team of 18 that had been running hard and needed to realign. Left with clearer priorities and three rituals they still use.</p>
-        </div>
-        <div class="service-card">
-          <span class="service-card-label">Workflow reset</span>
-          <h3>Operations overhaul for a boutique event studio</h3>
-          <p>Rebuilt the client intake, project tracking, and communication systems for a 6-person event firm. Reduced coordination time by half in the first month.</p>
-        </div>
-        <div class="service-card">
-          <span class="service-card-label">Client experience</span>
-          <h3>Onboarding redesign for an independent consultant</h3>
-          <p>Mapped and rebuilt the end-to-end client journey from first inquiry to final delivery, so the process felt as considered as the work itself.</p>
-        </div>
+      <div class="work-preview-header">
+        <p class="eyebrow">Selected work</p>
+        <a class="btn-secondary" href="projects.html">See all projects →</a>
       </div>
 
-      <p class="invite-line">
-        <a href="projects.html">See all projects →</a>
-      </p>
+      <div class="featured-work">
+        <div class="featured-body">
+          <span class="featured-label">Team experience</span>
+          <p class="featured-title">Two-day offsite for a small creative team</p>
+          <p>Designed and facilitated a gathering for a team of 18 that had been running hard and needed to realign. We mapped where the friction was, redesigned two recurring rituals, and built a decision-making framework the team could use after I left. Three rituals are still in use.</p>
+        </div>
+
+        <div class="featured-aside">
+          <div class="aside-item">
+            <span class="aside-item-label">Workflow reset</span>
+            <p class="aside-item-title">Operations overhaul for a boutique event studio</p>
+            <p class="aside-item-body">Rebuilt client intake, project tracking, and communications for a 6-person firm. Coordination time cut in half in the first month.</p>
+          </div>
+          <div class="aside-item">
+            <span class="aside-item-label">Client experience</span>
+            <p class="aside-item-title">Onboarding redesign for an independent consultant</p>
+            <p class="aside-item-body">Rebuilt the end-to-end client journey from first inquiry to final delivery, so the process felt as considered as the work itself.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- ABOUT -->
-  <section class="section" id="about">
+  <section class="section section--sand fade-up" id="about">
     <div class="wrap">
       <div class="about-grid">
-        <div class="about-photo-col">
+        <div>
           <img class="about-photo" src="jasmine.jpg" alt="Jasmine Sabio" />
         </div>
         <div class="about-text-col">
           <p class="eyebrow">About</p>
-          <h2>I'm Jasmine, and I care<br>about how things land.</h2>
+          <h2>I care about how things land.</h2>
           <p>Across product work, team collaboration, events, and creative projects, I keep returning to the same question: <em>how does this feel for the people inside it?</em></p>
-          <p>My practice is rooted in experience design: shaping workflows, gatherings, and touchpoints so they actually feel good to be inside of. I work best with small teams where trust travels fast and the work can be specific to what's actually needed.</p>
+          <p>My practice is rooted in experience design: shaping workflows, gatherings, and touchpoints so they feel good to be inside of. I work best with small teams where trust travels fast and the work can be specific to what's actually needed.</p>
           <p>I also DJ — reading a room, tracking the energy, and shaping what a moment becomes. <a href="https://soundcloud.com/jasminesabio" target="_blank" rel="noopener">Listen on SoundCloud →</a></p>
         </div>
       </div>
@@ -830,26 +708,33 @@ footer {
   <!-- CONTACT -->
   <section class="section section--contact" id="contact">
     <div class="wrap">
-      <p class="eyebrow">Work together</p>
-      <h2>Let's figure out<br>if this is a fit.</h2>
-
-      <div class="contact-wrap">
-        <p>The first conversation is just a conversation. No pitch, no proposal until it makes sense.</p>
-
-        <ul class="prompts">
-          <li>What's going on with your team or business right now?</li>
-          <li>What would feel different if the experience were working well?</li>
-          <li>What kind of support are you looking for?</li>
-        </ul>
-
-        <a class="email-link" href="mailto:jasmine.operations@gmail.com">jasmine.operations@gmail.com</a>
-        <p class="contact-note">I typically respond within two business days.</p>
+      <div class="contact-layout">
+        <div class="contact-left">
+          <p class="eyebrow">Work together</p>
+          <h2>Let's figure out if this is a fit.</h2>
+          <p>The first conversation is just a conversation. No pitch, no proposal until it makes sense.</p>
+          <ul class="prompts" style="margin-top: 1.5rem;">
+            <li>What's going on with your team or business right now?</li>
+            <li>What would feel different if the experience were working well?</li>
+            <li>What kind of support are you looking for?</li>
+          </ul>
+        </div>
+        <div class="contact-right">
+          <a class="email-link" href="mailto:jasmine.operations@gmail.com">jasmine.operations@gmail.com</a>
+          <p class="contact-note">I typically respond within two business days.</p>
+          <div style="margin-top: 2rem;">
+            <a class="btn-primary" href="mailto:jasmine.operations@gmail.com">Book an intro call</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
+    <div class="wrap">
+      <p class="footer-signoff">Every experience is worth designing well.</p>
+    </div>
     <div class="wrap footer-row">
       <a class="footer-wordmark" href="index.html">Studio Jas</a>
       <ul class="footer-links">
@@ -864,5 +749,11 @@ footer {
     </div>
   </footer>
 
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>

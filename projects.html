@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects — Studio Jas</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@400;500;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
 
 :root {
   --cream:   #fdfaf5;
@@ -20,14 +20,14 @@
   --serif: 'Lora', Georgia, serif;
   --sans:  'DM Sans', 'Helvetica Neue', sans-serif;
 
-  --text-max: 64ch;
-  --page-max: 840px;
-  --pad-x: 2rem;
+  --page-max: 1040px;
+  --pad-x: 2.5rem;
+  --text-max: 60ch;
 
   --space-xs: 0.75rem;
   --space-sm: 1.25rem;
-  --space-md: 2.5rem;
-  --space-lg: 4.5rem;
+  --space-md: 3rem;
+  --space-lg: 6rem;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -39,6 +39,7 @@ body {
   font-family: var(--sans);
   font-size: 1.0625rem;
   line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
 }
 
 img { display: block; max-width: 100%; }
@@ -54,20 +55,18 @@ a:hover { color: var(--bark); }
 .section { padding-block: var(--space-lg); }
 .section--sand { background: var(--sand); }
 
-.section + .section:not(.section--sand) {
-  border-top: 1px solid var(--clay-lt);
-}
+.section + .section { border-top: 1px solid var(--clay-lt); }
 
 h1, h2, h3 {
   font-family: var(--serif);
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.15;
   color: var(--bark);
 }
 
-h1 { font-size: clamp(2rem, 5.5vw, 3.1rem); }
-h2 { font-size: clamp(1.4rem, 3.5vw, 2rem); margin-bottom: var(--space-sm); }
-h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+h1 { font-size: clamp(2.5rem, 6vw, 4rem); }
+h2 { font-size: clamp(1.5rem, 3.5vw, 2.1rem); margin-bottom: var(--space-sm); }
+h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
 
 p { max-width: var(--text-max); }
 p + p { margin-top: 1rem; }
@@ -82,6 +81,7 @@ p + p { margin-top: 1rem; }
   margin-bottom: 0.5rem;
 }
 
+/* ── NAV ── */
 nav {
   position: sticky;
   top: 0;
@@ -113,7 +113,6 @@ nav {
   list-style: none;
   align-items: center;
 }
-
 .nav-links a {
   font-size: 0.8125rem;
   font-weight: 500;
@@ -125,65 +124,103 @@ nav {
 .nav-links a:hover { color: var(--clay); }
 .nav-links a.active { color: var(--bark); }
 
-.page-hero { padding-block: 4rem 3rem; }
-.page-hero h1 { max-width: 24ch; margin-bottom: 1rem; }
+/* ── HERO ── */
+.page-hero {
+  padding-block: 5.5rem 4.5rem;
+  border-bottom: 1px solid var(--clay-lt);
+}
+
+.page-hero-inner {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 5rem;
+  align-items: end;
+}
+
+.page-hero h1 { max-width: 22ch; }
+
 .page-hero-sub {
   font-family: var(--serif);
   font-style: italic;
   font-size: 1.05rem;
   color: var(--moss);
-  max-width: 52ch;
+  max-width: 42ch;
   line-height: 1.7;
+  padding-bottom: 0.5rem;
 }
 
-/* PROJECT CARDS */
+.hero-count {
+  margin-top: 1.5rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fog);
+  max-width: none;
+}
+
+/* ── PROJECT CARDS ── */
 .project-list {
   display: flex;
   flex-direction: column;
-  gap: 3.5rem;
 }
 
 .project-card {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: 3rem;
+  gap: 4rem;
   align-items: start;
+  padding-block: 4.5rem;
+  border-bottom: 1px solid var(--clay-lt);
 }
+.project-card:first-child { padding-top: 0; }
+.project-card:last-child { border-bottom: none; }
 
 .project-meta {
   position: sticky;
   top: 5rem;
 }
 
+.project-number {
+  font-family: var(--serif);
+  font-size: 3.5rem;
+  font-weight: 400;
+  color: var(--clay-lt);
+  opacity: 0.35;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
 .project-tag {
   display: inline-block;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--clay);
+  color: var(--fog);
   margin-bottom: 0.75rem;
 }
 
 .project-title {
   font-family: var(--serif);
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 400;
   color: var(--bark);
-  line-height: 1.3;
-  margin-bottom: 0.5rem;
+  line-height: 1.25;
+  margin-bottom: 1rem;
 }
 
 .project-links {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.55rem;
   margin-top: 1.25rem;
 }
 
 .project-link {
   display: inline-block;
-  font-size: 0.8rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   color: var(--clay);
   text-decoration: none;
@@ -194,6 +231,25 @@ nav {
 }
 .project-link:hover { color: var(--bark); border-color: var(--bark); }
 
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 1.5rem;
+  list-style: none;
+}
+
+.skill-list li {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--moss);
+  background: var(--sand);
+  border: 1px solid var(--clay-lt);
+  border-radius: 2px;
+  padding: 0.2rem 0.6rem;
+}
+
 .project-body p {
   font-size: 0.9625rem;
   line-height: 1.7;
@@ -202,34 +258,62 @@ nav {
 
 .project-body p + p { margin-top: 0.875rem; }
 
-.skill-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 1.5rem;
-  list-style: none;
+/* ── INLINE PHOTOS ── */
+.project-photos {
+  margin-top: 1.75rem;
+  display: grid;
+  gap: 0.375rem;
+  border-radius: 3px;
+  overflow: hidden;
 }
 
-.skill-list li {
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  color: var(--moss);
-  background: var(--sand);
-  border: 1px solid var(--clay-lt);
+/* 3-image: first spans full width, two below side by side */
+.project-photos--3 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.project-photos--3 .photo-main {
+  grid-column: 1 / 3;
+}
+
+/* 4-image: first spans full width, three below side by side */
+.project-photos--4 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.project-photos--4 .photo-main {
+  grid-column: 1 / 4;
+}
+
+.project-photos img {
+  width: 100%;
+  height: auto;
+  display: block;
+  cursor: pointer;
   border-radius: 2px;
-  padding: 0.25rem 0.65rem;
+  transition: opacity 0.2s;
 }
 
-/* EXPERIENCE STRIP */
+.project-photos img:hover { opacity: 0.82; }
+
+/* scroll fade-in */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── EXPERIENCE STRIP ── */
 .xp-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: 2.5rem;
   margin-top: var(--space-md);
 }
-
-.xp-item {}
 
 .xp-title {
   font-family: var(--serif);
@@ -242,14 +326,15 @@ nav {
 .xp-body {
   font-size: 0.9rem;
   color: var(--fog);
-  line-height: 1.6;
-  max-width: 36ch;
+  line-height: 1.65;
+  max-width: 38ch;
 }
 
+/* ── FOOTER ── */
 footer {
   background: var(--cream);
   padding-block: 2rem;
-  border-top: 1px solid rgba(141,181,173,0.25);
+  border-top: 1px solid var(--clay-lt);
 }
 
 .footer-row {
@@ -274,13 +359,6 @@ footer {
 .footer-links a { font-size: 0.78rem; color: var(--fog); text-decoration: none; transition: color 0.15s; }
 .footer-links a:hover { color: var(--clay); }
 
-@media (max-width: 700px) {
-  .nav-links { display: none; }
-  .project-card { grid-template-columns: 1fr; gap: 1.5rem; }
-  .project-meta { position: static; }
-  .xp-grid { grid-template-columns: 1fr; }
-}
-
 /* ── LIGHTBOX ── */
 .lightbox-overlay {
   display: none;
@@ -293,13 +371,11 @@ footer {
   padding: 2rem;
 }
 
-.lightbox-overlay.open {
-  display: flex;
-}
+.lightbox-overlay.open { display: flex; }
 
 .lightbox {
   position: relative;
-  max-width: 860px;
+  max-width: 900px;
   width: 100%;
   background: var(--cream);
   border-radius: 4px;
@@ -320,10 +396,7 @@ footer {
   color: var(--bark);
 }
 
-.lightbox-counter {
-  font-size: 0.78rem;
-  color: var(--fog);
-}
+.lightbox-counter { font-size: 0.78rem; color: var(--fog); }
 
 .lightbox-close {
   background: none;
@@ -354,9 +427,7 @@ footer {
   display: none;
 }
 
-.lightbox-stage img.active {
-  display: block;
-}
+.lightbox-stage img.active { display: block; }
 
 .lightbox-btn {
   position: absolute;
@@ -402,6 +473,47 @@ footer {
   opacity: 1;
   border-color: var(--clay);
 }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 780px) {
+  .nav-links { display: none; }
+  .page-hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .page-hero { padding-block: 3.5rem 3rem; }
+  .project-card { grid-template-columns: 1fr; gap: 1.5rem; }
+  .project-meta { position: static; }
+  .project-photos--3 { grid-template-columns: 1fr 1fr; }
+  .project-photos--3 .photo-main { grid-column: 1 / 3; }
+  .xp-grid { grid-template-columns: 1fr; }
+}
+
+/* ── DESIGN TOGGLE ── */
+.nav-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  background: var(--sand);
+  border: 1px solid var(--clay-lt);
+  border-radius: 999px;
+  padding: 0.2rem 0.25rem;
+  margin-left: 1.5rem;
+}
+.nav-toggle a {
+  display: inline-block;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  color: var(--fog);
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.nav-toggle a:hover { color: var(--bark); }
+.nav-toggle a.active {
+  background: var(--bark);
+  color: var(--cream);
+}
   </style>
 </head>
 <body>
@@ -416,17 +528,23 @@ footer {
         <li><a href="projects.html" class="active">Projects</a></li>
         <li><a href="index.html#contact">Contact</a></li>
       </ul>
+      <div class="nav-toggle"><a href="../before/projects.html">Design v1</a><a href="projects.html" class="active">Design v2</a></div>
     </div>
   </nav>
 
   <!-- HERO -->
   <section class="section page-hero">
     <div class="wrap">
-      <p class="eyebrow">Projects</p>
-      <h1>Things I built to solve real problems.</h1>
-      <p class="page-hero-sub">
-        Side projects, vibe-coded tools, and experience systems built for myself and people I care about. Each one started with a problem worth solving.
-      </p>
+      <div class="page-hero-inner">
+        <div>
+          <p class="eyebrow">Projects</p>
+          <h1>Things I built to solve real problems.</h1>
+        </div>
+        <div>
+          <p class="page-hero-sub">Side projects, vibe-coded tools, and experience systems built for myself and people I care about. Each one started with a problem worth solving.</p>
+          <p class="hero-count">04 projects</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -435,12 +553,13 @@ footer {
     <div class="wrap">
       <div class="project-list">
 
-        <div class="project-card">
+        <!-- AFTERGLOW -->
+        <div class="project-card fade-up">
           <div class="project-meta">
+            <p class="project-number">01</p>
             <span class="project-tag">Music &amp; workflow</span>
             <p class="project-title">Afterglow</p>
             <div class="project-links">
-              <a class="project-link" href="#" onclick="openLightbox(event, 'afterglow')">View photos →</a>
               <a class="project-link" href="https://afterglow-wine.vercel.app/" target="_blank" rel="noopener">Live demo →</a>
               <a class="project-link" href="https://github.com/jasminesabio/afterglow" target="_blank" rel="noopener">GitHub →</a>
               <a class="project-link" href="https://musichackspace.org/events/hackathon-lisbon-spring-2026/projects/6" target="_blank" rel="noopener">Hackathon page →</a>
@@ -456,14 +575,21 @@ footer {
               <li>Workflow design</li>
               <li>Creative process tooling</li>
             </ul>
+            <div class="project-photos project-photos--4">
+              <img class="photo-main" src="images/afterglow/tagging UI.png" alt="Tagging interface" onclick="openLightbox(event,'afterglow',0)" />
+              <img class="photo-side" src="images/afterglow/talk.jpg"        alt="Hackathon talk"    onclick="openLightbox(event,'afterglow',1)" />
+              <img class="photo-side" src="images/afterglow/graph.JPG"       alt="Affinity graph"   onclick="openLightbox(event,'afterglow',2)" />
+              <img class="photo-side" src="images/afterglow/graph UI.png"    alt="Graph UI"         onclick="openLightbox(event,'afterglow',3)" />
+            </div>
           </div>
         </div>
 
-        <div class="project-card">
+        <!-- WEDDING -->
+        <div class="project-card fade-up">
           <div class="project-meta">
+            <p class="project-number">02</p>
             <span class="project-tag">Event &amp; logistics</span>
             <p class="project-title">Wedding Website</p>
-            <a class="project-link" href="#" onclick="openLightbox(event, 'wedding')">View project →</a>
           </div>
           <div class="project-body">
             <p>My husband and I built two separate sites for our wedding: one for guests, one for our planners. The information each audience needed was completely different, so keeping it together would have served neither well.</p>
@@ -475,11 +601,18 @@ footer {
               <li>Logistics UX</li>
               <li>Real-time coordination</li>
             </ul>
+            <div class="project-photos project-photos--3">
+              <img class="photo-main" src="images/wedding/home page.png"         alt="Home page"          onclick="openLightbox(event,'wedding',0)" />
+              <img class="photo-side" src="images/wedding/website directory.png"  alt="Website directory"  onclick="openLightbox(event,'wedding',1)" />
+              <img class="photo-side" src="images/wedding/wedding itinerary.png"  alt="Wedding itinerary"  onclick="openLightbox(event,'wedding',2)" />
+            </div>
           </div>
         </div>
 
-        <div class="project-card">
+        <!-- CLIMATE INTELLIGENCE HUB -->
+        <div class="project-card fade-up">
           <div class="project-meta">
+            <p class="project-number">03</p>
             <span class="project-tag">Learning &amp; resources</span>
             <p class="project-title">Climate Intelligence Hub</p>
             <div class="project-links">
@@ -498,11 +631,12 @@ footer {
           </div>
         </div>
 
-        <div class="project-card">
+        <!-- CONSTELLACIONES -->
+        <div class="project-card fade-up">
           <div class="project-meta">
+            <p class="project-number">04</p>
             <span class="project-tag">Travel &amp; community</span>
             <p class="project-title">Constellaciones</p>
-            <a class="project-link" href="#" onclick="openLightbox(event, 'constelaciones')">View project →</a>
           </div>
           <div class="project-body">
             <p>A group of friends was traveling across Europe the same summer, different cities, different dates, and there was no good way to see who was where and when. Constellaciones maps everyone's travel schedules so you can spot where you overlap.</p>
@@ -513,6 +647,11 @@ footer {
               <li>Marketplace UX</li>
               <li>Event logistics</li>
             </ul>
+            <div class="project-photos project-photos--3">
+              <img class="photo-main" src="images/constelaciones/home.png"            alt="Home"            onclick="openLightbox(event,'constelaciones',0)" />
+              <img class="photo-side" src="images/constelaciones/crossovers.png"      alt="Crossovers"      onclick="openLightbox(event,'constelaciones',1)" />
+              <img class="photo-side" src="images/constelaciones/recommendations.png" alt="Recommendations" onclick="openLightbox(event,'constelaciones',2)" />
+            </div>
           </div>
         </div>
 
@@ -561,7 +700,6 @@ footer {
     </div>
   </footer>
 
-
   <!-- LIGHTBOX -->
   <div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true">
     <div class="lightbox">
@@ -592,9 +730,9 @@ footer {
       wedding: {
         title: 'Wedding Website',
         images: [
-          { src: 'images/wedding/home page.png',          alt: 'Home page' },
-          { src: 'images/wedding/website directory.png',  alt: 'Website directory' },
-          { src: 'images/wedding/wedding itinerary.png',  alt: 'Wedding itinerary' },
+          { src: 'images/wedding/home page.png',         alt: 'Home page' },
+          { src: 'images/wedding/website directory.png', alt: 'Website directory' },
+          { src: 'images/wedding/wedding itinerary.png', alt: 'Wedding itinerary' },
         ]
       },
       constelaciones: {
@@ -604,31 +742,22 @@ footer {
           { src: 'images/constelaciones/crossovers.png',      alt: 'Crossovers' },
           { src: 'images/constelaciones/recommendations.png', alt: 'Recommendations' },
         ]
-      },
-      pregnancy: {
-        title: 'Pregnancy Tracker',
-        images: [
-          { src: 'images/pregnancy tracker/nav bar.png',             alt: 'Navigation' },
-          { src: 'images/pregnancy tracker/fitness page.png',        alt: 'Fitness page' },
-          { src: 'images/pregnancy tracker/before baby todo list.png', alt: 'Before baby to-do list' },
-        ]
       }
     };
 
     let current = 0;
     let activeAlbum = null;
 
-    function openLightbox(e, albumKey) {
+    function openLightbox(e, albumKey, startIndex) {
       e.preventDefault();
       activeAlbum = albums[albumKey];
-      current = 0;
+      current = startIndex || 0;
 
       document.getElementById('lb-title').textContent = activeAlbum.title;
 
       const stage = document.getElementById('lb-stage');
       const thumbsEl = document.getElementById('lb-thumbs');
 
-      // Remove old images/thumbs (keep nav buttons)
       stage.querySelectorAll('img').forEach(el => el.remove());
       thumbsEl.innerHTML = '';
 
@@ -636,13 +765,13 @@ footer {
         const el = document.createElement('img');
         el.src = img.src;
         el.alt = img.alt;
-        if (i === 0) el.classList.add('active');
+        if (i === current) el.classList.add('active');
         stage.insertBefore(el, stage.querySelector('.lightbox-btn--prev'));
 
         const thumb = document.createElement('img');
         thumb.src = img.src;
         thumb.alt = img.alt;
-        thumb.className = 'lightbox-thumb' + (i === 0 ? ' active' : '');
+        thumb.className = 'lightbox-thumb' + (i === current ? ' active' : '');
         thumb.onclick = () => goToSlide(i);
         thumbsEl.appendChild(thumb);
       });
@@ -663,7 +792,7 @@ footer {
     }
 
     function goToSlide(n) {
-      const imgs = document.querySelectorAll('#lb-stage img');
+      const imgs   = document.querySelectorAll('#lb-stage img');
       const thumbs = document.querySelectorAll('#lb-thumbs .lightbox-thumb');
       imgs[current].classList.remove('active');
       thumbs[current].classList.remove('active');
@@ -687,6 +816,11 @@ footer {
       if (e.key === 'ArrowLeft') changeSlide(-1);
       if (e.key === 'ArrowRight') changeSlide(1);
     });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
   </script>
 
 </body>
