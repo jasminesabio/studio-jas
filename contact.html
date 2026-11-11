@@ -3,315 +3,52 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="refresh" content="0; url=index.html#contact" />
   <title>Contact — Studio Jas</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@400;500;600&display=swap');
-
-:root {
-  --cream:   #fdfaf5;
-  --sand:    #f5f0e8;
-  --clay:    #3b5249;
-  --clay-lt: #8db5ad;
-  --bark:    #3d2f26;
-  --moss:    #6b7c5e;
-  --fog:     #8e8e88;
-  --ink:     #2a2320;
-
-  --serif: 'Lora', Georgia, serif;
-  --sans:  'DM Sans', 'Helvetica Neue', sans-serif;
-
-  --text-max: 64ch;
-  --page-max: 840px;
-  --pad-x: 2rem;
-
-  --space-xs: 0.75rem;
-  --space-sm: 1.25rem;
-  --space-md: 2.5rem;
-  --space-lg: 4.5rem;
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--cream);
-  color: var(--ink);
-  font-family: var(--sans);
-  font-size: 1.0625rem;
-  line-height: 1.75;
-}
-
-img { display: block; max-width: 100%; }
-a { color: var(--clay); text-decoration: underline; text-underline-offset: 3px; }
-a:hover { color: var(--bark); }
-
-.wrap {
-  max-width: var(--page-max);
-  margin-inline: auto;
-  padding-inline: var(--pad-x);
-}
-
-.section { padding-block: var(--space-lg); }
-.section--sand { background: var(--sand); }
-.section--dark { background: var(--bark); }
-
-.section--dark h2,
-.section--dark p,
-.section--dark .eyebrow { color: var(--clay-lt); }
-.section--dark h2 { color: var(--sand); }
-.section--dark .contact-note { color: var(--fog); }
-
-h1, h2 {
-  font-family: var(--serif);
-  font-weight: 400;
-  line-height: 1.2;
-  color: var(--bark);
-}
-
-h1 { font-size: clamp(2.4rem, 6.5vw, 4rem); }
-h2 { font-size: clamp(1.4rem, 3.5vw, 2rem); margin-bottom: var(--space-sm); }
-
-p { max-width: var(--text-max); }
-p + p { margin-top: 1rem; }
-
-.eyebrow {
-  font-family: var(--sans);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--fog);
-  margin-bottom: 0.5rem;
-}
-
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(253, 250, 245, 0.95);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--clay-lt);
-}
-
-.nav-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-block: 1.1rem;
-}
-
-.nav-wordmark {
-  font-family: var(--serif);
-  font-size: 0.9375rem;
-  color: var(--bark);
-  text-decoration: none;
-  letter-spacing: 0.01em;
-}
-.nav-wordmark:hover { color: var(--clay); }
-
-.nav-links {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-  align-items: center;
-}
-
-.nav-links a {
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--fog);
-  text-decoration: none;
-  letter-spacing: 0.03em;
-  transition: color 0.15s;
-}
-.nav-links a:hover { color: var(--clay); }
-.nav-links a.active { color: var(--bark); }
-
-.has-dropdown { position: relative; }
-.dropdown {
-  display: none;
-  position: absolute;
-  top: calc(100% + 0.75rem);
-  left: -1rem;
-  background: var(--cream);
-  border: 1px solid var(--clay-lt);
-  border-radius: 4px;
-  padding: 0.5rem 0;
-  min-width: 192px;
-  list-style: none;
-  box-shadow: 0 6px 20px rgba(42,35,32,0.1);
-  z-index: 200;
-}
-.has-dropdown:hover .dropdown { display: block; }
-.dropdown li a {
-  display: block;
-  padding: 0.55rem 1.25rem;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--ink);
-  text-decoration: none;
-  letter-spacing: 0.02em;
-  transition: color 0.15s;
-}
-.dropdown li a:hover { color: var(--clay); }
-.dropdown-toggle::after {
-  content: ' ↓';
-  font-size: 0.65rem;
-  letter-spacing: 0;
-  opacity: 0.5;
-  margin-left: 1px;
-}
-
-/* Contact layout */
-.contact-page {
-  min-height: 70vh;
-  padding-block: var(--space-lg);
-  background: var(--bark);
-}
-
-.contact-page .eyebrow { color: var(--clay-lt); }
-.contact-page h1 { color: var(--sand); margin-bottom: 1.5rem; }
-.contact-page p { color: var(--clay-lt); }
-
-.contact-body {
-  max-width: 54ch;
-  margin-top: var(--space-md);
-}
-
-.prompts {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.875rem;
-  padding: 1.75rem;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(141,181,173,0.25);
-  border-radius: 4px;
-  margin-bottom: var(--space-md);
-}
-
-.prompts li {
-  padding-left: 1.375rem;
-  position: relative;
-  font-size: 0.9375rem;
-  color: var(--clay-lt);
-  line-height: 1.55;
-}
-
-.prompts li::before {
-  content: '→';
-  position: absolute;
-  left: 0;
-  color: var(--clay-lt);
-  font-size: 0.8125rem;
-  top: 0.12em;
-}
-
-.email-link {
-  display: inline-block;
-  font-family: var(--serif);
-  font-size: 1.5rem;
-  color: var(--sand);
-  text-decoration: none;
-  border-bottom: 2px solid rgba(141,181,173,0.4);
-  padding-bottom: 3px;
-  transition: color 0.15s, border-color 0.15s;
-}
-.email-link:hover { color: var(--clay-lt); border-color: var(--clay-lt); }
-
-.contact-note {
-  margin-top: 1rem;
-  font-size: 0.85rem;
-  color: var(--fog);
-  max-width: none;
-}
-
-footer {
-  background: var(--bark);
-  padding-block: 2rem;
-  border-top: 1px solid rgba(141,181,173,0.15);
-}
-
-.footer-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.footer-wordmark {
-  font-family: var(--serif);
-  font-size: 0.9375rem;
-  color: var(--sand);
-  text-decoration: none;
-}
-.footer-wordmark:hover { color: var(--clay-lt); }
-
-.footer-tagline { font-size: 0.78rem; color: var(--fog); max-width: none; }
-.footer-links { display: flex; gap: 1.5rem; list-style: none; }
-.footer-links a { font-size: 0.78rem; color: var(--fog); text-decoration: none; transition: color 0.15s; }
-.footer-links a:hover { color: var(--clay-lt); }
-
-@media (max-width: 700px) {
-  .nav-links { display: none; }
-  .contact-page { padding-block: 3.5rem; }
-}
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
   <nav>
     <div class="wrap nav-row">
-      <a class="nav-wordmark" href="index.html">Studio Jas</a>
+      <a class="nav-wordmark" href="/">Studio Jas</a>
       <ul class="nav-links">
-        <li class="has-dropdown">
-          <a href="offsites.html" class="dropdown-toggle">Services</a>
-          <ul class="dropdown">
-            <li><a href="offsites.html">Offsite Design</a></li>
-            <li><a href="workflow.html">Workflow Design</a></li>
-            <li><a href="team-experience.html">Client Experience</a></li>
-          </ul>
-        </li>
-        <li><a href="work.html">Work</a></li>
+        <li><a href="/">Projects</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="https://jasminesabio.substack.com/" target="_blank" rel="noopener">Jaslist ↗</a></li>
       </ul>
     </div>
   </nav>
 
-  <section class="contact-page">
-    <div class="wrap">
-      <p class="eyebrow">Work together</p>
-      <h1>Let's figure out<br>if this is a fit.</h1>
-
-      <div class="contact-body">
-        <p>The first conversation is just a conversation. No pitch, no proposal until it makes sense. Tell me a little about what you're working on.</p>
-
-        <ul class="prompts" style="margin-top: var(--space-md);">
-          <li>What's the situation — team, moment, what's getting in the way?</li>
-          <li>What kind of help are you looking for?</li>
-          <li>What would make this feel like time well spent?</li>
-        </ul>
-
-        <a class="email-link" href="mailto:jasmine.operations@gmail.com">jasmine.operations@gmail.com</a>
-        <p class="contact-note">I typically respond within two business days.</p>
+  <main>
+    <section class="section">
+      <div class="wrap">
+        <div class="contact-layout">
+          <div class="contact-left">
+            <p class="eyebrow">Stay in touch</p>
+            <h1>Follow along on Jaslist.</h1>
+            <p>New projects show up on Jaslist first, along with how I built them, what I'd change &amp; what I'm building next.</p>
+            <p>Want to say hi? Reply to any post or leave a comment. That's the best way to reach me.</p>
+          </div>
+          <div class="subscribe-card">
+            <iframe src="https://jasminesabio.substack.com/embed" title="Subscribe to Jaslist" scrolling="no" loading="lazy"></iframe>
+            <p class="subscribe-note">Or <a href="https://jasminesabio.substack.com/subscribe" target="_blank" rel="noopener">subscribe on Substack →</a></p>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <footer>
     <div class="wrap footer-row">
-      <a class="footer-wordmark" href="index.html">Studio Jas</a>
+      <a class="footer-wordmark" href="/">Studio Jas</a>
       <ul class="footer-links">
-        <li><a href="offsites.html">Offsite Design</a></li>
-        <li><a href="workflow.html">Workflow Design</a></li>
-        <li><a href="work.html">Work</a></li>
+        <li><a href="/">Projects</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
+        <li><a href="https://jasminesabio.substack.com/" target="_blank" rel="noopener">Jaslist</a></li>
       </ul>
-      <p class="footer-tagline">Experience design practice &nbsp;·&nbsp; © 2026</p>
+      <p class="footer-tagline">Things I've built with AI &nbsp;·&nbsp; © 2026</p>
     </div>
   </footer>
 

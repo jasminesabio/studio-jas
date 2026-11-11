@@ -2,3 +2,10 @@
 
 # Local Netlify folder
 .netlify
+
+# Not part of the site
+*.pdf
+Claude outputs/
+constelaciones/
+constelaciones-build-prompt.md
+.claude/

@@ -3,757 +3,274 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Studio Jas — Experience Design Practice</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
-
-:root {
-  --cream:   #fdfaf5;
-  --sand:    #f5f0e8;
-  --clay:    #3b5249;
-  --clay-lt: #8db5ad;
-  --bark:    #3d2f26;
-  --moss:    #6b7c5e;
-  --fog:     #8e8e88;
-  --ink:     #2a2320;
-
-  --serif: 'Lora', Georgia, serif;
-  --sans:  'DM Sans', 'Helvetica Neue', sans-serif;
-
-  --page-max: 1040px;
-  --pad-x: 2.5rem;
-  --text-max: 60ch;
-
-  --space-xs: 0.75rem;
-  --space-sm: 1.25rem;
-  --space-md: 3rem;
-  --space-lg: 6rem;
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--cream);
-  color: var(--ink);
-  font-family: var(--sans);
-  font-size: 1.0625rem;
-  line-height: 1.75;
-  -webkit-font-smoothing: antialiased;
-}
-
-img { display: block; max-width: 100%; }
-a { color: var(--clay); text-decoration: underline; text-underline-offset: 3px; }
-a:hover { color: var(--bark); }
-
-.wrap {
-  max-width: var(--page-max);
-  margin-inline: auto;
-  padding-inline: var(--pad-x);
-}
-
-.section { padding-block: var(--space-lg); }
-.section--sand { background: var(--sand); }
-
-.section + .section:not(.section--sand) {
-  border-top: 1px solid var(--clay-lt);
-}
-.section--sand + .section--sand {
-  border-top: 1px solid var(--clay-lt);
-}
-
-/* ── TYPOGRAPHY ── */
-h1 {
-  font-family: var(--serif);
-  font-weight: 400;
-  line-height: 1.05;
-  color: var(--bark);
-  font-size: clamp(3rem, 8vw, 6rem);
-  letter-spacing: -0.01em;
-}
-
-h2 {
-  font-family: var(--serif);
-  font-weight: 400;
-  line-height: 1.2;
-  color: var(--bark);
-  font-size: clamp(1.5rem, 3.5vw, 2.1rem);
-}
-
-p { max-width: var(--text-max); }
-p + p { margin-top: 1rem; }
-
-.eyebrow {
-  font-family: var(--sans);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--fog);
-  margin-bottom: 0.5rem;
-}
-
-/* ── NAV ── */
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(253, 250, 245, 0.95);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--clay-lt);
-}
-
-.nav-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-block: 1.1rem;
-}
-
-.nav-wordmark {
-  font-family: var(--serif);
-  font-size: 0.9375rem;
-  color: var(--bark);
-  text-decoration: none;
-  letter-spacing: 0.01em;
-}
-.nav-wordmark:hover { color: var(--clay); }
-
-.nav-links {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-  align-items: center;
-}
-
-.nav-links a {
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--fog);
-  text-decoration: none;
-  letter-spacing: 0.03em;
-  transition: color 0.15s;
-}
-.nav-links a:hover { color: var(--clay); }
-.nav-links a.active { color: var(--bark); }
-
-/* ── HERO ── */
-.hero {
-  padding-block: 6rem 5rem;
-  background: var(--cream);
-  border-bottom: 1px solid var(--clay-lt);
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 3fr 2fr;
-  gap: 5rem;
-  align-items: end;
-}
-
-.hero-left .eyebrow {
-  margin-bottom: 1.5rem;
-}
-
-.hero-right {
-  padding-bottom: 0.5rem;
-}
-
-.hero-sub {
-  font-size: 1.05rem;
-  color: var(--moss);
-  line-height: 1.7;
-  margin-bottom: var(--space-sm);
-  max-width: 42ch;
-}
-
-.cred-strip {
-  margin-top: 1.5rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.03em;
-  color: var(--fog);
-  max-width: none;
-}
-
-/* ── BUTTONS ── */
-.cta-row {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-}
-
-.btn-primary {
-  display: inline-block;
-  background: var(--clay);
-  color: #fff;
-  padding: 0.8rem 1.75rem;
-  border-radius: 3px;
-  font-family: var(--sans);
-  font-size: 0.9rem;
-  font-weight: 500;
-  text-decoration: none;
-  letter-spacing: 0.03em;
-  transition: background 0.2s;
-}
-.btn-primary:hover { background: var(--bark); color: #fff; }
-
-.btn-secondary {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--clay);
-  text-decoration: none;
-  border-bottom: 1.5px solid var(--clay-lt);
-  padding-bottom: 2px;
-  transition: color 0.15s, border-color 0.15s;
-}
-.btn-secondary:hover { color: var(--bark); border-color: var(--bark); }
-
-/* ── SERVICES: editorial list ── */
-.services-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: var(--space-md);
-}
-
-.services-header h2 { margin-bottom: 0; }
-
-.service-list {
-  border-top: 1px solid var(--clay-lt);
-}
-
-.service-row {
-  display: grid;
-  grid-template-columns: 1fr 2fr 2rem;
-  gap: 3rem;
-  padding-block: 2.25rem;
-  border-bottom: 1px solid var(--clay-lt);
-  text-decoration: none;
-  transition: background 0.15s;
-  align-items: start;
-}
-
-.service-row:hover { background: var(--sand); }
-
-.service-row-meta {
-  padding-top: 0.1rem;
-}
-
-.service-row-label {
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--fog);
-  display: block;
-  margin-bottom: 0.6rem;
-}
-
-.service-row-title {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: 1.2rem;
-  color: var(--bark);
-  line-height: 1.3;
-}
-
-.service-row-body p {
-  font-size: 0.9375rem;
-  color: var(--ink);
-  line-height: 1.65;
-  max-width: 52ch;
-}
-
-.service-row-arrow {
-  font-size: 1.1rem;
-  color: var(--clay-lt);
-  transition: color 0.15s, transform 0.15s;
-  align-self: center;
-  justify-self: end;
-  text-decoration: none;
-}
-.service-row:hover .service-row-arrow {
-  color: var(--clay);
-  transform: translateX(4px);
-}
-
-/* ── HOW I WORK: two-column editorial ── */
-.process-layout {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 5rem;
-  align-items: start;
-}
-
-.process-label h2 {
-  font-size: clamp(1.3rem, 3vw, 1.7rem);
-  margin-top: 0.75rem;
-  max-width: 18ch;
-}
-
-.process-text p {
-  font-size: 1rem;
-  line-height: 1.8;
-  color: var(--ink);
-  max-width: 56ch;
-}
-
-.process-text p + p { margin-top: 1.25rem; }
-
-/* ── SELECTED WORK ── */
-.work-preview-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: var(--space-md);
-}
-
-.featured-work {
-  border-top: 1px solid var(--clay-lt);
-  padding-top: var(--space-md);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: start;
-}
-
-.featured-label {
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--fog);
-  display: block;
-  margin-bottom: 1rem;
-}
-
-.featured-title {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(1.4rem, 3vw, 1.9rem);
-  color: var(--bark);
-  line-height: 1.25;
-  margin-bottom: 1.25rem;
-}
-
-.featured-body p {
-  font-size: 0.9625rem;
-  color: var(--ink);
-  line-height: 1.7;
-}
-
-.featured-body p + p { margin-top: 0.875rem; }
-
-.featured-aside {
-  border-left: 1px solid var(--clay-lt);
-  padding-left: 2.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.aside-item-label {
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--fog);
-  display: block;
-  margin-bottom: 0.4rem;
-}
-
-.aside-item-title {
-  font-family: var(--serif);
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--bark);
-  line-height: 1.3;
-  margin-bottom: 0.35rem;
-}
-
-.aside-item-body {
-  font-size: 0.875rem;
-  color: var(--fog);
-  line-height: 1.6;
-  max-width: 36ch;
-}
-
-/* ── ABOUT ── */
-.about-grid {
-  display: grid;
-  grid-template-columns: 340px 1fr;
-  gap: 5rem;
-  align-items: start;
-}
-
-.about-photo {
-  width: 100%;
-  height: 480px;
-  object-fit: cover;
-  object-position: center top;
-  border-radius: 2px;
-}
-
-.about-text-col h2 { margin-bottom: 1.25rem; }
-.about-text-col p + p { margin-top: 1rem; }
-
-/* ── CONTACT ── */
-.section--contact { background: var(--sand); }
-
-.contact-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: start;
-}
-
-.contact-left h2 { margin-bottom: 1.25rem; }
-
-.prompts {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.875rem;
-  margin-bottom: var(--space-md);
-}
-
-.prompts li {
-  padding-left: 1.375rem;
-  position: relative;
-  font-size: 0.9375rem;
-  color: var(--fog);
-  line-height: 1.55;
-}
-
-.prompts li::before {
-  content: '→';
-  position: absolute;
-  left: 0;
-  color: var(--clay);
-  font-size: 0.8125rem;
-  top: 0.12em;
-}
-
-.contact-right {
-  padding-top: 0.5rem;
-}
-
-.email-link {
-  display: inline-block;
-  font-family: var(--serif);
-  font-size: 1.5rem;
-  color: var(--bark);
-  text-decoration: none;
-  border-bottom: 2px solid var(--clay-lt);
-  padding-bottom: 3px;
-  transition: color 0.15s, border-color 0.15s;
-  line-height: 1.3;
-}
-.email-link:hover { color: var(--clay); border-color: var(--clay); }
-
-.contact-note {
-  margin-top: 0.875rem;
-  font-size: 0.85rem;
-  color: var(--fog);
-  max-width: none;
-}
-
-/* scroll fade-in */
-.fade-up {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
-}
-.fade-up.visible {
-  opacity: 1;
-  transform: none;
-}
-
-/* ── FOOTER ── */
-footer {
-  background: var(--cream);
-  padding-block: 2rem;
-  border-top: 1px solid var(--clay-lt);
-}
-
-.footer-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.footer-wordmark {
-  font-family: var(--serif);
-  font-size: 0.9375rem;
-  color: var(--bark);
-  text-decoration: none;
-}
-.footer-wordmark:hover { color: var(--clay); }
-
-.footer-tagline { font-size: 0.78rem; color: var(--fog); max-width: none; }
-
-.footer-signoff {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1.25rem;
-  color: var(--bark);
-  opacity: 0.45;
-  padding-block: 2rem 1.5rem;
-  max-width: none;
-  border-top: 1px solid var(--clay-lt);
-}
-
-.footer-links { display: flex; gap: 1.5rem; list-style: none; }
-.footer-links a { font-size: 0.78rem; color: var(--fog); text-decoration: none; transition: color 0.15s; }
-.footer-links a:hover { color: var(--clay); }
-
-/* ── RESPONSIVE ── */
-@media (max-width: 780px) {
-  .nav-links { display: none; }
-  .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  .hero { padding-block: 3.5rem 3rem; }
-  .service-row { grid-template-columns: 1fr; gap: 0.75rem; }
-  .service-row-arrow { display: none; }
-  .process-layout { grid-template-columns: 1fr; gap: 2rem; }
-  .featured-work { grid-template-columns: 1fr; gap: 3rem; }
-  .featured-aside { border-left: none; padding-left: 0; border-top: 1px solid var(--clay-lt); padding-top: 2rem; }
-  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-  .about-photo { height: 320px; }
-  .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-}
-
-/* ── DESIGN TOGGLE ── */
-.nav-toggle {
-  display: flex;
-  align-items: center;
-  gap: 0.15rem;
-  background: var(--sand);
-  border: 1px solid var(--clay-lt);
-  border-radius: 999px;
-  padding: 0.2rem 0.25rem;
-  margin-left: 1.5rem;
-}
-.nav-toggle a {
-  display: inline-block;
-  padding: 0.3rem 0.9rem;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.03em;
-  text-decoration: none;
-  color: var(--fog);
-  transition: background 0.15s, color 0.15s;
-  white-space: nowrap;
-}
-.nav-toggle a:hover { color: var(--bark); }
-.nav-toggle a.active {
-  background: var(--bark);
-  color: var(--cream);
-}
-  </style>
+  <title>Studio Jas</title>
+  <meta name="description" content="Things Jasmine Sabio has built with AI, each with the Jaslist post on how it came together." />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <div class="wrap nav-row">
-      <a class="nav-wordmark" href="index.html">Studio Jas</a>
+      <a class="nav-wordmark" href="/">Studio Jas</a>
       <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="/" class="active">Projects</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="https://jasminesabio.substack.com/" target="_blank" rel="noopener">Jaslist ↗</a></li>
       </ul>
-      <div class="nav-toggle"><a href="../before/index.html">Design v1</a><a href="index.html" class="active">Design v2</a></div>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="wrap">
-      <div class="hero-grid">
-        <div class="hero-left">
-          <p class="eyebrow">Experience design practice</p>
-          <h1>Gatherings, systems, &amp; things that work.</h1>
-        </div>
-        <div class="hero-right">
-          <p class="hero-sub">I help small teams run better offsites, untangle their workflows, and build client experiences that feel considered — through facilitation, hospitality, and tools that actually fit.</p>
-          <div class="cta-row">
-            <a class="btn-primary" href="mailto:jasmine.operations@gmail.com">Book an intro call</a>
-            <a class="btn-secondary" href="projects.html">View projects</a>
+  <main>
+    <!-- HERO -->
+    <section class="section page-hero">
+      <div class="wrap">
+        <div class="page-hero-inner">
+          <div>
+            <p class="eyebrow">Studio Jas</p>
+            <h1>Things I've built with AI.</h1>
           </div>
-          <p class="cred-strip">Offsite &amp; retreat design &nbsp;·&nbsp; Workflow and operations &nbsp;·&nbsp; Client experience</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section class="section fade-up" id="services">
-    <div class="wrap">
-      <div class="services-header">
-        <div>
-          <p class="eyebrow">Services</p>
-          <h2>Three ways to work together.</h2>
-        </div>
-      </div>
-
-      <div class="service-list">
-        <a class="service-row" href="team-experience.html">
-          <div class="service-row-meta">
-            <span class="service-row-label">Team &amp; operations</span>
-            <p class="service-row-title">Team Experience Sprint</p>
-          </div>
-          <div class="service-row-body">
-            <p>For teams that feel scattered, overloaded, or overdue for a reset. We map the current experience, redesign one key workflow or gathering, and create something the team can keep using.</p>
-          </div>
-          <span class="service-row-arrow">→</span>
-        </a>
-
-        <a class="service-row" href="offsites.html">
-          <div class="service-row-meta">
-            <span class="service-row-label">Facilitation &amp; design</span>
-            <p class="service-row-title">Offsite Design &amp; Facilitation</p>
-          </div>
-          <div class="service-row-body">
-            <p>Offsites, retreats, and gatherings designed to feel considered from arrival to closing. Flow, energy, pacing, and the small details that make the whole thing feel like it was meant to happen.</p>
-          </div>
-          <span class="service-row-arrow">→</span>
-        </a>
-
-        <a class="service-row" href="workflow.html">
-          <div class="service-row-meta">
-            <span class="service-row-label">Tools &amp; collaboration</span>
-            <p class="service-row-title">Workflow &amp; Tool Reset</p>
-          </div>
-          <div class="service-row-body">
-            <p>For teams that know tech could help but don't want a heavy overhaul. Low-lift tools and practical rituals that make the day-to-day feel lighter and more effective.</p>
-          </div>
-          <span class="service-row-arrow">→</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW I WORK -->
-  <section class="section section--sand fade-up" id="process">
-    <div class="wrap">
-      <div class="process-layout">
-        <div class="process-label">
-          <p class="eyebrow">How I work</p>
-          <h2>A specific process for a specific situation.</h2>
-        </div>
-        <div class="process-text">
-          <p>Every engagement starts with a real conversation about what's actually going on: the team, the moment, the tension. I ask a lot of questions. From there I draft something shaped to that specific situation — not a template — then I'm present for the actual experience, reading the room and adjusting in real time.</p>
-          <p>Every engagement ends with something that keeps working after I leave. A synthesis, a lightweight system, or a ritual that carries the work forward.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SELECTED WORK -->
-  <section class="section fade-up" id="work-preview">
-    <div class="wrap">
-      <div class="work-preview-header">
-        <p class="eyebrow">Selected work</p>
-        <a class="btn-secondary" href="projects.html">See all projects →</a>
-      </div>
-
-      <div class="featured-work">
-        <div class="featured-body">
-          <span class="featured-label">Team experience</span>
-          <p class="featured-title">Two-day offsite for a small creative team</p>
-          <p>Designed and facilitated a gathering for a team of 18 that had been running hard and needed to realign. We mapped where the friction was, redesigned two recurring rituals, and built a decision-making framework the team could use after I left. Three rituals are still in use.</p>
-        </div>
-
-        <div class="featured-aside">
-          <div class="aside-item">
-            <span class="aside-item-label">Workflow reset</span>
-            <p class="aside-item-title">Operations overhaul for a boutique event studio</p>
-            <p class="aside-item-body">Rebuilt client intake, project tracking, and communications for a 6-person firm. Coordination time cut in half in the first month.</p>
-          </div>
-          <div class="aside-item">
-            <span class="aside-item-label">Client experience</span>
-            <p class="aside-item-title">Onboarding redesign for an independent consultant</p>
-            <p class="aside-item-body">Rebuilt the end-to-end client journey from first inquiry to final delivery, so the process felt as considered as the work itself.</p>
+          <div>
+            <p class="page-hero-sub">Small tools I build for my own life &amp; the people around me. Each one links to the Jaslist post on how it came together &amp; to the app itself.</p>
+            <p class="hero-count">04 projects</p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ABOUT -->
-  <section class="section section--sand fade-up" id="about">
-    <div class="wrap">
-      <div class="about-grid">
-        <div>
-          <img class="about-photo" src="jasmine.jpg" alt="Jasmine Sabio" />
-        </div>
-        <div class="about-text-col">
-          <p class="eyebrow">About</p>
-          <h2>I care about how things land.</h2>
-          <p>Across product work, team collaboration, events, and creative projects, I keep returning to the same question: <em>how does this feel for the people inside it?</em></p>
-          <p>My practice is rooted in experience design: shaping workflows, gatherings, and touchpoints so they feel good to be inside of. I work best with small teams where trust travels fast and the work can be specific to what's actually needed.</p>
-          <p>I also DJ — reading a room, tracking the energy, and shaping what a moment becomes. <a href="https://soundcloud.com/jasminesabio" target="_blank" rel="noopener">Listen on SoundCloud →</a></p>
+    <!-- PROJECTS (newest first) -->
+    <section class="section">
+      <div class="wrap">
+        <div class="project-list">
+
+          <!-- DIGITAL RECIPE BOX -->
+          <article class="project-card fade-up" id="recipe-box">
+            <div class="project-meta">
+              <p class="project-number">01</p>
+              <span class="project-tag">Home &amp; cooking</span>
+              <h2 class="project-title">Digital Recipe Box</h2>
+              <p class="project-date">October 2026</p>
+              <div class="project-links">
+                <a class="project-link" href="https://jasminesabio.substack.com/p/how-i-build-with-ai-digital-recipe" target="_blank" rel="noopener">Read on Jaslist →</a>
+                <!-- TODO: swap in the artifact link once it's published -->
+                <span class="project-link project-link--muted">App link coming soon</span>
+              </div>
+            </div>
+            <div class="project-body">
+              <p class="project-subtitle">A recipe box for the dishes I've made &amp; trust, styled after Cooking Mama.</p>
+              <p>I've wanted a physical recipe book like the one my mother-in-law uses. Before printing anything, I made a digital version as a test run: the 12 recipes I've cooked more than once &amp; actually trust.</p>
+              <p>Each card has only the ingredients, the steps &amp; my notes on what I change. Claude suggested plenty of extra features. I cut them to keep the first version simple.</p>
+              <ul class="skill-list">
+                <li>Claude Cowork</li>
+                <li>Claude artifact</li>
+                <li>Sublime</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- AFTERGLOW -->
+          <article class="project-card fade-up" id="afterglow">
+            <div class="project-meta">
+              <p class="project-number">02</p>
+              <span class="project-tag">Music &amp; DJing</span>
+              <h2 class="project-title">Afterglow</h2>
+              <p class="project-date">October 2026</p>
+              <div class="project-links">
+                <a class="project-link" href="https://jasminesabio.substack.com/p/how-i-build-with-ai-afterglow" target="_blank" rel="noopener">Read on Jaslist →</a>
+                <a class="project-link" href="https://afterglow-wine.vercel.app/" target="_blank" rel="noopener">Open the app →</a>
+                <a class="project-link" href="https://github.com/jasminesabio/afterglow" target="_blank" rel="noopener">GitHub →</a>
+                <a class="project-link" href="https://musichackspace.org/events/hackathon-lisbon-spring-2026/projects/6" target="_blank" rel="noopener">Hackathon page →</a>
+              </div>
+            </div>
+            <div class="project-body">
+              <p class="project-subtitle">Organizing my DJ library by how I actually DJ, built in 36 hours at a Lisbon hackathon.</p>
+              <p>Valerie &amp; I built Afterglow at the Music Hackspace hackathon in Lisbon, answering a prompt about new ways to explore &amp; organize music libraries. Instead of fixed playlists, it tags each track by context: when &amp; where I'd play it, its role in a set &amp; the crowd it's for. A lot of tracks fit more than one moment.</p>
+              <p>We tried 0–10 confidence scores &amp; found they didn't add much. Tracks on the edge just get a simple "fluid, not core" flag.</p>
+              <ul class="skill-list">
+                <li>Claude Cowork</li>
+                <li>Claude Code</li>
+                <li>HTML / CSS / JS</li>
+                <li>JSON</li>
+              </ul>
+              <div class="project-photos project-photos--4">
+                <img class="photo-main" src="images/afterglow/tagging UI.png" alt="Afterglow tagging interface" onclick="openLightbox('afterglow',0)" />
+                <img src="images/afterglow/talk.jpg"     alt="Presenting at the hackathon" onclick="openLightbox('afterglow',1)" />
+                <img src="images/afterglow/graph.JPG"    alt="Affinity graph sketch"       onclick="openLightbox('afterglow',2)" />
+                <img src="images/afterglow/graph UI.png" alt="Graph view"                  onclick="openLightbox('afterglow',3)" />
+              </div>
+            </div>
+          </article>
+
+          <!-- CONSTELACIONES -->
+          <article class="project-card fade-up" id="constelaciones">
+            <div class="project-meta">
+              <p class="project-number">03</p>
+              <span class="project-tag">Travel &amp; friends</span>
+              <h2 class="project-title">Constelaciones</h2>
+              <p class="project-date">September 2026</p>
+              <div class="project-links">
+                <a class="project-link" href="https://jasminesabio.substack.com/p/how-i-build-with-ai-constelaciones" target="_blank" rel="noopener">Read on Jaslist →</a>
+                <!-- TODO: add the Netlify link -->
+                <span class="project-link project-link--muted">App link coming soon</span>
+              </div>
+            </div>
+            <div class="project-body">
+              <p class="project-subtitle">A summer travel tracker for 17 friends.</p>
+              <p>Every summer my friends scatter across different cities on different dates, &amp; we keep just missing each other. Constelaciones shows where everyone is headed so we can actually meet up.</p>
+              <p>It grew past spotting overlaps. Now it also has shared itineraries, city recommendations &amp; a board for trading tickets. A self-serve v2 is next.</p>
+              <ul class="skill-list">
+                <li>Astro</li>
+                <li>Airtable</li>
+                <li>Netlify</li>
+                <li>TypeScript</li>
+              </ul>
+              <div class="project-photos project-photos--3">
+                <img class="photo-main" src="images/constelaciones/home.png" alt="Constelaciones home"     onclick="openLightbox('constelaciones',0)" />
+                <img src="images/constelaciones/crossovers.png"              alt="Crossovers view"          onclick="openLightbox('constelaciones',1)" />
+                <img src="images/constelaciones/recommendations.png"         alt="City recommendations"     onclick="openLightbox('constelaciones',2)" />
+              </div>
+            </div>
+          </article>
+
+          <!-- WEDDING -->
+          <article class="project-card fade-up" id="wedding">
+            <div class="project-meta">
+              <p class="project-number">04</p>
+              <span class="project-tag">Events &amp; logistics</span>
+              <h2 class="project-title">Wedding Website &amp; Ops</h2>
+              <p class="project-date">September 2026</p>
+              <div class="project-links">
+                <a class="project-link" href="https://jasminesabio.substack.com/p/wedding-series-ops-and-logistics" target="_blank" rel="noopener">Read on Jaslist →</a>
+                <!-- TODO: add the wedding site link -->
+                <span class="project-link project-link--muted">App link coming soon</span>
+              </div>
+            </div>
+            <div class="project-body">
+              <p class="project-subtitle">Three venues, 154 guests &amp; a lot of vendor coordination.</p>
+              <p>We built our own wedding website instead of paying for a builder like Zola. The site was mostly read-only, &amp; building it meant we controlled the structure &amp; could update it instantly. Guests confirmed their RSVP by text, &amp; each one saw only the Friday itinerary for their group.</p>
+              <p>Claude did a lot of the heavy lifting behind the scenes: reviewing vendor contracts, drafting seating charts, planning shuttles &amp; turning a reference track into sheet music. Our coordinator worked from a view on the same database, so everyone had one current source of truth.</p>
+              <ul class="skill-list">
+                <li>Claude</li>
+                <li>Supabase</li>
+                <li>Twilio</li>
+                <li>WhatsApp</li>
+              </ul>
+              <div class="project-photos project-photos--3">
+                <img class="photo-main" src="images/wedding/home page.png" alt="Wedding site home page"   onclick="openLightbox('wedding',0)" />
+                <img src="images/wedding/website directory.png"            alt="Website directory"        onclick="openLightbox('wedding',1)" />
+                <img src="images/wedding/wedding itinerary.png"            alt="Wedding itinerary"        onclick="openLightbox('wedding',2)" />
+              </div>
+            </div>
+          </article>
+
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- CONTACT -->
-  <section class="section section--contact" id="contact">
-    <div class="wrap">
-      <div class="contact-layout">
-        <div class="contact-left">
-          <p class="eyebrow">Work together</p>
-          <h2>Let's figure out if this is a fit.</h2>
-          <p>The first conversation is just a conversation. No pitch, no proposal until it makes sense.</p>
-          <ul class="prompts" style="margin-top: 1.5rem;">
-            <li>What's going on with your team or business right now?</li>
-            <li>What would feel different if the experience were working well?</li>
-            <li>What kind of support are you looking for?</li>
-          </ul>
-        </div>
-        <div class="contact-right">
-          <a class="email-link" href="mailto:jasmine.operations@gmail.com">jasmine.operations@gmail.com</a>
-          <p class="contact-note">I typically respond within two business days.</p>
-          <div style="margin-top: 2rem;">
-            <a class="btn-primary" href="mailto:jasmine.operations@gmail.com">Book an intro call</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
   <footer>
-    <div class="wrap">
-      <p class="footer-signoff">Every experience is worth designing well.</p>
-    </div>
     <div class="wrap footer-row">
-      <a class="footer-wordmark" href="index.html">Studio Jas</a>
+      <a class="footer-wordmark" href="/">Studio Jas</a>
       <ul class="footer-links">
-        <li><a href="team-experience.html">Team Experience Sprint</a></li>
-        <li><a href="offsites.html">Offsite Design</a></li>
-        <li><a href="workflow.html">Workflow Reset</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="/">Projects</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="https://jasminesabio.substack.com/" target="_blank" rel="noopener">Jaslist</a></li>
       </ul>
-      <p class="footer-tagline">Experience design practice &nbsp;·&nbsp; © 2026</p>
+      <p class="footer-tagline">Things I've built with AI &nbsp;·&nbsp; © 2026</p>
     </div>
   </footer>
 
+  <!-- LIGHTBOX -->
+  <div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lb-title">
+    <div class="lightbox">
+      <div class="lightbox-header">
+        <span class="lightbox-title" id="lb-title"></span>
+        <span class="lightbox-counter" id="lb-counter"></span>
+        <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">✕</button>
+      </div>
+      <div class="lightbox-stage" id="lb-stage">
+        <button class="lightbox-btn lightbox-btn--prev" onclick="changeSlide(-1)" aria-label="Previous">‹</button>
+        <button class="lightbox-btn lightbox-btn--next" onclick="changeSlide(1)" aria-label="Next">›</button>
+      </div>
+      <div class="lightbox-thumbs" id="lb-thumbs"></div>
+    </div>
+  </div>
+
   <script>
+    // Albums are built from each project's inline photos, so adding an <img> is all it takes.
+    const titles = { afterglow: 'Afterglow', constelaciones: 'Constelaciones', wedding: 'Wedding Website & Ops' };
+    let current = 0;
+    let images = [];
+
+    function openLightbox(key, start) {
+      images = [...document.querySelectorAll('#' + key + ' .project-photos img')].map(i => ({ src: i.getAttribute('src'), alt: i.alt }));
+      current = start || 0;
+      document.getElementById('lb-title').textContent = titles[key] || '';
+
+      const stage = document.getElementById('lb-stage');
+      const thumbs = document.getElementById('lb-thumbs');
+      stage.querySelectorAll('img').forEach(el => el.remove());
+      thumbs.innerHTML = '';
+
+      images.forEach((img, i) => {
+        const el = document.createElement('img');
+        el.src = img.src; el.alt = img.alt;
+        if (i === current) el.classList.add('active');
+        stage.insertBefore(el, stage.querySelector('.lightbox-btn--prev'));
+
+        const t = document.createElement('img');
+        t.src = img.src; t.alt = img.alt;
+        t.className = 'lightbox-thumb' + (i === current ? ' active' : '');
+        t.onclick = () => goToSlide(i);
+        thumbs.appendChild(t);
+      });
+
+      updateCounter();
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function updateCounter() {
+      document.getElementById('lb-counter').textContent = (current + 1) + ' / ' + images.length;
+    }
+
+    function goToSlide(n) {
+      const imgs = document.querySelectorAll('#lb-stage img');
+      const thumbs = document.querySelectorAll('#lb-thumbs .lightbox-thumb');
+      imgs[current].classList.remove('active');
+      thumbs[current].classList.remove('active');
+      current = n;
+      imgs[current].classList.add('active');
+      thumbs[current].classList.add('active');
+      updateCounter();
+    }
+
+    function changeSlide(dir) {
+      goToSlide((current + dir + images.length) % images.length);
+    }
+
+    document.getElementById('lightbox').addEventListener('click', function (e) {
+      if (e.target === this) closeLightbox();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (!document.getElementById('lightbox').classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') changeSlide(-1);
+      if (e.key === 'ArrowRight') changeSlide(1);
+    });
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
     }, { threshold: 0.08 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
   </script>
+
 </body>
 </html>
