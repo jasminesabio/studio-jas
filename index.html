@@ -52,8 +52,7 @@
               <p class="project-date">October 2026</p>
               <div class="project-links">
                 <a class="project-link" href="https://jasminesabio.substack.com/p/how-i-build-with-ai-digital-recipe" target="_blank" rel="noopener">Read on Jaslist →</a>
-                <!-- TODO: swap in the artifact link once it's published -->
-                <span class="project-link project-link--muted">App link coming soon</span>
+                <a class="project-link" href="recipe-box/">Open the recipe box →</a>
               </div>
             </div>
             <div class="project-body">
@@ -65,6 +64,11 @@
                 <li>Claude artifact</li>
                 <li>Sublime</li>
               </ul>
+              <div class="project-photos project-photos--3">
+                <img class="photo-main" src="images/recipe-box/recipe box.png" alt="Recipe Box home"            onclick="openLightbox('recipe-box',0)" />
+                <img src="images/recipe-box/recipe card.png"                   alt="Focaccia recipe card"       onclick="openLightbox('recipe-box',1)" />
+                <img src="images/recipe-box/sublime canvas.png"                alt="Recipes collected in Sublime" onclick="openLightbox('recipe-box',2)" />
+              </div>
             </div>
           </article>
 
@@ -110,8 +114,7 @@
               <p class="project-date">September 2026</p>
               <div class="project-links">
                 <a class="project-link" href="https://jasminesabio.substack.com/p/how-i-build-with-ai-constelaciones" target="_blank" rel="noopener">Read on Jaslist →</a>
-                <!-- TODO: add the Netlify link -->
-                <span class="project-link project-link--muted">App link coming soon</span>
+                <span class="project-link project-link--muted">Private app: screenshots only</span>
               </div>
             </div>
             <div class="project-body">
@@ -141,8 +144,7 @@
               <p class="project-date">September 2026</p>
               <div class="project-links">
                 <a class="project-link" href="https://jasminesabio.substack.com/p/wedding-series-ops-and-logistics" target="_blank" rel="noopener">Read on Jaslist →</a>
-                <!-- TODO: add the wedding site link -->
-                <span class="project-link project-link--muted">App link coming soon</span>
+                <a class="project-link" href="https://danandjas.xyz" target="_blank" rel="noopener">Visit the site →</a>
               </div>
             </div>
             <div class="project-body">
@@ -199,7 +201,7 @@
 
   <script>
     // Albums are built from each project's inline photos, so adding an <img> is all it takes.
-    const titles = { afterglow: 'Afterglow', constelaciones: 'Constelaciones', wedding: 'Wedding Website & Ops' };
+    const titles = { 'recipe-box': 'Digital Recipe Box', afterglow: 'Afterglow', constelaciones: 'Constelaciones', wedding: 'Wedding Website & Ops' };
     let current = 0;
     let images = [];
 
