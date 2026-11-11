@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page not found — Studio Jas</title>
+  <meta name="robots" content="noindex" />
+  <!-- Absolute paths: this page can be served at any missing URL, at any depth. -->
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    .not-found { padding-block: 7rem 6rem; }
+    .not-found-code {
+      font-family: var(--serif);
+      font-size: clamp(5rem, 16vw, 9rem);
+      line-height: 1;
+      color: var(--clay-lt);
+      opacity: 0.45;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+    .not-found h1 { max-width: 18ch; margin-bottom: 1.25rem; }
+    .not-found .page-hero-sub { margin-bottom: 2.25rem; }
+    .not-found-links {
+      list-style: none;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--clay-lt);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 2rem;
+    }
+    @media (max-width: 780px) { .not-found { padding-block: 4rem 3.5rem; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="wrap nav-row">
+      <a class="nav-wordmark" href="/">Studio Jas</a>
+      <ul class="nav-links">
+        <li><a href="/">Projects</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="https://jasminesabio.substack.com/" target="_blank" rel="noopener">Jaslist ↗</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="not-found">
+      <div class="wrap">
+        <p class="not-found-code" aria-hidden="true">404</p>
+        <p class="eyebrow">Page not found</p>
+        <h1>This page isn't here anymore.</h1>
+        <p class="page-hero-sub">It may have moved, or it never existed. Everything I've built lives on the projects page.</p>
+        <div class="cta-row">
+          <a class="btn-primary" href="/">See the projects</a>
+          <a class="btn-secondary" href="https://jasminesabio.substack.com/" target="_blank" rel="noopener">Read Jaslist →</a>
+        </div>
+        <ul class="not-found-links">
+          <li><a class="project-link" href="/recipe-box/">Recipe Box</a></li>
+          <li><a class="project-link" href="/#afterglow">Afterglow</a></li>
+          <li><a class="project-link" href="/#constelaciones">Constelaciones</a></li>
+          <li><a class="project-link" href="/#wedding">Wedding</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <a class="footer-wordmark" href="/">Studio Jas</a>
+      <ul class="footer-links">
+        <li><a href="/">Projects</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="https://jasminesabio.substack.com/" target="_blank" rel="noopener">Jaslist</a></li>
+      </ul>
+      <p class="footer-tagline">Things I've built with AI &nbsp;·&nbsp; © 2026</p>
+    </div>
+  </footer>
+
+</body>
+</html>
