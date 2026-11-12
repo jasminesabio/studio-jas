@@ -9,3 +9,6 @@ Claude outputs/
 constelaciones/
 constelaciones-build-prompt.md
 .claude/
+
+# Private client files
+_private/
