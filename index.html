@@ -45,7 +45,7 @@
           </div>
           <div>
             <p class="page-hero-sub">Small tools I build for my own life &amp; the people around me. Each one links to the Jaslist post on how it came together &amp; to the app itself.</p>
-            <p class="hero-count">04 projects</p>
+            <p class="hero-count">05 projects</p>
           </div>
         </div>
       </div>
@@ -56,10 +56,41 @@
       <div class="wrap">
         <div class="project-list">
 
+          <!-- LEARNING HUBS -->
+          <article class="project-card fade-up" id="learning-hubs">
+            <div class="project-meta">
+              <p class="project-number">01</p>
+              <span class="project-tag">Learning</span>
+              <h2 class="project-title">Learning Hubs</h2>
+              <p class="project-date">November 2026</p>
+              <div class="project-links">
+                <a class="project-link" href="https://jasminesabio.substack.com/p/the-learning-i-could-do-on-my-own" target="_blank" rel="noopener">Read on Jaslist →</a>
+                <a class="project-link" href="https://climate-intelligence-hub.netlify.app/" target="_blank" rel="noopener">Climate Intelligence Hub →</a>
+                <a class="project-link" href="https://cuaderno-gramatica-823545.netlify.app/" target="_blank" rel="noopener">Spanish Notebook →</a>
+                <a class="project-link" href="https://parenting-notes-hub.pages.dev" target="_blank" rel="noopener">Project Peanut →</a>
+              </div>
+            </div>
+            <div class="project-body">
+              <p class="project-subtitle">Three learning hubs I built with Claude: climate tech, Spanish &amp; parenting.</p>
+              <p>When I looked into switching to climate tech, the go-to fellowship cost around US$3,000. The networking I couldn't do on my own. The learning I could. So I built my own hub off of their syllabus.</p>
+              <p>Since then I've built two more: a Spanish notebook I study from between classes, &amp; Project Peanut, a tiered list of trusted sources on pregnancy &amp; raising a baby from 0 to 3. All three are personal &amp; built around how I actually learn.</p>
+              <ul class="skill-list">
+                <li>Claude Cowork</li>
+                <li>Claude Code</li>
+                <li>Notebook LM</li>
+              </ul>
+              <div class="project-photos project-photos--3">
+                <img loading="lazy" decoding="async" class="photo-main" src="images/learning-hubs/climate hub.webp" alt="Climate Intelligence Hub home" onclick="openLightbox('learning-hubs',0)" />
+                <img loading="lazy" decoding="async" src="images/learning-hubs/spanish notebook.webp"              alt="Spanish notebook: preterite vs. imperfect lesson" onclick="openLightbox('learning-hubs',1)" />
+                <img loading="lazy" decoding="async" src="images/learning-hubs/project peanut.webp"                alt="Project Peanut parenting hub modules" onclick="openLightbox('learning-hubs',2)" />
+              </div>
+            </div>
+          </article>
+
           <!-- DIGITAL RECIPE BOX -->
           <article class="project-card fade-up" id="recipe-box">
             <div class="project-meta">
-              <p class="project-number">01</p>
+              <p class="project-number">02</p>
               <span class="project-tag">Home &amp; cooking</span>
               <h2 class="project-title">Digital Recipe Box</h2>
               <p class="project-date">October 2026</p>
@@ -88,7 +119,7 @@
           <!-- AFTERGLOW -->
           <article class="project-card fade-up" id="afterglow">
             <div class="project-meta">
-              <p class="project-number">02</p>
+              <p class="project-number">03</p>
               <span class="project-tag">Music &amp; DJing</span>
               <h2 class="project-title">Afterglow</h2>
               <p class="project-date">October 2026</p>
@@ -121,7 +152,7 @@
           <!-- CONSTELACIONES -->
           <article class="project-card fade-up" id="constelaciones">
             <div class="project-meta">
-              <p class="project-number">03</p>
+              <p class="project-number">04</p>
               <span class="project-tag">Travel &amp; friends</span>
               <h2 class="project-title">Constelaciones</h2>
               <p class="project-date">September 2026</p>
@@ -149,7 +180,7 @@
           <!-- WEDDING -->
           <article class="project-card fade-up" id="wedding">
             <div class="project-meta">
-              <p class="project-number">04</p>
+              <p class="project-number">05</p>
               <span class="project-tag">Events &amp; logistics</span>
               <h2 class="project-title">Wedding Website &amp; Ops</h2>
               <p class="project-date">September 2026</p>
@@ -212,7 +243,7 @@
 
   <script>
     // Albums are built from each project's inline photos, so adding an <img> is all it takes.
-    const titles = { 'recipe-box': 'Digital Recipe Box', afterglow: 'Afterglow', constelaciones: 'Constelaciones', wedding: 'Wedding Website & Ops' };
+    const titles = { 'learning-hubs': 'Learning Hubs', 'recipe-box': 'Digital Recipe Box', afterglow: 'Afterglow', constelaciones: 'Constelaciones', wedding: 'Wedding Website & Ops' };
     let current = 0;
     let images = [];
 
